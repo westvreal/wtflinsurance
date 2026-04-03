@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Actual Cash Value vs. Replacement Cost: What's the Difference? - WTFLinsurance</title>
+  <meta name="description" content="Understand the difference between actual cash value and replacement cost on your insurance policy. Fun examples and visuals make it easy to get.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    /* Article-specific styles */
+    .vs-card {
+      border: 2px solid var(--gray-300);
+      border-radius: 12px;
+      overflow: hidden;
+      margin: 32px 0;
+    }
+    .vs-card-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .vs-card-header div {
+      padding: 20px 24px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+    .vs-card-header .acv-header {
+      background: #fef3c7;
+      color: #92400e;
+    }
+    .vs-card-header .rc-header {
+      background: #d1fae5;
+      color: #065f46;
+    }
+    .vs-card-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .vs-card-body div {
+      padding: 20px 24px;
+      border-top: 1px solid var(--gray-300);
+    }
+    .vs-card-body div:nth-child(odd) {
+      border-right: 1px solid var(--gray-300);
+    }
+    .vs-card-body .vs-label {
+      font-size: 0.85rem;
+      color: var(--gray-500);
+      margin-bottom: 4px;
+      font-weight: 600;
+    }
+
+    .depreciation-visual {
+      background: var(--gray-100);
+      border-radius: 12px;
+      padding: 32px;
+      margin: 32px 0;
+      text-align: center;
+    }
+    .depreciation-bar-container {
+      max-width: 500px;
+      margin: 20px auto;
+    }
+    .depreciation-bar-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .depreciation-bar-row .year-label {
+      width: 80px;
+      text-align: right;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--gray-700);
+      flex-shrink: 0;
+    }
+    .depreciation-bar-row .bar-track {
+      flex: 1;
+      height: 32px;
+      background: var(--gray-300);
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+    }
+    .depreciation-bar-row .bar-fill {
+      height: 100%;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 10px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #fff;
+      transition: width 1s ease;
+    }
+    .depreciation-bar-row .bar-fill.full { background: #10b981; }
+    .depreciation-bar-row .bar-fill.high { background: #34d399; }
+    .depreciation-bar-row .bar-fill.mid { background: #f59e0b; }
+    .depreciation-bar-row .bar-fill.low { background: #f97316; }
+    .depreciation-bar-row .bar-fill.vlow { background: #ef4444; }
+
+    .scenario-box {
+      border: 2px solid var(--gray-300);
+      border-radius: 12px;
+      padding: 32px;
+      margin: 32px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .scenario-box::before {
+      content: attr(data-label);
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: var(--primary);
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 6px 16px;
+      border-radius: 0 0 0 12px;
+    }
+    .scenario-box.good { border-color: #10b981; }
+    .scenario-box.good::before { background: #10b981; }
+    .scenario-box.bad { border-color: #f59e0b; }
+    .scenario-box.bad::before { background: #f59e0b; }
+    .scenario-emoji {
+      font-size: 3rem;
+      margin-bottom: 12px;
+    }
+    .scenario-math {
+      background: var(--gray-100);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin: 16px 0;
+      font-family: monospace;
+      font-size: 1rem;
+      line-height: 2;
+    }
+    .scenario-math .result {
+      font-size: 1.3rem;
+      font-weight: 800;
+    }
+    .scenario-math .result.green { color: #065f46; }
+    .scenario-math .result.orange { color: #92400e; }
+
+    .emoji-row {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      font-size: 2rem;
+      margin: 16px 0;
+      flex-wrap: wrap;
+    }
+
+    .tldr-box {
+      background: linear-gradient(135deg, #1a56db, #0ea5e9);
+      color: #fff;
+      border-radius: 12px;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    .tldr-box h3 { color: #fff; margin-bottom: 12px; }
+    .tldr-box p { color: rgba(255,255,255,0.9); }
+    .tldr-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .tldr-item {
+      background: rgba(255,255,255,0.15);
+      border-radius: 8px;
+      padding: 16px;
+    }
+    .tldr-item h4 { color: #fff; font-size: 0.95rem; margin-bottom: 4px; }
+    .tldr-item p { font-size: 0.9rem; margin: 0; }
+
+    @media (max-width: 640px) {
+      .vs-card-header, .vs-card-body, .tldr-grid { grid-template-columns: 1fr; }
+      .vs-card-body div:nth-child(odd) { border-right: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="container header-inner">
+      <a href="../index.html" class="logo">WTFLinsurance</a>
+      <nav class="nav">
+        <div class="nav-item">
+          <a href="#" class="nav-link">Insurance Types &#9662;</a>
+          <div class="nav-dropdown">
+            <a href="../knowledge-base/auto-insurance.html">Auto Insurance</a>
+            <a href="../knowledge-base/home-insurance.html">Home Insurance</a>
+            <a href="../knowledge-base/health-insurance.html">Health Insurance</a>
+            <a href="../knowledge-base/business-insurance.html">Business Insurance</a>
+          </div>
+        </div>
+        <a href="index.html" class="nav-link active">Articles</a>
+        <a href="../knowledge-base/index.html" class="nav-link">Knowledge Base</a>
+        <a href="../resources/index.html" class="nav-link">Resources</a>
+      </nav>
+      <div class="header-actions">
+        <a href="../pages/login.html" class="nav-link">Log In</a>
+        <a href="../pages/signup.html" class="btn btn-primary btn-sm">Get Started Free</a>
+      </div>
+      <button class="mobile-toggle" aria-label="Menu">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="breadcrumbs">
+    <div class="container">
+      <a href="../index.html">Home</a><span>/</span>
+      <a href="index.html">Articles</a><span>/</span>
+      <strong>ACV vs. Replacement Cost</strong>
+    </div>
+  </div>
+
+  <article>
+    <div class="container">
+      <div class="article-layout">
+        <div>
+          <div class="article-header">
+            <span class="tag">Home Insurance</span>
+            <h1>Actual Cash Value vs. Replacement Cost: The Difference That Could Cost You Thousands</h1>
+            <div class="article-meta">
+              <span>By <strong>WTFLinsurance Team</strong></span>
+              <span>April 3, 2026</span>
+              <span>7 min read</span>
+            </div>
+          </div>
+
+          <div class="article-content">
+
+            <p>Imagine this: a pipe bursts in your living room. Your brand-new-ish 3-year-old 65" TV is toast. You paid <strong>$1,200</strong> for it. You file an insurance claim expecting a check to replace it. But instead, your insurer sends you... <strong>$480</strong>.</p>
+
+            <p>Wait, what?</p>
+
+            <p>Welcome to the world of <strong>Actual Cash Value</strong> &mdash; and the reason you need to understand these two little terms hiding in your policy before disaster strikes.</p>
+
+            <div class="callout">
+              <div class="callout-title">What You'll Learn</div>
+              <p>By the end of this article, you'll know exactly what ACV and Replacement Cost mean, how they affect your payout, and which one your policy should have. No insurance jargon, we promise.</p>
+            </div>
+
+            <!-- ===== THE TWO TYPES ===== -->
+            <h2>The Two Ways Insurance Values Your Stuff</h2>
+
+            <p>When something you own gets damaged, stolen, or destroyed, your insurance company has to figure out how much to pay you. There are two ways they do this:</p>
+
+            <div class="vs-card">
+              <div class="vs-card-header">
+                <div class="acv-header">Actual Cash Value (ACV)</div>
+                <div class="rc-header">Replacement Cost Value (RCV)</div>
+              </div>
+              <div class="vs-card-body">
+                <div>
+                  <div class="vs-label">What it means</div>
+                  <p style="margin:0;">What your item is worth <strong>today</strong>, after wear and tear. Think of it like selling on Facebook Marketplace.</p>
+                </div>
+                <div>
+                  <div class="vs-label">What it means</div>
+                  <p style="margin:0;">What it costs to buy a <strong>brand-new replacement</strong> of the same item at today's prices. No deductions.</p>
+                </div>
+                <div>
+                  <div class="vs-label">The formula</div>
+                  <p style="margin:0;font-family:monospace;">Purchase Price &minus; Depreciation = Payout</p>
+                </div>
+                <div>
+                  <div class="vs-label">The formula</div>
+                  <p style="margin:0;font-family:monospace;">Cost to Buy New Today = Payout</p>
+                </div>
+                <div>
+                  <div class="vs-label">In plain English</div>
+                  <p style="margin:0;">"Here's what your used stuff is worth."</p>
+                </div>
+                <div>
+                  <div class="vs-label">In plain English</div>
+                  <p style="margin:0;">"Here's enough to buy it brand new."</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- ===== DEPRECIATION ===== -->
+            <h2>But Wait... What Is Depreciation?</h2>
+
+            <p>Depreciation is just a fancy word for <strong>"your stuff loses value over time."</strong> That new couch? It's not new anymore the moment you binge a full season of Netflix on it.</p>
+
+            <p>Insurance companies use depreciation tables to calculate how much value your belongings lose each year. Here's what that looks like for a <strong>$1,200 TV</strong>:</p>
+
+            <div class="depreciation-visual">
+              <h3 style="margin-bottom:4px;">Your $1,200 TV Over Time</h3>
+              <p style="color:var(--gray-500);margin-bottom:20px;">How depreciation eats away at your ACV payout</p>
+              <div class="depreciation-bar-container">
+                <div class="depreciation-bar-row">
+                  <span class="year-label">Brand New</span>
+                  <div class="bar-track">
+                    <div class="bar-fill full" style="width:100%;">$1,200</div>
+                  </div>
+                </div>
+                <div class="depreciation-bar-row">
+                  <span class="year-label">Year 1</span>
+                  <div class="bar-track">
+                    <div class="bar-fill high" style="width:80%;">$960</div>
+                  </div>
+                </div>
+                <div class="depreciation-bar-row">
+                  <span class="year-label">Year 2</span>
+                  <div class="bar-track">
+                    <div class="bar-fill mid" style="width:60%;">$720</div>
+                  </div>
+                </div>
+                <div class="depreciation-bar-row">
+                  <span class="year-label">Year 3</span>
+                  <div class="bar-track">
+                    <div class="bar-fill low" style="width:40%;">$480</div>
+                  </div>
+                </div>
+                <div class="depreciation-bar-row">
+                  <span class="year-label">Year 5</span>
+                  <div class="bar-track">
+                    <div class="bar-fill vlow" style="width:15%;">$120</div>
+                  </div>
+                </div>
+              </div>
+              <p style="font-size:0.85rem;color:var(--gray-500);margin:0;">Based on ~20% annual depreciation for electronics</p>
+            </div>
+
+            <p>See that? After just 3 years, your $1,200 TV is only "worth" <strong>$480</strong> according to your insurance company. That's how ACV works.</p>
+
+            <!-- ===== THE EXAMPLE ===== -->
+            <h2>Let's See This in Action</h2>
+
+            <p>Meet <strong>Maria</strong>. A pipe bursts in her apartment and ruins a bunch of her stuff. Let's see how her claim plays out under each type of coverage:</p>
+
+            <div style="overflow-x:auto;margin:24px 0;">
+              <table style="width:100%;border-collapse:collapse;font-size:0.95rem;">
+                <thead>
+                  <tr style="background:var(--gray-100);">
+                    <th style="padding:12px 16px;text-align:left;border-bottom:2px solid var(--gray-300);">Item</th>
+                    <th style="padding:12px 16px;text-align:right;border-bottom:2px solid var(--gray-300);">Paid</th>
+                    <th style="padding:12px 16px;text-align:center;border-bottom:2px solid var(--gray-300);">Age</th>
+                    <th style="padding:12px 16px;text-align:right;border-bottom:2px solid var(--gray-300);color:#92400e;">ACV Payout</th>
+                    <th style="padding:12px 16px;text-align:right;border-bottom:2px solid var(--gray-300);color:#065f46;">RCV Payout</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td style="padding:12px 16px;border-bottom:1px solid var(--gray-100);">65" TV</td>
+                    <td style="padding:12px 16px;text-align:right;border-bottom:1px solid var(--gray-100);">$1,200</td>
+                    <td style="padding:12px 16px;text-align:center;border-bottom:1px solid var(--gray-100);">3 yrs</td>
+                    <td style="padding:12px 16px;text-align:right;border-bottom:1px solid var(--gray-100);color:#92400e;font-weight:600;">$480</td>
+                    <td style="padding:12px 16px;text-align:right;border-bottom:1px solid var(--gray-100);color:#065f46;font-weight:600;">$1,100</td>
+                  </tr>
+                  <tr style="background:#fafafa;">
+                    <td style="padding:12px 16px;border-bottom:1px solid var(--gray-100);">Sectional Couch</td>
+                    <td style="padding:12px 16px;text-align:right;border-bottom:1px solid var(--gray-100);">$2,000</td>
+                    <td style="padding:12px 16px;text-align:center;border-bottom:1px solid var(--gray-100);">4 yrs</td>
+                    <td style="padding:12px 16px;text-align:right;border-bottom:1px solid var(--gray-100);color:#92400e;font-weight:600;">$800</td>
+                    <td style="padding:12px 16px;text-align:right;border-bottom:1px solid var(--gray-100);color:#065f46;font-weight:600;">$2,200</td>
+                  </tr>
+                  <tr>
+                    <td style="padding:12px 16px;border-bottom:1px solid var(--gray-100);">Laptop</td>
+                    <td style="padding:12px 16px;text-align:right;border-bottom:1px solid var(--gray-100);">$1,500</td>
+                    <td style="padding:12px 16px;text-align:center;border-bottom:1px solid var(--gray-100);">2 yrs</td>
+                    <td style="padding:12px 16px;text-align:right;border-bottom:1px solid var(--gray-100);color:#92400e;font-weight:600;">$600</td>
+                    <td style="padding:12px 16px;text-align:right;border-bottom:1px solid var(--gray-100);color:#065f46;font-weight:600;">$1,400</td>
+                  </tr>
+                  <tr style="background:#fafafa;">
+                    <td style="padding:12px 16px;border-bottom:1px solid var(--gray-100);">Clothing</td>
+                    <td style="padding:12px 16px;text-align:right;border-bottom:1px solid var(--gray-100);">$800</td>
+                    <td style="padding:12px 16px;text-align:center;border-bottom:1px solid var(--gray-100);">Mixed</td>
+                    <td style="padding:12px 16px;text-align:right;border-bottom:1px solid var(--gray-100);color:#92400e;font-weight:600;">$200</td>
+                    <td style="padding:12px 16px;text-align:right;border-bottom:1px solid var(--gray-100);color:#065f46;font-weight:600;">$800</td>
+                  </tr>
+                  <tr>
+                    <td style="padding:12px 16px;border-bottom:1px solid var(--gray-100);">Kitchen Items</td>
+                    <td style="padding:12px 16px;text-align:right;border-bottom:1px solid var(--gray-100);">$500</td>
+                    <td style="padding:12px 16px;text-align:center;border-bottom:1px solid var(--gray-100);">5 yrs</td>
+                    <td style="padding:12px 16px;text-align:right;border-bottom:1px solid var(--gray-100);color:#92400e;font-weight:600;">$150</td>
+                    <td style="padding:12px 16px;text-align:right;border-bottom:1px solid var(--gray-100);color:#065f46;font-weight:600;">$500</td>
+                  </tr>
+                  <tr style="background:var(--gray-100);font-weight:700;">
+                    <td style="padding:14px 16px;" colspan="3">TOTAL PAYOUT</td>
+                    <td style="padding:14px 16px;text-align:right;color:#92400e;font-size:1.1rem;">$2,230</td>
+                    <td style="padding:14px 16px;text-align:right;color:#065f46;font-size:1.1rem;">$6,000</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Scenario boxes -->
+            <div class="scenario-box bad" data-label="ACV POLICY">
+              <h3>Maria with Actual Cash Value</h3>
+              <p>Maria's stuff cost $6,000 to replace. But with ACV coverage, the insurance company factors in depreciation on every single item.</p>
+              <div class="scenario-math">
+                $6,000 worth of stuff destroyed<br>
+                &minus; $3,770 depreciation<br>
+                &minus; $1,000 deductible<br>
+                <hr style="border:none;border-top:2px solid var(--gray-300);margin:8px 0;">
+                <span class="result orange">= $1,230 check from insurance</span>
+              </div>
+              <p>Maria needs <strong>$6,000</strong> to replace everything but only gets <strong>$1,230</strong>. She's covering the remaining <strong>$4,770 out of her own pocket</strong>.</p>
+            </div>
+
+            <div class="scenario-box good" data-label="REPLACEMENT COST">
+              <h3>Maria with Replacement Cost</h3>
+              <p>With replacement cost coverage, depreciation doesn't matter. The insurance company pays what it actually costs to buy new replacements.</p>
+              <div class="scenario-math">
+                $6,000 to replace everything at today's prices<br>
+                &minus; $1,000 deductible<br>
+                <hr style="border:none;border-top:2px solid var(--gray-300);margin:8px 0;">
+                <span class="result green">= $5,000 check from insurance</span>
+              </div>
+              <p>Maria can actually replace all her stuff. She only pays the <strong>$1,000 deductible</strong>, and life goes on.</p>
+            </div>
+
+            <p style="text-align:center;font-size:1.2rem;font-weight:700;margin:32px 0;">That's a difference of <span style="color:#ef4444;font-size:1.4rem;">$3,770</span> on the exact same claim.</p>
+
+            <!-- ===== WHICH SHOULD YOU CHOOSE ===== -->
+            <h2>So Why Would Anyone Choose ACV?</h2>
+
+            <p>Good question. There's really only one reason: <strong>it's cheaper</strong>. ACV policies have lower monthly premiums because the insurance company knows they'll pay out less when you file a claim.</p>
+
+            <p>Here's the typical cost difference:</p>
+
+            <div class="callout">
+              <div class="callout-title">Cost Comparison</div>
+              <p><strong>ACV policy:</strong> ~$80/month<br>
+              <strong>Replacement Cost policy:</strong> ~$95/month<br>
+              <strong>Difference:</strong> About $15/month ($180/year)<br><br>
+              An extra $15/month to get <strong>$3,770 more</strong> on a claim? That math speaks for itself.</p>
+            </div>
+
+            <!-- ===== WHAT TO DO ===== -->
+            <h2>What Should You Do Right Now?</h2>
+
+            <ol>
+              <li><strong>Check your policy.</strong> Look for the words "Actual Cash Value" or "Replacement Cost" under your personal property coverage (Coverage C on homeowners policies). Not sure? Call your agent &mdash; it's a 2-minute question.</li>
+              <li><strong>If you have ACV, ask to switch.</strong> The premium increase is almost always worth it. Seriously.</li>
+              <li><strong>Document your stuff.</strong> Take photos or video of every room. Save receipts. This makes claims way faster and smoother no matter which coverage type you have.</li>
+              <li><strong>Know your limits.</strong> Even with replacement cost, policies have per-item limits for things like jewelry, electronics, and collectibles. Ask your agent about scheduling high-value items.</li>
+            </ol>
+
+            <!-- ===== TLDR ===== -->
+            <div class="tldr-box">
+              <h3>The Bottom Line</h3>
+              <p>If you remember nothing else from this article, remember this:</p>
+              <div class="tldr-grid">
+                <div class="tldr-item">
+                  <h4>ACV (Actual Cash Value)</h4>
+                  <p>Pays you what your stuff is worth <em>used</em>. You'll likely get way less than it costs to replace things.</p>
+                </div>
+                <div class="tldr-item">
+                  <h4>RCV (Replacement Cost)</h4>
+                  <p>Pays you what it costs to buy <em>new</em> replacements. Costs a little more per month but pays off big when you need it.</p>
+                </div>
+              </div>
+            </div>
+
+            <blockquote>
+              <p>"The best time to understand your insurance policy is <em>before</em> you need it. The worst time is while you're standing in a flooded living room." &mdash; Every insurance adjuster ever</p>
+            </blockquote>
+
+            <h2>Still Not Sure What You Have?</h2>
+            <p>We get it &mdash; insurance policies aren't exactly beach reading. That's why we're here. Create a free WTFLinsurance account and we'll help you understand your coverage, compare options, and make sure you're not caught off guard when it matters most.</p>
+
+            <div style="text-align:center;margin:32px 0;">
+              <a href="../pages/signup.html" class="btn btn-primary btn-lg">Check My Coverage &rarr;</a>
+            </div>
+
+            <p><strong>Related articles:</strong></p>
+            <ul>
+              <li><a href="home-insurance-claims.html">How to File a Home Insurance Claim (Step-by-Step)</a></li>
+              <li><a href="how-to-lower-car-insurance.html">7 Proven Ways to Lower Your Car Insurance Premium</a></li>
+              <li><a href="../knowledge-base/home-insurance.html">Home Insurance Knowledge Base</a></li>
+            </ul>
+
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="article-sidebar">
+          <div class="sidebar-card">
+            <h4>In This Article</h4>
+            <ul>
+              <li><a href="#">Two Ways Insurance Values Your Stuff</a></li>
+              <li><a href="#">What Is Depreciation?</a></li>
+              <li><a href="#">Real-World Example</a></li>
+              <li><a href="#">Why Would Anyone Choose ACV?</a></li>
+              <li><a href="#">What Should You Do Now?</a></li>
+            </ul>
+          </div>
+          <div class="sidebar-card" style="background:var(--primary);color:#fff;text-align:center;">
+            <h4 style="color:#fff;">Not Sure What You Have?</h4>
+            <p style="color:rgba(255,255,255,0.85);font-size:0.9rem;">Get a free coverage check from WTFLinsurance.</p>
+            <a href="../pages/signup.html" class="btn btn-white btn-block" style="margin-top:12px;">Check My Coverage</a>
+          </div>
+          <div class="sidebar-card">
+            <h4>Quick Answer</h4>
+            <p style="font-size:0.9rem;color:var(--gray-700);margin:0;">
+              <strong style="color:#92400e;">ACV</strong> = used value<br>
+              <strong style="color:#065f46;">RCV</strong> = new value<br><br>
+              Always choose <strong>Replacement Cost</strong> if you can. The extra $10&ndash;20/month is worth it.
+            </p>
+          </div>
+          <div class="sidebar-card">
+            <h4>Free Download</h4>
+            <p style="font-size:0.9rem;color:var(--gray-500);">Home Inventory Worksheet (PDF)</p>
+            <a href="../resources/index.html" class="btn btn-outline btn-sm btn-block" style="margin-top:8px;">Download PDF</a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </article>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-about">
+          <div class="logo">WTFLinsurance</div>
+          <p>Expert insurance advice &mdash; always free.</p>
+        </div>
+        <div><h4>Insurance</h4><ul><li><a href="../knowledge-base/auto-insurance.html">Auto</a></li><li><a href="../knowledge-base/home-insurance.html">Home</a></li><li><a href="../knowledge-base/health-insurance.html">Health</a></li><li><a href="../knowledge-base/business-insurance.html">Business</a></li></ul></div>
+        <div><h4>Resources</h4><ul><li><a href="index.html">Articles</a></li><li><a href="../knowledge-base/index.html">Knowledge Base</a></li><li><a href="../resources/index.html">Downloads</a></li></ul></div>
+        <div><h4>Company</h4><ul><li><a href="#">About</a></li><li><a href="#">Contact</a></li><li><a href="#">Privacy</a></li></ul></div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 WTFLinsurance.com</span>
+        <span>For educational purposes only.</span>
+      </div>
+    </div>
+  </footer>
+  <script src="../js/main.js"></script>
+</body>
+</html>
