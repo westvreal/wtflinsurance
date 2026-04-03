@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Full Water Coverage vs. Limited Water: What Your Policy Actually Covers - WTFLinsurance</title>
-  <meta name="description" content="Most Florida homeowners think they're covered for water damage. They're not. A visual guide to limited vs. full water coverage and the endorsements you need.">
+  <meta name="description" content="Most Florida homeowners think they're covered for water damage. They're not. A visual guide to limited vs. full water coverage, sudden vs. gradual eligibility, and the endorsements you need.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
@@ -52,6 +52,56 @@
       font-weight: 600;
     }
 
+    .step-flow {
+      display: flex;
+      gap: 0;
+      align-items: stretch;
+      margin: 32px 0;
+    }
+    .step-flow-item {
+      flex: 1;
+      padding: 24px;
+      text-align: center;
+      position: relative;
+    }
+    .step-flow-item:first-child {
+      background: #eff6ff;
+      border-radius: 12px 0 0 12px;
+      border: 2px solid #93c5fd;
+      border-right: none;
+    }
+    .step-flow-item:last-child {
+      background: #f0fdf4;
+      border-radius: 0 12px 12px 0;
+      border: 2px solid #86efac;
+      border-left: none;
+    }
+    .step-flow-arrow {
+      display: flex;
+      align-items: center;
+      font-size: 2rem;
+      color: var(--gray-400);
+      padding: 0 4px;
+      background: linear-gradient(to right, #eff6ff, #f0fdf4);
+      border-top: 2px solid var(--gray-300);
+      border-bottom: 2px solid var(--gray-300);
+    }
+    .step-flow-item .step-num {
+      display: inline-block;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      line-height: 32px;
+      font-weight: 800;
+      font-size: 0.9rem;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .step-flow-item:first-child .step-num { background: #3b82f6; }
+    .step-flow-item:last-child .step-num { background: #22c55e; }
+    .step-flow-item h4 { margin-bottom: 4px; font-size: 1rem; }
+    .step-flow-item p { font-size: 0.85rem; color: var(--gray-600); margin: 0; }
+
     .cost-visual {
       background: var(--gray-100);
       border-radius: 12px;
@@ -70,7 +120,7 @@
       margin-bottom: 12px;
     }
     .cost-bar-row .type-label {
-      width: 130px;
+      width: 140px;
       text-align: right;
       font-weight: 600;
       font-size: 0.85rem;
@@ -101,11 +151,12 @@
     .cost-bar-row .bar-fill.partial { background: #f59e0b; }
     .cost-bar-row .bar-fill.not-covered { background: #ef4444; }
     .cost-bar-row .coverage-tag {
-      width: 90px;
+      width: 110px;
       text-align: left;
       font-size: 0.75rem;
       font-weight: 700;
       flex-shrink: 0;
+      line-height: 1.3;
     }
     .coverage-tag.yes { color: #065f46; }
     .coverage-tag.maybe { color: #92400e; }
@@ -135,6 +186,8 @@
     .scenario-box.good::before { background: #10b981; }
     .scenario-box.bad { border-color: #ef4444; }
     .scenario-box.bad::before { background: #ef4444; }
+    .scenario-box.warn { border-color: #f59e0b; }
+    .scenario-box.warn::before { background: #f59e0b; }
     .scenario-math {
       background: var(--gray-100);
       border-radius: 8px;
@@ -150,6 +203,7 @@
     }
     .scenario-math .result.green { color: #065f46; }
     .scenario-math .result.red { color: #dc2626; }
+    .scenario-math .result.orange { color: #92400e; }
 
     .coverage-grid {
       display: grid;
@@ -187,6 +241,41 @@
     .coverage-badge.endorsement { background: #dbeafe; color: #1e40af; }
     .coverage-badge.separate { background: #fef3c7; color: #92400e; }
     .coverage-badge.excluded { background: #fee2e2; color: #dc2626; }
+
+    .gate-diagram {
+      background: var(--gray-50);
+      border: 2px solid var(--gray-200);
+      border-radius: 12px;
+      padding: 28px;
+      margin: 32px 0;
+    }
+    .gate-row {
+      display: flex;
+      gap: 16px;
+      align-items: stretch;
+      margin-bottom: 16px;
+    }
+    .gate-row:last-child { margin-bottom: 0; }
+    .gate-box {
+      flex: 1;
+      border-radius: 10px;
+      padding: 20px;
+      text-align: center;
+    }
+    .gate-box h4 { margin-bottom: 4px; font-size: 0.95rem; }
+    .gate-box p { font-size: 0.85rem; margin: 0; line-height: 1.4; }
+    .gate-box.pass { background: #d1fae5; border: 2px solid #86efac; }
+    .gate-box.fail { background: #fee2e2; border: 2px solid #fca5a5; }
+    .gate-box.limited { background: #fef3c7; border: 2px solid #fcd34d; }
+    .gate-box.full { background: #d1fae5; border: 2px solid #86efac; }
+    .gate-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      color: var(--gray-400);
+      flex-shrink: 0;
+    }
 
     .checklist {
       background: var(--gray-50);
@@ -245,7 +334,12 @@
       .vs-card-header, .vs-card-body, .tldr-grid, .coverage-grid { grid-template-columns: 1fr; }
       .vs-card-body div:nth-child(odd) { border-right: none; }
       .cost-bar-row .type-label { width: 90px; font-size: 0.75rem; }
-      .cost-bar-row .coverage-tag { width: 70px; }
+      .cost-bar-row .coverage-tag { width: 80px; }
+      .step-flow { flex-direction: column; }
+      .step-flow-item:first-child { border-radius: 12px 12px 0 0; border: 2px solid #93c5fd; border-bottom: none; }
+      .step-flow-item:last-child { border-radius: 0 0 12px 12px; border: 2px solid #86efac; border-top: none; }
+      .step-flow-arrow { justify-content: center; padding: 4px 0; border-top: none; border-bottom: none; border-left: 2px solid var(--gray-300); border-right: 2px solid var(--gray-300); transform: rotate(90deg); }
+      .gate-row { flex-direction: column; }
     }
   </style>
 </head>
@@ -305,23 +399,70 @@
 
           <div class="article-content">
 
-            <p>Here's a scenario that plays out in Florida every single week: a homeowner discovers water pooling in their kitchen. Turns out, the dishwasher supply line failed and water has been seeping under the cabinets. They file a claim, fully expecting their homeowners insurance to cover the damage.</p>
+            <p>Here's a scenario that plays out in Florida every single week: a homeowner discovers water pooling in their kitchen. A supply line under the dishwasher has been leaking for weeks. They file a claim, expecting their homeowners insurance to cover the $12,000 in flooring and cabinet damage.</p>
 
-            <p>The adjuster shows up, takes one look, and delivers the bad news: <strong>"This is gradual water damage. Your policy doesn't cover it."</strong></p>
-
-            <p>$12,000 in flooring and cabinet damage. Zero dollars from insurance.</p>
-
-            <p>The problem wasn't that they didn't have insurance. The problem was they had <strong>limited water coverage</strong> and didn't even know it.</p>
+            <p>But the claim gets complicated fast, because water damage on your homeowners policy isn't one simple question. It's actually <strong>two separate questions</strong> &mdash; and most homeowners don't realize this until it's too late.</p>
 
             <div class="callout">
-              <div class="callout-title">What You'll Learn</div>
-              <p>This guide breaks down what "water damage" actually means on your policy, the gap between limited and full water coverage, and the endorsements you need to close the gaps &mdash; before something leaks, backs up, or bursts.</p>
+              <div class="callout-title">The Two Questions Your Insurer Asks</div>
+              <p><strong>Question 1: Is this claim eligible at all?</strong> Was the water damage sudden and accidental, or was it a slow, gradual leak? This determines whether you have a covered loss in the first place.</p>
+              <p style="margin-bottom:0;"><strong>Question 2: How much do we pay?</strong> Do you have limited or full water coverage? This determines how much of the damage the policy actually pays for on an eligible claim.</p>
             </div>
 
-            <!-- ===== THE TWO TYPES ===== -->
-            <h2>Limited vs. Full Water Coverage: The Big Picture</h2>
+            <!-- ===== THE TWO-STEP PROCESS ===== -->
+            <h2>How Water Claims Actually Work: Two Gates, Not One</h2>
 
-            <p>Most homeowners assume "water damage" is just one thing. It's not. Your policy treats different <em>types</em> of water damage very differently. Here's the breakdown:</p>
+            <p>Most people think water damage coverage is a simple yes-or-no question. It's not. Every water damage claim goes through two separate checkpoints, and you need to pass both to get a full payout.</p>
+
+            <div class="step-flow">
+              <div class="step-flow-item">
+                <span class="step-num">1</span>
+                <h4>Eligibility Gate</h4>
+                <p><strong>Sudden vs. Gradual</strong><br>Was it sudden and accidental? If the leak was gradual (14+ days), the claim may be denied entirely.</p>
+              </div>
+              <div class="step-flow-arrow">&rarr;</div>
+              <div class="step-flow-item">
+                <span class="step-num">2</span>
+                <h4>Payout Gate</h4>
+                <p><strong>Limited vs. Full Water</strong><br>Once eligible, how much does the policy pay? Limited coverage restricts what gets reimbursed.</p>
+              </div>
+            </div>
+
+            <p>Think of it like a two-door building. You have to get through the first door (eligibility) before the second door (payout amount) even matters. Let's break down each one.</p>
+
+            <!-- ===== GATE 1: ELIGIBILITY ===== -->
+            <h2>Gate 1: Sudden vs. Gradual (Are You Covered At All?)</h2>
+
+            <p>Your homeowners policy covers water damage from the "accidental discharge or overflow of water or steam" from plumbing, heating, A/C, sprinkler systems, or household appliances. The key word is <strong>accidental</strong>.</p>
+
+            <p>But here's the catch: if the water damage was caused by <strong>constant or repeated seepage or leakage</strong> occurring over a period of <strong>14 or more days</strong>, it's excluded &mdash; meaning the claim is denied entirely, regardless of what water coverage level you have.</p>
+
+            <div class="gate-diagram">
+              <h3 style="text-align:center;margin-bottom:20px;">The Eligibility Test</h3>
+              <div class="gate-row">
+                <div class="gate-box pass">
+                  <h4>Sudden &amp; Accidental</h4>
+                  <p>Pipe bursts, appliance overflows, water heater ruptures, A/C line breaks. Damage happens quickly and without warning.</p>
+                  <p style="margin-top:8px;font-weight:700;color:#065f46;">Claim eligible. Proceed to Gate 2.</p>
+                </div>
+                <div class="gate-box fail">
+                  <h4>Gradual / Slow Leak (14+ Days)</h4>
+                  <p>A toilet supply line dripping for weeks, a slow pipe leak behind the wall, persistent seepage from condensation.</p>
+                  <p style="margin-top:8px;font-weight:700;color:#dc2626;">Claim denied. Full stop.</p>
+                </div>
+              </div>
+            </div>
+
+            <p>There is one important exception: if the gradual damage was <strong>hidden within walls, ceilings, or beneath floors</strong> and was genuinely <strong>unknown to all insureds</strong>, many Florida policies will still cover it. But "unknown" has teeth &mdash; if a reasonable inspection would have caught it, or if the damage was visible on any surface (even behind furniture), the exception doesn't apply.</p>
+
+            <p>And here's the part that stings: if this exclusion kicks in, the insurer won't just deny the damage from day 14 onward. They deny <strong>all damages starting from day one</strong>.</p>
+
+            <!-- ===== GATE 2: PAYOUT AMOUNT ===== -->
+            <h2>Gate 2: Limited vs. Full Water (How Much Gets Paid?)</h2>
+
+            <p>Now let's say you pass Gate 1 &mdash; the damage was sudden and accidental. You have an eligible claim. The next question is: <strong>how much does your policy actually pay?</strong></p>
+
+            <p>This is where limited vs. full water coverage comes in. These are two different levels of coverage for the <em>same eligible claim</em>, and the difference in payout can be enormous.</p>
 
             <div class="vs-card">
               <div class="vs-card-header">
@@ -330,107 +471,165 @@
               </div>
               <div class="vs-card-body">
                 <div>
-                  <div class="vs-label">What's included</div>
-                  <p style="margin:0;">Only <strong>sudden and accidental</strong> water damage: a pipe that bursts, an appliance that overflows unexpectedly.</p>
+                  <div class="vs-label">Tear-out &amp; Access</div>
+                  <p style="margin:0;">Pays <strong>only</strong> to tear out the minimum part of the building needed to access the failed system or appliance. Nothing more.</p>
                 </div>
                 <div>
-                  <div class="vs-label">What's included</div>
-                  <p style="margin:0;">Sudden/accidental <strong>plus</strong> water backup, sewer/drain backup, service line damage, and enhanced mold coverage.</p>
+                  <div class="vs-label">Tear-out &amp; Access</div>
+                  <p style="margin:0;">Pays for full tear-out and repair of all areas damaged by the water, not just the access point.</p>
                 </div>
                 <div>
-                  <div class="vs-label">What's excluded</div>
-                  <p style="margin:0;">Sewer backup, gradual leaks, water seepage, service line breaks, floods, and most mold damage.</p>
+                  <div class="vs-label">Resulting Damage</div>
+                  <p style="margin:0;">Limited reimbursement for water damage to surrounding areas. Caps or restricts what's covered beyond the immediate repair.</p>
                 </div>
                 <div>
-                  <div class="vs-label">What's excluded</div>
-                  <p style="margin:0;">External flooding (requires separate flood policy). Everything else is typically covered.</p>
+                  <div class="vs-label">Resulting Damage</div>
+                  <p style="margin:0;">Covers the <strong>full scope</strong> of resulting water damage &mdash; flooring, drywall, cabinets, personal property hit by the water.</p>
                 </div>
                 <div>
-                  <div class="vs-label">The risk</div>
-                  <p style="margin:0;">You're protected from the <em>obvious</em> stuff but exposed to the <strong>most common and expensive</strong> types of water damage.</p>
+                  <div class="vs-label">What it costs you</div>
+                  <p style="margin:0;">Slightly cheaper premium (you get a credit for accepting this limitation).</p>
                 </div>
                 <div>
-                  <div class="vs-label">The cost</div>
-                  <p style="margin:0;">Endorsements typically add <strong>$50&ndash;$150/year</strong> total. A fraction of the claims they cover.</p>
+                  <div class="vs-label">What it costs you</div>
+                  <p style="margin:0;">Slightly higher premium, but dramatically higher claim payouts when something goes wrong.</p>
+                </div>
+                <div>
+                  <div class="vs-label">Who has this</div>
+                  <p style="margin:0;">Often the <strong>default</strong> on Florida policies. Many homeowners have this and don't realize it.</p>
+                </div>
+                <div>
+                  <div class="vs-label">Who has this</div>
+                  <p style="margin:0;">Available by declining the limitation or purchasing upgraded water coverage. Ask your agent.</p>
                 </div>
               </div>
             </div>
 
-            <!-- ===== THE FIVE TYPES ===== -->
-            <h2>The 5 Types of Water Damage (And Which Ones You're Covered For)</h2>
+            <p>Here's what catches people off guard: the "limited water damage and tear-out" limitation is often applied <strong>by default</strong> on Florida HO-3 policies because it gives the insurer a premium credit to offer you a lower rate. Many homeowners have limited water coverage and have no idea.</p>
 
-            <p>Not all water damage is created equal in the eyes of your insurer. Here's what each type typically costs &mdash; and whether your standard policy covers it:</p>
+            <!-- ===== THE REAL COST ===== -->
+            <h2>What Limited vs. Full Actually Looks Like in Dollars</h2>
+
+            <p>Let's say a supply line bursts behind your bathroom wall &mdash; a textbook sudden and accidental loss. Both limited and full water policies agree this is a covered claim. But look at how the payouts differ:</p>
 
             <div class="cost-visual">
-              <h3 style="margin-bottom:4px;">Average Cost of Water Damage by Type</h3>
-              <p style="color:var(--gray-500);margin-bottom:20px;">Green = covered by standard policy, Red = NOT covered without endorsement</p>
+              <h3 style="margin-bottom:4px;">Burst Pipe Behind Bathroom Wall: Claim Breakdown</h3>
+              <p style="color:var(--gray-500);margin-bottom:20px;">Same damage, same eligible claim &mdash; different payout levels</p>
               <div class="cost-bar-container">
                 <div class="cost-bar-row">
-                  <span class="type-label">Burst Pipe</span>
+                  <span class="type-label">Tear out wall to access pipe</span>
                   <div class="bar-track">
-                    <div class="bar-fill covered" style="width:55%;">$7,000</div>
+                    <div class="bar-fill covered" style="width:20%;">$1,800</div>
                   </div>
-                  <span class="coverage-tag yes">COVERED</span>
+                  <span class="coverage-tag yes">BOTH PAY</span>
                 </div>
                 <div class="cost-bar-row">
-                  <span class="type-label">Appliance Overflow</span>
+                  <span class="type-label">Repair/replace the pipe</span>
                   <div class="bar-track">
-                    <div class="bar-fill covered" style="width:40%;">$5,000</div>
+                    <div class="bar-fill not-covered" style="width:10%;">$900</div>
                   </div>
-                  <span class="coverage-tag yes">COVERED</span>
+                  <span class="coverage-tag no">NEITHER PAYS</span>
                 </div>
                 <div class="cost-bar-row">
-                  <span class="type-label">Sewer Backup</span>
+                  <span class="type-label">Water-damaged drywall</span>
                   <div class="bar-track">
-                    <div class="bar-fill not-covered" style="width:60%;">$8,000</div>
+                    <div class="bar-fill partial" style="width:35%;">$3,200</div>
                   </div>
-                  <span class="coverage-tag no">NOT COVERED</span>
+                  <span class="coverage-tag maybe">FULL ONLY</span>
                 </div>
                 <div class="cost-bar-row">
-                  <span class="type-label">Gradual Leak</span>
+                  <span class="type-label">Damaged flooring</span>
                   <div class="bar-track">
-                    <div class="bar-fill not-covered" style="width:85%;">$11,000</div>
+                    <div class="bar-fill partial" style="width:55%;">$4,800</div>
                   </div>
-                  <span class="coverage-tag no">NOT COVERED</span>
+                  <span class="coverage-tag maybe">FULL ONLY</span>
                 </div>
                 <div class="cost-bar-row">
-                  <span class="type-label">Service Line Break</span>
+                  <span class="type-label">Cabinet &amp; vanity damage</span>
                   <div class="bar-track">
-                    <div class="bar-fill not-covered" style="width:100%;">$13,000</div>
+                    <div class="bar-fill partial" style="width:40%;">$3,500</div>
                   </div>
-                  <span class="coverage-tag no">NOT COVERED</span>
+                  <span class="coverage-tag maybe">FULL ONLY</span>
                 </div>
               </div>
-              <p style="font-size:0.85rem;color:var(--gray-500);margin:0;">Based on Insurance Information Institute and industry claim averages</p>
+              <p style="font-size:0.85rem;color:var(--gray-500);margin:0;">Note: Neither policy pays to repair/replace the system or appliance that caused the loss.</p>
             </div>
 
-            <p>See the pattern? The two cheapest types are covered. The three most expensive types? <strong>Not covered</strong> on a standard policy. That's the gap that full water coverage closes.</p>
+            <p>Both policies agree you have a covered loss. Neither pays for the pipe itself (that's always excluded). But limited water coverage <strong>only pays for the tear-out to reach the pipe</strong>. Full water coverage pays for all the resulting water damage too.</p>
 
-            <!-- ===== ENDORSEMENTS ===== -->
-            <h2>The Endorsements That Close the Gap</h2>
+            <!-- ===== THE SCENARIO ===== -->
+            <h2>Same Pipe, Three Different Outcomes</h2>
 
-            <p>The good news: you don't need a different policy. You just need to add the right <strong>endorsements</strong> (add-ons) to your existing homeowners policy. Here are the ones that matter:</p>
+            <p>Meet <strong>Ana, Ben, and Clara</strong>. They live in the same neighborhood in Tampa. Each one has a supply line burst behind a bathroom wall &mdash; sudden, accidental, identical damage. Here's how their claims play out:</p>
+
+            <div class="scenario-box bad" data-label="CLAIM DENIED">
+              <h3>Ana: Gradual Leak (Fails Gate 1)</h3>
+              <p>Ana's leak wasn't actually sudden. The adjuster finds mineral staining on the subfloor &mdash; evidence the pipe had been seeping for weeks. Because the leak occurred over 14+ days and wasn't hidden (it was visible under the vanity cabinet), the claim fails the eligibility test entirely.</p>
+              <div class="scenario-math">
+                Total damage: $14,200<br>
+                <hr style="border:none;border-top:2px solid var(--gray-300);margin:8px 0;">
+                Insurance payout: $0 (gradual leak &mdash; not eligible)<br>
+                <span class="result red">Ana pays: $14,200 out of pocket</span>
+              </div>
+              <p>It doesn't matter whether Ana has limited or full water coverage. The claim never gets past Gate 1.</p>
+            </div>
+
+            <div class="scenario-box warn" data-label="LIMITED WATER">
+              <h3>Ben: Sudden Burst, Limited Water Coverage</h3>
+              <p>Ben's pipe burst suddenly &mdash; clear accidental discharge. His claim passes Gate 1. But Ben has limited water coverage, so the policy only pays for the minimum tear-out needed to access the pipe, not the broader water damage.</p>
+              <div class="scenario-math">
+                Total damage: $14,200<br>
+                Eligible under limited water: $1,800 (tear-out to access pipe only)<br>
+                &minus; $2,500 deductible<br>
+                <hr style="border:none;border-top:2px solid var(--gray-300);margin:8px 0;">
+                Insurance payout: $0 (tear-out cost is less than deductible)<br>
+                <span class="result orange">Ben pays: $14,200 out of pocket</span>
+              </div>
+              <p>Ben has a covered loss on paper, but the limited water payout is so restricted that his deductible swallows it. The $11,500 in resulting water damage to his floors, drywall, and cabinets? All on him.</p>
+            </div>
+
+            <div class="scenario-box good" data-label="FULL WATER">
+              <h3>Clara: Sudden Burst, Full Water Coverage</h3>
+              <p>Clara's pipe burst is identical to Ben's &mdash; sudden and accidental. But Clara has full water coverage, so the policy covers the complete scope of resulting water damage.</p>
+              <div class="scenario-math">
+                Total damage: $14,200<br>
+                &minus; $900 (pipe repair &mdash; always excluded)<br>
+                Eligible: $13,300 (tear-out + all resulting water damage)<br>
+                &minus; $2,500 deductible<br>
+                <hr style="border:none;border-top:2px solid var(--gray-300);margin:8px 0;">
+                Insurance payout: $10,800<br>
+                <span class="result green">Clara pays: $3,400 (deductible + pipe repair)</span>
+              </div>
+              <p>Clara's full water coverage pays for the tear-out, the damaged drywall, the flooring, and the cabinets. Her only out-of-pocket costs are the deductible and the pipe itself.</p>
+            </div>
+
+            <p style="text-align:center;font-size:1.1rem;font-weight:700;margin:32px 0;">Same pipe. Same damage. Same neighborhood.<br>Ana pays <span style="color:#ef4444;">$14,200</span> &bull; Ben pays <span style="color:#d97706;">$14,200</span> &bull; Clara pays <span style="color:#065f46;">$3,400</span></p>
+
+            <!-- ===== OTHER ENDORSEMENTS ===== -->
+            <h2>The Other Gaps: Endorsements That Matter</h2>
+
+            <p>Limited vs. full water coverage is the biggest gap most homeowners don't know about. But it's not the only one. Here are the other water-related coverages you should have on your radar:</p>
 
             <div class="coverage-grid">
               <div class="coverage-item">
-                <span class="coverage-badge standard">Standard</span>
-                <h4>Sudden &amp; Accidental Water</h4>
-                <p>Pipe bursts, appliance overflows, accidental discharge. Already included in your base policy &mdash; no action needed.</p>
+                <span class="coverage-badge standard">Included in Base Policy</span>
+                <h4>Accidental Discharge / Overflow</h4>
+                <p>Sudden burst pipes, appliance overflows, A/C line breaks. The base peril that makes water claims eligible. Already in your HO-3.</p>
+              </div>
+              <div class="coverage-item">
+                <span class="coverage-badge endorsement">Upgrade Available</span>
+                <h4>Full Water / Remove Tear-Out Limitation</h4>
+                <p>Removes the limited water restriction so the policy pays for all resulting damage, not just the tear-out to access the pipe. Ask your agent if you have this limitation.</p>
               </div>
               <div class="coverage-item">
                 <span class="coverage-badge endorsement">Add Endorsement</span>
-                <h4>Water Backup / Sewer Backup</h4>
-                <p>Covers damage when sewers, drains, or sump pumps back up into your home. Typically $5K&ndash;$25K in coverage. Costs <strong>$40&ndash;$75/year</strong>.</p>
+                <h4>Water Backup &amp; Sump Overflow</h4>
+                <p>Covers damage when sewers, drains, or sump pumps back up into your home. Not included in the base policy. Typically $5K&ndash;$25K in coverage.</p>
               </div>
               <div class="coverage-item">
                 <span class="coverage-badge endorsement">Add Endorsement</span>
                 <h4>Service Line Coverage</h4>
-                <p>Covers the underground pipes running from the street to your house. Aging pipes in older Florida homes are a major risk. Costs <strong>$25&ndash;$50/year</strong>.</p>
-              </div>
-              <div class="coverage-item">
-                <span class="coverage-badge endorsement">Add Endorsement</span>
-                <h4>Enhanced Mold Coverage</h4>
-                <p>Standard policies cap mold at $10K or less. This endorsement bumps it to $25K&ndash;$50K. Costs <strong>$20&ndash;$40/year</strong>. Critical in Florida's humidity.</p>
+                <p>Covers underground pipes between the street and your house. Aging pipes in older Florida homes are a major risk.</p>
               </div>
               <div class="coverage-item">
                 <span class="coverage-badge separate">Separate Policy</span>
@@ -438,59 +637,24 @@
                 <p>External flooding (storm surge, rising water, heavy rain accumulation) is NEVER covered by homeowners insurance. Requires a separate NFIP or private flood policy.</p>
               </div>
               <div class="coverage-item">
-                <span class="coverage-badge excluded">Not Available</span>
-                <h4>Gradual / Maintenance Damage</h4>
-                <p>Slow leaks, seepage, and damage from deferred maintenance are excluded by every policy. Your only protection is regular home maintenance and inspections.</p>
+                <span class="coverage-badge excluded">Always Excluded</span>
+                <h4>The Failed System or Appliance</h4>
+                <p>No homeowners policy pays to repair or replace the pipe, appliance, or system that caused the water damage. That repair is always on you.</p>
               </div>
             </div>
-
-            <!-- ===== THE SCENARIO ===== -->
-            <h2>Same Storm, Different Outcomes</h2>
-
-            <p>Meet <strong>Carlos and Diana</strong>. They live on the same street in Jacksonville. Same neighborhood, same style house, similar policies. After a heavy rainstorm, both of their homes take on water through backed-up sewer lines. Here's how their claims play out:</p>
-
-            <div class="scenario-box bad" data-label="LIMITED WATER">
-              <h3>Carlos: Limited Water Coverage</h3>
-              <p>Carlos has a standard homeowners policy with no water backup endorsement. The sewer backup floods his first floor with 3 inches of contaminated water.</p>
-              <div class="scenario-math">
-                Flooring replacement: $6,200<br>
-                Drywall &amp; baseboards: $3,400<br>
-                Professional cleanup (Category 3 water): $2,800<br>
-                Damaged furniture &amp; belongings: $2,100<br>
-                <strong>Total damage: $14,500</strong><br>
-                <hr style="border:none;border-top:2px solid var(--gray-300);margin:8px 0;">
-                Insurance payout: $0 (sewer backup excluded)<br>
-                <span class="result red">Carlos pays: $14,500 out of pocket</span>
-              </div>
-              <p>His policy covers burst pipes and appliance overflows, but sewer backup is specifically excluded. Carlos is responsible for the entire bill.</p>
-            </div>
-
-            <div class="scenario-box good" data-label="FULL WATER">
-              <h3>Diana: Full Water Coverage</h3>
-              <p>Diana has the same base policy but added a water backup endorsement ($25K limit) and enhanced mold coverage. She pays an extra $95/year for both.</p>
-              <div class="scenario-math">
-                Same damage: $14,500<br>
-                &minus; $1,000 deductible<br>
-                <hr style="border:none;border-top:2px solid var(--gray-300);margin:8px 0;">
-                Insurance payout: $13,500<br>
-                <span class="result green">Diana pays: $1,000 (just her deductible)</span>
-              </div>
-              <p>Diana's water backup endorsement kicks in and covers the full claim minus her deductible. Her extra $95/year in premiums just saved her <strong>$13,500</strong>.</p>
-            </div>
-
-            <p style="text-align:center;font-size:1.2rem;font-weight:700;margin:32px 0;">Same street. Same storm. Same damage.<br>Difference: <span style="color:#ef4444;font-size:1.4rem;">$13,500</span></p>
 
             <!-- ===== FLORIDA SPECIFIC ===== -->
             <h2>Why This Matters Even More in Florida</h2>
 
-            <p>Florida's climate and infrastructure make water damage endorsements more important here than almost anywhere else in the country:</p>
+            <p>Florida's climate and building practices create a perfect storm for water damage claims:</p>
 
             <ul>
-              <li><strong>Aging infrastructure:</strong> Many Florida homes sit on clay or limestone soil with sewer lines 30&ndash;50 years old. Tree roots infiltrate pipes, and joints crack. Service line breaks are extremely common.</li>
-              <li><strong>Hurricane season:</strong> Heavy rainfall overwhelms municipal sewer systems, causing backups even in homes that don't flood. Your homeowners policy covers wind damage but NOT the sewer water that backs up through your drains.</li>
-              <li><strong>Humidity and mold:</strong> Any water intrusion in Florida's climate creates a mold risk within 24&ndash;48 hours. Standard mold limits of $10,000 can be eaten up by a single bathroom remediation. Enhanced mold coverage is critical.</li>
-              <li><strong>Slab foundations:</strong> Most Florida homes are built on concrete slabs with plumbing running underneath. A service line break can mean jackhammering your floors &mdash; easily a $10,000+ repair.</li>
-              <li><strong>Older homes:</strong> Cast iron and galvanized steel pipes in pre-1980s homes are reaching end-of-life. When they fail, it's rarely sudden &mdash; it's gradual, and gradual isn't covered.</li>
+              <li><strong>The 14-day rule is strict:</strong> Florida policies specify that constant or repeated seepage over 14+ days is excluded. In Florida's humid climate, slow leaks behind walls can go unnoticed for months. By the time you find the damage, you may have already failed the eligibility test.</li>
+              <li><strong>Limited water is often the default:</strong> Many Florida insurers apply the "water damage and tear-out limitation" automatically for a premium credit, especially on newer homes. You may have opted into limited water coverage without realizing it.</li>
+              <li><strong>Slab foundations hide problems:</strong> Most Florida homes are built on concrete slabs with plumbing running underneath. A pipe failure under a slab can send water through the entire first floor before anyone notices.</li>
+              <li><strong>Humidity accelerates damage:</strong> Any water intrusion in Florida's climate creates a mold risk within 24&ndash;48 hours. Standard mold limits of $10,000 can be eaten up quickly. Enhanced mold coverage is worth considering.</li>
+              <li><strong>Hurricane season creates backups:</strong> Heavy rainfall overwhelms municipal sewer systems, causing backups even in homes that don't flood. Water backup coverage is a separate endorsement your base policy doesn't include.</li>
+              <li><strong>Smart water sensors get you a discount:</strong> Many Florida insurers offer a premium credit for whole-home water leak detection systems. These can also catch slow leaks early &mdash; before you cross the 14-day threshold and lose eligibility.</li>
             </ul>
 
             <!-- ===== WHAT TO DO ===== -->
@@ -501,36 +665,43 @@
               <div class="checklist-item">
                 <span class="check-icon ask">1</span>
                 <div>
-                  <strong>Do I have water backup / sewer backup coverage?</strong>
-                  <p style="font-size:0.85rem;color:var(--gray-600);margin:4px 0 0;">If not, add it. Ask for at least $25,000 in coverage. It typically costs $40&ndash;$75/year.</p>
+                  <strong>Do I have the "water damage and tear-out limitation" on my policy?</strong>
+                  <p style="font-size:0.85rem;color:var(--gray-600);margin:4px 0 0;">If yes, you have limited water coverage. Ask what it costs to remove this limitation. It's the single biggest gap in most Florida policies.</p>
                 </div>
               </div>
               <div class="checklist-item">
                 <span class="check-icon ask">2</span>
                 <div>
-                  <strong>Do I have service line coverage?</strong>
-                  <p style="font-size:0.85rem;color:var(--gray-600);margin:4px 0 0;">Covers underground pipes from the street to your house. Especially important for homes built before 1990. Costs $25&ndash;$50/year.</p>
+                  <strong>Do I have water backup / sewer backup coverage?</strong>
+                  <p style="font-size:0.85rem;color:var(--gray-600);margin:4px 0 0;">This is a separate endorsement, not part of your base policy. Ask for at least $25,000 in coverage.</p>
                 </div>
               </div>
               <div class="checklist-item">
                 <span class="check-icon ask">3</span>
                 <div>
-                  <strong>What's my mold coverage limit?</strong>
-                  <p style="font-size:0.85rem;color:var(--gray-600);margin:4px 0 0;">If it's $10,000 or less, ask about enhanced mold coverage. In Florida, $25K&ndash;$50K is recommended. Costs $20&ndash;$40/year.</p>
+                  <strong>Do I have service line coverage?</strong>
+                  <p style="font-size:0.85rem;color:var(--gray-600);margin:4px 0 0;">Covers underground pipes from the street to your house. Especially important for homes built before 1990.</p>
                 </div>
               </div>
               <div class="checklist-item">
                 <span class="check-icon ask">4</span>
                 <div>
-                  <strong>Does my policy cover "sudden and accidental" discharge only?</strong>
-                  <p style="font-size:0.85rem;color:var(--gray-600);margin:4px 0 0;">That's standard. It means gradual leaks are excluded. This isn't something you can endorse around &mdash; it's a maintenance issue. Inspect your plumbing regularly.</p>
+                  <strong>What's my mold coverage limit?</strong>
+                  <p style="font-size:0.85rem;color:var(--gray-600);margin:4px 0 0;">Standard policies cap mold/fungi at $10,000 per loss. In Florida's humidity, that can be consumed by a single remediation. Ask about increased limits.</p>
                 </div>
               </div>
               <div class="checklist-item">
                 <span class="check-icon ask">5</span>
                 <div>
                   <strong>Do I have flood insurance?</strong>
-                  <p style="font-size:0.85rem;color:var(--gray-600);margin:4px 0 0;">Homeowners insurance never covers flooding. If you're anywhere near water in Florida, you need a separate flood policy. <a href="florida-flood-insurance-guide.html">Read our flood insurance guide</a>.</p>
+                  <p style="font-size:0.85rem;color:var(--gray-600);margin:4px 0 0;">Homeowners insurance never covers flooding from outside the home. If you're anywhere near water in Florida, you need a separate flood policy. <a href="florida-flood-insurance-guide.html">Read our flood insurance guide</a>.</p>
+                </div>
+              </div>
+              <div class="checklist-item">
+                <span class="check-icon ask">6</span>
+                <div>
+                  <strong>Can I get a smart water sensor discount?</strong>
+                  <p style="font-size:0.85rem;color:var(--gray-600);margin:4px 0 0;">Many Florida insurers offer premium credits for whole-home water leak detection systems. These also catch slow leaks early, helping you stay on the right side of the 14-day eligibility threshold.</p>
                 </div>
               </div>
             </div>
@@ -538,25 +709,25 @@
             <!-- ===== TLDR ===== -->
             <div class="tldr-box">
               <h3>The Bottom Line</h3>
-              <p>For roughly $85&ndash;$150/year in extra endorsements, you can turn a policy full of water damage gaps into comprehensive coverage that actually protects you. Here's what to remember:</p>
+              <p>Water damage coverage on your homeowners policy works in two stages. Understanding both is the difference between a covered claim and a five-figure bill.</p>
               <div class="tldr-grid">
                 <div class="tldr-item">
-                  <h4>Limited Water Coverage</h4>
-                  <p>Only covers sudden/accidental water damage. Sewer backup, service lines, and mold above $10K are all on you. The most expensive claims aren't covered.</p>
+                  <h4>Gate 1: Eligibility</h4>
+                  <p>Sudden and accidental = covered. Gradual seepage over 14+ days = denied entirely. This is about whether you have a claim at all. Maintenance and early detection are your only defense here.</p>
                 </div>
                 <div class="tldr-item">
-                  <h4>Full Water Coverage</h4>
-                  <p>Add 3 endorsements (water backup + service line + mold) for about $85&ndash;$150/year total. Closes nearly every gap except flooding and maintenance.</p>
+                  <h4>Gate 2: Payout Amount</h4>
+                  <p>Limited water = policy only pays for minimal tear-out to access the broken pipe. Full water = policy pays for the complete resulting damage. Check your declarations page &mdash; limited is often the default.</p>
                 </div>
               </div>
             </div>
 
             <blockquote>
-              <p>"Every homeowner thinks they have water damage coverage. Almost none of them have checked which <em>types</em> of water damage their policy actually covers." &mdash; Florida insurance adjuster with 20 years of claims experience</p>
+              <p>"Homeowners always ask me if they have water damage coverage. The real question is: do you have limited or full? Because on a $15,000 claim, that distinction is the difference between getting $0 and getting $12,000." &mdash; Florida insurance agent</p>
             </blockquote>
 
             <h2>Ready to Close the Gaps?</h2>
-            <p>Water damage is the #1 homeowners insurance claim in America, and Florida's climate makes it even more common. Don't wait for a backed-up sewer line or a cracked service line to find out what your policy doesn't cover. A 5-minute call to your agent could save you thousands.</p>
+            <p>Water damage is the #1 homeowners insurance claim in America, and Florida's climate makes it even more common. A 5-minute call to your agent to ask about your water damage and tear-out limitation could save you thousands. Don't wait for a burst pipe to find out what your policy actually pays.</p>
 
             <div style="text-align:center;margin:32px 0;">
               <a href="../pages/signup.html" class="btn btn-primary btn-lg">Check My Coverage &rarr;</a>
@@ -578,28 +749,31 @@
           <div class="sidebar-card">
             <h4>In This Article</h4>
             <ul>
-              <li><a href="#">Limited vs. Full Water Coverage</a></li>
-              <li><a href="#">5 Types of Water Damage</a></li>
-              <li><a href="#">Endorsements That Close the Gap</a></li>
-              <li><a href="#">Same Storm, Different Outcomes</a></li>
+              <li><a href="#">Two Gates, Not One</a></li>
+              <li><a href="#">Gate 1: Sudden vs. Gradual</a></li>
+              <li><a href="#">Gate 2: Limited vs. Full</a></li>
+              <li><a href="#">The Dollar Difference</a></li>
+              <li><a href="#">Three Real Outcomes</a></li>
+              <li><a href="#">Other Endorsements</a></li>
               <li><a href="#">Why It Matters in Florida</a></li>
               <li><a href="#">What to Ask Your Agent</a></li>
             </ul>
           </div>
           <div class="sidebar-card" style="background:var(--primary);color:#fff;text-align:center;">
             <h4 style="color:#fff;">Check Your Water Coverage</h4>
-            <p style="color:rgba(255,255,255,0.85);font-size:0.9rem;">Find out if you have the right endorsements.</p>
+            <p style="color:rgba(255,255,255,0.85);font-size:0.9rem;">Find out if you have the tear-out limitation.</p>
             <a href="../pages/signup.html" class="btn btn-white btn-block" style="margin-top:12px;">Get Free Review</a>
           </div>
           <div class="sidebar-card">
-            <h4>Quick Math</h4>
+            <h4>The Two Gates</h4>
             <p style="font-size:0.9rem;color:var(--gray-700);margin:0;">
-              <strong>Water backup endorsement:</strong> ~$50/yr<br>
-              <strong>Service line coverage:</strong> ~$35/yr<br>
-              <strong>Enhanced mold:</strong> ~$30/yr<br>
-              <strong>Total:</strong> ~$115/year<br><br>
-              <strong>Average sewer backup claim:</strong> $8,000+<br>
-              That's 70 years of premiums paid back in one claim.
+              <strong>Gate 1 &mdash; Eligibility:</strong><br>
+              Sudden/accidental = eligible<br>
+              Gradual (14+ days) = denied<br><br>
+              <strong>Gate 2 &mdash; Payout:</strong><br>
+              Limited = tear-out only<br>
+              Full = all resulting damage<br><br>
+              You need to pass <strong>both</strong> gates to get a meaningful payout.
             </p>
           </div>
           <div class="sidebar-card">
