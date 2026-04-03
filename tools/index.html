@@ -114,6 +114,20 @@
     .section-intro h2 { margin-bottom: 8px; }
     .section-intro p { color: var(--gray-600); }
 
+    .alt-site {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--gray-500);
+      margin-top: 4px;
+    }
+    .alt-site a { font-weight: 400; font-size: 0.8rem; }
+
+    .communities {
+      font-size: 0.8rem;
+      color: var(--gray-500);
+      line-height: 1.4;
+    }
+
     @media (max-width: 768px) {
       .county-table th:nth-child(3),
       .county-table td:nth-child(3) { display: none; }
@@ -156,7 +170,7 @@
   <section class="tool-hero">
     <div class="container">
       <h1>Florida Property &amp; Insurance Tools</h1>
-      <p>Free lookup tools for realtors, homeowners, and insurance professionals. Find property appraisals, building permits, and flood zones by county.</p>
+      <p>Free lookup tools for realtors, homeowners, and insurance professionals. Search property records, building permits, and flood zones &mdash; direct links, no navigating confusing county sites.</p>
     </div>
   </section>
 
@@ -172,14 +186,14 @@
         </a>
         <div class="tool-card">
           <div class="tool-card-icon" style="background:#fef3c7;color:#92400e;">&#127968;</div>
-          <h3>Property Appraiser Lookup</h3>
-          <p>Find your county's property appraiser site to search assessed values, ownership, and tax records.</p>
+          <h3>Property Appraiser Search</h3>
+          <p>Direct links to every county's property search. Look up assessed values, ownership, and tax records.</p>
           <a href="#property-appraisers" class="btn btn-outline btn-sm">Browse Counties</a>
         </div>
         <div class="tool-card">
           <div class="tool-card-icon" style="background:#ecfdf5;color:#065f46;">&#128196;</div>
           <h3>Building Permit Search</h3>
-          <p>Look up open and closed building permits, inspections, and code violations by county.</p>
+          <p>Direct links to permit search portals. Look up permits, inspections, and code violations.</p>
           <a href="#building-permits" class="btn btn-outline btn-sm">Browse Counties</a>
         </div>
       </div>
@@ -190,12 +204,12 @@
   <section class="section bg-light" id="property-appraisers">
     <div class="container">
       <div class="section-intro">
-        <h2>Florida County Property Appraisers</h2>
-        <p>Every Florida county has a Property Appraiser who maintains records on property values, ownership history, exemptions, and tax assessments. Search below to find your county's site.</p>
+        <h2>Florida County Property Appraiser Search</h2>
+        <p>Direct links to every county's property search portal. Look up assessed values, ownership history, exemptions, and tax records &mdash; no navigating through county homepages.</p>
       </div>
 
       <div class="county-search-box">
-        <input type="text" class="county-search-input" id="appraiserSearch" placeholder="Search by county name..." oninput="filterTable('appraiserSearch', 'appraiserTable')">
+        <input type="text" class="county-search-input" id="appraiserSearch" placeholder="Search by county or city name..." oninput="filterTable('appraiserSearch', 'appraiserTable')">
         <div class="county-count" id="appraiserCount">Showing all 67 counties</div>
       </div>
 
@@ -204,78 +218,78 @@
           <thead>
             <tr>
               <th>County</th>
-              <th>Property Appraiser Website</th>
-              <th>What You Can Look Up</th>
+              <th>Property Search</th>
+              <th>Communities Covered</th>
             </tr>
           </thead>
           <tbody>
-            <tr><td>Alachua</td><td><a href="https://www.acpafl.org/" target="_blank" rel="noopener">acpafl.org</a></td><td>Property values, ownership, exemptions</td></tr>
-            <tr><td>Baker</td><td><a href="https://www.bakerpa.com/" target="_blank" rel="noopener">bakerpa.com</a></td><td>Property values, ownership, exemptions</td></tr>
-            <tr><td>Bay</td><td><a href="https://www.baypa.net/" target="_blank" rel="noopener">baypa.net</a></td><td>Property values, ownership, exemptions</td></tr>
-            <tr><td>Bradford</td><td><a href="https://www.bradfordappraiser.com/" target="_blank" rel="noopener">bradfordappraiser.com</a></td><td>Property values, ownership, exemptions</td></tr>
-            <tr><td>Brevard</td><td><a href="https://www.bcpao.us/" target="_blank" rel="noopener">bcpao.us</a></td><td>Property values, ownership, exemptions, maps</td></tr>
-            <tr><td>Broward</td><td><a href="https://www.bcpa.net/" target="_blank" rel="noopener">bcpa.net</a></td><td>Property values, ownership, exemptions, sales</td></tr>
-            <tr><td>Calhoun</td><td><a href="https://www.calhounpa.com/" target="_blank" rel="noopener">calhounpa.com</a></td><td>Property values, ownership, exemptions</td></tr>
-            <tr><td>Charlotte</td><td><a href="https://www.ccappraiser.com/" target="_blank" rel="noopener">ccappraiser.com</a></td><td>Property values, ownership, exemptions, maps</td></tr>
-            <tr><td>Citrus</td><td><a href="https://www.citruspa.org/" target="_blank" rel="noopener">citruspa.org</a></td><td>Property values, ownership, exemptions</td></tr>
-            <tr><td>Clay</td><td><a href="https://www.ccpao.com/" target="_blank" rel="noopener">ccpao.com</a></td><td>Property values, ownership, exemptions</td></tr>
-            <tr><td>Collier</td><td><a href="https://www.collierappraiser.com/" target="_blank" rel="noopener">collierappraiser.com</a></td><td>Property values, ownership, exemptions, sales</td></tr>
-            <tr><td>Columbia</td><td><a href="https://www.columbiaappraiser.com/" target="_blank" rel="noopener">columbiaappraiser.com</a></td><td>Property values, ownership, exemptions</td></tr>
-            <tr><td>DeSoto</td><td><a href="https://www.desotopa.com/" target="_blank" rel="noopener">desotopa.com</a></td><td>Property values, ownership, exemptions</td></tr>
-            <tr><td>Dixie</td><td><a href="https://www.dixiepa.com/" target="_blank" rel="noopener">dixiepa.com</a></td><td>Property values, ownership, exemptions</td></tr>
-            <tr><td>Duval (Jacksonville)</td><td><a href="https://www.coj.net/departments/property-appraiser" target="_blank" rel="noopener">coj.net/property-appraiser</a></td><td>Property values, ownership, exemptions, sales</td></tr>
-            <tr><td>Escambia (Pensacola)</td><td><a href="https://www.escpa.org/" target="_blank" rel="noopener">escpa.org</a></td><td>Property values, ownership, exemptions, maps</td></tr>
-            <tr><td>Flagler</td><td><a href="https://www.flaglerpa.com/" target="_blank" rel="noopener">flaglerpa.com</a></td><td>Property values, ownership, exemptions</td></tr>
-            <tr><td>Franklin</td><td><a href="https://www.franklinpa.com/" target="_blank" rel="noopener">franklinpa.com</a></td><td>Property values, ownership, exemptions</td></tr>
-            <tr><td>Gadsden</td><td><a href="https://www.gadsdenpa.com/" target="_blank" rel="noopener">gadsdenpa.com</a></td><td>Property values, ownership, exemptions</td></tr>
-            <tr><td>Gilchrist</td><td><a href="https://www.gilchristpa.com/" target="_blank" rel="noopener">gilchristpa.com</a></td><td>Property values, ownership, exemptions</td></tr>
-            <tr><td>Glades</td><td><a href="https://www.gladespa.com/" target="_blank" rel="noopener">gladespa.com</a></td><td>Property values, ownership, exemptions</td></tr>
-            <tr><td>Gulf</td><td><a href="https://www.gulfpa.com/" target="_blank" rel="noopener">gulfpa.com</a></td><td>Property values, ownership, exemptions</td></tr>
-            <tr><td>Hamilton</td><td><a href="https://www.hamiltonpa.com/" target="_blank" rel="noopener">hamiltonpa.com</a></td><td>Property values, ownership, exemptions</td></tr>
-            <tr><td>Hardee</td><td><a href="https://www.hardeepa.com/" target="_blank" rel="noopener">hardeepa.com</a></td><td>Property values, ownership, exemptions</td></tr>
-            <tr><td>Hendry</td><td><a href="https://www.hendrypa.org/" target="_blank" rel="noopener">hendrypa.org</a></td><td>Property values, ownership, exemptions</td></tr>
-            <tr><td>Hernando</td><td><a href="https://www.hernandopa.org/" target="_blank" rel="noopener">hernandopa.org</a></td><td>Property values, ownership, exemptions</td></tr>
-            <tr><td>Highlands</td><td><a href="https://www.hcpao.org/" target="_blank" rel="noopener">hcpao.org</a></td><td>Property values, ownership, exemptions</td></tr>
-            <tr><td>Hillsborough (Tampa)</td><td><a href="https://www.hcpafl.org/" target="_blank" rel="noopener">hcpafl.org</a></td><td>Property values, ownership, exemptions, sales, maps</td></tr>
-            <tr><td>Holmes</td><td><a href="https://www.holmespa.com/" target="_blank" rel="noopener">holmespa.com</a></td><td>Property values, ownership, exemptions</td></tr>
-            <tr><td>Indian River</td><td><a href="https://www.ircpa.org/" target="_blank" rel="noopener">ircpa.org</a></td><td>Property values, ownership, exemptions</td></tr>
-            <tr><td>Jackson</td><td><a href="https://www.jacksonpa.com/" target="_blank" rel="noopener">jacksonpa.com</a></td><td>Property values, ownership, exemptions</td></tr>
-            <tr><td>Jefferson</td><td><a href="https://www.jeffersonpa.net/" target="_blank" rel="noopener">jeffersonpa.net</a></td><td>Property values, ownership, exemptions</td></tr>
-            <tr><td>Lafayette</td><td><a href="https://www.lafayettepa.com/" target="_blank" rel="noopener">lafayettepa.com</a></td><td>Property values, ownership, exemptions</td></tr>
-            <tr><td>Lake</td><td><a href="https://www.lakecopropappr.com/" target="_blank" rel="noopener">lakecopropappr.com</a></td><td>Property values, ownership, exemptions, maps</td></tr>
-            <tr><td>Lee (Fort Myers)</td><td><a href="https://www.leepa.org/" target="_blank" rel="noopener">leepa.org</a></td><td>Property values, ownership, exemptions, sales, maps</td></tr>
-            <tr><td>Leon (Tallahassee)</td><td><a href="https://www.leonpa.org/" target="_blank" rel="noopener">leonpa.org</a></td><td>Property values, ownership, exemptions</td></tr>
-            <tr><td>Levy</td><td><a href="https://www.levypa.com/" target="_blank" rel="noopener">levypa.com</a></td><td>Property values, ownership, exemptions</td></tr>
-            <tr><td>Liberty</td><td><a href="https://www.libertypa.com/" target="_blank" rel="noopener">libertypa.com</a></td><td>Property values, ownership, exemptions</td></tr>
-            <tr><td>Madison</td><td><a href="https://www.madisonpa.com/" target="_blank" rel="noopener">madisonpa.com</a></td><td>Property values, ownership, exemptions</td></tr>
-            <tr><td>Manatee</td><td><a href="https://www.manateepao.com/" target="_blank" rel="noopener">manateepao.com</a></td><td>Property values, ownership, exemptions, maps</td></tr>
-            <tr><td>Marion (Ocala)</td><td><a href="https://www.pa.marion.fl.us/" target="_blank" rel="noopener">pa.marion.fl.us</a></td><td>Property values, ownership, exemptions</td></tr>
-            <tr><td>Martin</td><td><a href="https://www.pa.martin.fl.us/" target="_blank" rel="noopener">pa.martin.fl.us</a></td><td>Property values, ownership, exemptions</td></tr>
-            <tr><td>Miami-Dade</td><td><a href="https://www.miamidade.gov/pa/" target="_blank" rel="noopener">miamidade.gov/pa</a></td><td>Property values, ownership, exemptions, sales, maps</td></tr>
-            <tr><td>Monroe (Keys)</td><td><a href="https://www.mcpafl.org/" target="_blank" rel="noopener">mcpafl.org</a></td><td>Property values, ownership, exemptions</td></tr>
-            <tr><td>Nassau</td><td><a href="https://www.nassauflpa.com/" target="_blank" rel="noopener">nassauflpa.com</a></td><td>Property values, ownership, exemptions</td></tr>
-            <tr><td>Okaloosa</td><td><a href="https://www.okaloosapa.com/" target="_blank" rel="noopener">okaloosapa.com</a></td><td>Property values, ownership, exemptions</td></tr>
-            <tr><td>Okeechobee</td><td><a href="https://www.okeechobeepa.com/" target="_blank" rel="noopener">okeechobeepa.com</a></td><td>Property values, ownership, exemptions</td></tr>
-            <tr><td>Orange (Orlando)</td><td><a href="https://www.ocpafl.org/" target="_blank" rel="noopener">ocpafl.org</a></td><td>Property values, ownership, exemptions, sales, maps</td></tr>
-            <tr><td>Osceola (Kissimmee)</td><td><a href="https://www.property-appraiser.org/" target="_blank" rel="noopener">property-appraiser.org</a></td><td>Property values, ownership, exemptions</td></tr>
-            <tr><td>Palm Beach</td><td><a href="https://www.pbcgov.org/papa/" target="_blank" rel="noopener">pbcgov.org/papa</a></td><td>Property values, ownership, exemptions, sales, maps</td></tr>
-            <tr><td>Pasco</td><td><a href="https://www.pascopa.com/" target="_blank" rel="noopener">pascopa.com</a></td><td>Property values, ownership, exemptions</td></tr>
-            <tr><td>Pinellas (St. Pete)</td><td><a href="https://www.pcpao.org/" target="_blank" rel="noopener">pcpao.org</a></td><td>Property values, ownership, exemptions, sales, maps</td></tr>
-            <tr><td>Polk (Lakeland)</td><td><a href="https://www.polkpa.org/" target="_blank" rel="noopener">polkpa.org</a></td><td>Property values, ownership, exemptions</td></tr>
-            <tr><td>Putnam</td><td><a href="https://www.putnam-fl.com/property-appraiser/" target="_blank" rel="noopener">putnam-fl.com/property-appraiser</a></td><td>Property values, ownership, exemptions</td></tr>
-            <tr><td>Santa Rosa</td><td><a href="https://www.srcpa.org/" target="_blank" rel="noopener">srcpa.org</a></td><td>Property values, ownership, exemptions</td></tr>
-            <tr><td>Sarasota</td><td><a href="https://www.sc-pa.com/" target="_blank" rel="noopener">sc-pa.com</a></td><td>Property values, ownership, exemptions, sales, maps</td></tr>
-            <tr><td>Seminole</td><td><a href="https://www.scpafl.org/" target="_blank" rel="noopener">scpafl.org</a></td><td>Property values, ownership, exemptions</td></tr>
-            <tr><td>St. Johns (St. Augustine)</td><td><a href="https://www.sjcpa.us/" target="_blank" rel="noopener">sjcpa.us</a></td><td>Property values, ownership, exemptions</td></tr>
-            <tr><td>St. Lucie</td><td><a href="https://www.paslc.org/" target="_blank" rel="noopener">paslc.org</a></td><td>Property values, ownership, exemptions</td></tr>
-            <tr><td>Sumter (The Villages)</td><td><a href="https://www.sumterpa.com/" target="_blank" rel="noopener">sumterpa.com</a></td><td>Property values, ownership, exemptions</td></tr>
-            <tr><td>Suwannee</td><td><a href="https://www.suwanneepa.com/" target="_blank" rel="noopener">suwanneepa.com</a></td><td>Property values, ownership, exemptions</td></tr>
-            <tr><td>Taylor</td><td><a href="https://www.taylorpa.com/" target="_blank" rel="noopener">taylorpa.com</a></td><td>Property values, ownership, exemptions</td></tr>
-            <tr><td>Union</td><td><a href="https://www.unionpa.com/" target="_blank" rel="noopener">unionpa.com</a></td><td>Property values, ownership, exemptions</td></tr>
-            <tr><td>Volusia (Daytona)</td><td><a href="https://www.volusia.org/services/property-appraiser/" target="_blank" rel="noopener">volusia.org/property-appraiser</a></td><td>Property values, ownership, exemptions, maps</td></tr>
-            <tr><td>Wakulla</td><td><a href="https://www.wakullapa.com/" target="_blank" rel="noopener">wakullapa.com</a></td><td>Property values, ownership, exemptions</td></tr>
-            <tr><td>Walton</td><td><a href="https://www.waltonpa.com/" target="_blank" rel="noopener">waltonpa.com</a></td><td>Property values, ownership, exemptions</td></tr>
-            <tr><td>Washington</td><td><a href="https://www.washingtonpa.com/" target="_blank" rel="noopener">washingtonpa.com</a></td><td>Property values, ownership, exemptions</td></tr>
+            <tr><td>Alachua</td><td><a href="https://www.acpafl.org/" target="_blank" rel="noopener">Alachua County Property Search</a></td><td class="communities">Gainesville, Alachua, Archer, Hawthorne, High Springs, Micanopy, Newberry, Waldo</td></tr>
+            <tr><td>Baker</td><td><a href="http://www.bakerpa.com/search.html" target="_blank" rel="noopener">Baker County Property Search</a></td><td class="communities">Macclenny, Glen St. Mary, Olustee, Sanderson, Taylor, Baxter, Margaretta</td></tr>
+            <tr><td>Bay</td><td><a href="https://www.baypa.net/" target="_blank" rel="noopener">Bay County Property Search</a></td><td class="communities">Panama City, Panama City Beach, Lynn Haven, Springfield, Callaway, Mexico Beach</td></tr>
+            <tr><td>Bradford</td><td><a href="https://www.bradfordappraiser.com/gis/" target="_blank" rel="noopener">Bradford County Property Search</a></td><td class="communities">Starke, Lawtey, Brooker, Hampton</td></tr>
+            <tr><td>Brevard</td><td><a href="https://www.bcpao.us/PropertySearch/#/nav/Search" target="_blank" rel="noopener">Brevard County Property Search</a></td><td class="communities">Cape Canaveral, Cocoa, Cocoa Beach, Melbourne, Melbourne Beach, Palm Bay, Rockledge, Satellite Beach, Titusville, West Melbourne, Indialantic, Indian Harbour Beach, Malabar, Palm Shores</td></tr>
+            <tr><td>Broward</td><td><a href="https://web.bcpa.net/BcpaClient/#/Record-Search" target="_blank" rel="noopener">Broward County Property Search</a></td><td class="communities">Fort Lauderdale, Hollywood, Pembroke Pines, Coral Springs, Miramar, Plantation, Davie, Sunrise, Deerfield Beach, Pompano Beach, Coconut Creek, Lauderhill, Weston, Tamarac, Margate, Cooper City, Oakland Park, Wilton Manors</td></tr>
+            <tr><td>Calhoun</td><td><a href="https://www.calhounpa.com/" target="_blank" rel="noopener">Calhoun County Property Search</a></td><td class="communities">Blountstown, Altha</td></tr>
+            <tr><td>Charlotte</td><td><a href="https://www.ccappraiser.com/" target="_blank" rel="noopener">Charlotte County Property Search</a></td><td class="communities">Punta Gorda, Port Charlotte, Englewood, Rotonda West</td></tr>
+            <tr><td>Citrus</td><td><a href="https://www.citruspa.org/_web/search/commonsearch.aspx?mode=address" target="_blank" rel="noopener">Citrus County Property Search</a></td><td class="communities">Crystal River, Inverness, Beverly Hills, Citrus Hills, Citrus Springs, Floral City, Hernando, Homosassa, Homosassa Springs, Lecanto, Pine Ridge, Sugarmill Woods</td></tr>
+            <tr><td>Clay</td><td><a href="https://qpublic.schneidercorp.com/Application.aspx?AppID=830&LayerID=15008&PageTypeID=2&PageID=6754" target="_blank" rel="noopener">Clay County Property Search</a></td><td class="communities">Green Cove Springs, Keystone Heights, Orange Park, Penney Farms, Middleburg, Fleming Island, Lakeside, Bellair-Meadowbrook Terrace, Asbury Lake</td></tr>
+            <tr><td>Collier</td><td><a href="https://www.collierappraiser.com/" target="_blank" rel="noopener">Collier County Property Search</a></td><td class="communities">Naples, Marco Island, Immokalee, Ave Maria, Golden Gate, Lely</td></tr>
+            <tr><td>Columbia</td><td><a href="https://columbia.floridapa.com/gis/" target="_blank" rel="noopener">Columbia County Property Search</a></td><td class="communities">Lake City</td></tr>
+            <tr><td>DeSoto</td><td><a href="https://www.desotopa.com/" target="_blank" rel="noopener">DeSoto County Property Search</a></td><td class="communities">Arcadia</td></tr>
+            <tr><td>Dixie</td><td><a href="https://www.dixiepa.com/" target="_blank" rel="noopener">Dixie County Property Search</a></td><td class="communities">Cross City, Horseshoe Beach, Old Town</td></tr>
+            <tr><td>Duval (Jacksonville)</td><td><a href="https://paopropertysearch.coj.net/Basic/Search.aspx" target="_blank" rel="noopener">Duval County Property Search</a></td><td class="communities">Jacksonville, Jacksonville Beach, Neptune Beach, Atlantic Beach, Baldwin</td></tr>
+            <tr><td>Escambia (Pensacola)</td><td><a href="https://www.escpa.org/" target="_blank" rel="noopener">Escambia County Property Search</a></td><td class="communities">Pensacola, Pensacola Beach, Century, Perdido Key, Ensley, Ferry Pass, Gonzalez, Myrtle Grove, Warrington, West Pensacola</td></tr>
+            <tr><td>Flagler</td><td><a href="https://qpublic.schneidercorp.com/Application.aspx?AppID=598&LayerID=9801&PageTypeID=2&PageID=4328" target="_blank" rel="noopener">Flagler County Property Search</a></td><td class="communities">Palm Coast, Bunnell, Flagler Beach, Beverly Beach, Marineland</td></tr>
+            <tr><td>Franklin</td><td><a href="https://www.franklinpa.com/" target="_blank" rel="noopener">Franklin County Property Search</a></td><td class="communities">Apalachicola, Carrabelle, Eastpoint, St. George Island</td></tr>
+            <tr><td>Gadsden</td><td><a href="https://www.gadsdenpa.com/" target="_blank" rel="noopener">Gadsden County Property Search</a></td><td class="communities">Quincy, Chattahoochee, Gretna, Havana, Midway</td></tr>
+            <tr><td>Gilchrist</td><td><a href="https://qpublic.schneidercorp.com/Application.aspx?App=GilchristCountyFL&Layer=Parcels&PageType=Search" target="_blank" rel="noopener">Gilchrist County Property Search</a></td><td class="communities">Trenton, Bell, Fanning Springs</td></tr>
+            <tr><td>Glades</td><td><a href="https://www.gladespa.com/" target="_blank" rel="noopener">Glades County Property Search</a></td><td class="communities">Moore Haven, Buckhead Ridge, Palmdale</td></tr>
+            <tr><td>Gulf</td><td><a href="https://www.gulfpa.com/" target="_blank" rel="noopener">Gulf County Property Search</a></td><td class="communities">Port St. Joe, Wewahitchka, Mexico Beach</td></tr>
+            <tr><td>Hamilton</td><td><a href="https://www.hamiltonpa.com/" target="_blank" rel="noopener">Hamilton County Property Search</a></td><td class="communities">Jasper, Jennings, White Springs</td></tr>
+            <tr><td>Hardee</td><td><a href="https://www.hardeepa.com/" target="_blank" rel="noopener">Hardee County Property Search</a></td><td class="communities">Wauchula, Bowling Green, Zolfo Springs</td></tr>
+            <tr><td>Hendry</td><td><a href="https://www.hendrypa.org/" target="_blank" rel="noopener">Hendry County Property Search</a></td><td class="communities">LaBelle, Clewiston</td></tr>
+            <tr><td>Hernando</td><td><a href="https://www.hernandopa.org/" target="_blank" rel="noopener">Hernando County Property Search</a></td><td class="communities">Brooksville, Spring Hill, Weeki Wachee</td></tr>
+            <tr><td>Highlands</td><td><a href="https://www.hcpao.org/" target="_blank" rel="noopener">Highlands County Property Search</a></td><td class="communities">Sebring, Avon Park, Lake Placid</td></tr>
+            <tr><td>Hillsborough (Tampa)</td><td><a href="https://gis.hcpafl.org/propertysearch/#/nav/Basic%20Search" target="_blank" rel="noopener">Hillsborough County Property Search</a></td><td class="communities">Tampa, Plant City, Temple Terrace, Brandon, Riverview, Valrico, Seffner, Lutz, Ruskin, Sun City Center, Apollo Beach, Gibsonton, Thonotosassa, Wimauma, Carrollwood, Town 'n' Country</td></tr>
+            <tr><td>Holmes</td><td><a href="https://www.holmespa.com/" target="_blank" rel="noopener">Holmes County Property Search</a></td><td class="communities">Bonifay, Esto, Noma, Ponce de Leon, Westville</td></tr>
+            <tr><td>Indian River</td><td><a href="https://www.ircpa.org/" target="_blank" rel="noopener">Indian River County Property Search</a></td><td class="communities">Vero Beach, Sebastian, Fellsmere, Indian River Shores, Orchid, Florida Ridge, Gifford, Roseland, Wabasso, Winter Beach</td></tr>
+            <tr><td>Jackson</td><td><a href="https://www.jacksonpa.com/" target="_blank" rel="noopener">Jackson County Property Search</a></td><td class="communities">Marianna, Graceville, Sneads, Cottondale, Grand Ridge, Malone</td></tr>
+            <tr><td>Jefferson</td><td><a href="https://www.jeffersonpa.net/" target="_blank" rel="noopener">Jefferson County Property Search</a></td><td class="communities">Monticello</td></tr>
+            <tr><td>Lafayette</td><td><a href="https://www.lafayettepa.com/" target="_blank" rel="noopener">Lafayette County Property Search</a></td><td class="communities">Mayo</td></tr>
+            <tr><td>Lake</td><td><a href="https://www.lakecopropappr.com/" target="_blank" rel="noopener">Lake County Property Search</a></td><td class="communities">Clermont, Eustis, Leesburg, Mount Dora, Tavares, Lady Lake, Fruitland Park, Groveland, Minneola, Montverde, Umatilla</td></tr>
+            <tr><td>Lee (Fort Myers)</td><td><a href="https://www.leepa.org/" target="_blank" rel="noopener">Lee County Property Search</a></td><td class="communities">Fort Myers, Cape Coral, Bonita Springs, Sanibel, Fort Myers Beach, Estero, Lehigh Acres, North Fort Myers, Pine Island, Captiva</td></tr>
+            <tr><td>Leon (Tallahassee)</td><td><a href="https://search.leonpa.gov/Terms?requestedAction=Property" target="_blank" rel="noopener">Leon County Property Search</a></td><td class="communities">Tallahassee, Bradfordville, Woodville, Fort Braden, Miccosukee, Chaires, Capitola</td></tr>
+            <tr><td>Levy</td><td><a href="https://qpublic.schneidercorp.com/Application.aspx?AppID=930&LayerID=18185&PageTypeID=2&PageID=8125" target="_blank" rel="noopener">Levy County Property Search</a></td><td class="communities">Bronson, Cedar Key, Chiefland, Fanning Springs, Inglis, Otter Creek, Williston, Yankeetown</td></tr>
+            <tr><td>Liberty</td><td><a href="https://www.libertypa.com/" target="_blank" rel="noopener">Liberty County Property Search</a></td><td class="communities">Bristol</td></tr>
+            <tr><td>Madison</td><td><a href="https://www.madisonpa.com/" target="_blank" rel="noopener">Madison County Property Search</a></td><td class="communities">Madison, Greenville, Lee</td></tr>
+            <tr><td>Manatee</td><td><a href="https://www.manateepao.com/" target="_blank" rel="noopener">Manatee County Property Search</a></td><td class="communities">Bradenton, Bradenton Beach, Holmes Beach, Anna Maria, Palmetto, Lakewood Ranch, Parrish</td></tr>
+            <tr><td>Marion (Ocala)</td><td><a href="https://www.pa.marion.fl.us/PropertySearch.aspx" target="_blank" rel="noopener">Marion County Property Search</a></td><td class="communities">Ocala, Belleview, Dunnellon, McIntosh, Reddick, Anthony, Citra, Silver Springs, Summerfield, Weirsdale</td></tr>
+            <tr><td>Martin</td><td><a href="https://www.pa.martin.fl.us/app/search/real-property" target="_blank" rel="noopener">Martin County Property Search</a></td><td class="communities">Stuart, Jupiter Island, Sewall's Point, Indiantown, Hobe Sound, Jensen Beach, Palm City, Port Salerno</td></tr>
+            <tr><td>Miami-Dade</td><td><a href="https://www.miamidade.gov/Apps/PA/PropertySearch/#/" target="_blank" rel="noopener">Miami-Dade Property Search</a></td><td class="communities">Miami, Miami Beach, Hialeah, Coral Gables, Doral, Homestead, Aventura, Key Biscayne, Miami Gardens, Miami Lakes, North Miami, Pinecrest, Sunny Isles Beach, Cutler Bay, Palmetto Bay</td></tr>
+            <tr><td>Monroe (Keys)</td><td><a href="https://www.mcpafl.org/" target="_blank" rel="noopener">Monroe County Property Search</a></td><td class="communities">Key West, Key Largo, Marathon, Islamorada, Big Pine Key, Tavernier, Layton</td></tr>
+            <tr><td>Nassau</td><td><a href="https://maps.nassauflpa.com/NassauSearch/IS_SearchResults2015/ShowIS_NewSearchResults2015Table.aspx" target="_blank" rel="noopener">Nassau County Property Search</a></td><td class="communities">Fernandina Beach, Callahan, Hilliard, Yulee</td></tr>
+            <tr><td>Okaloosa</td><td><a href="https://www.okaloosapa.com/" target="_blank" rel="noopener">Okaloosa County Property Search</a></td><td class="communities">Fort Walton Beach, Crestview, Destin, Niceville, Valparaiso, Cinco Bayou, Laurel Hill, Mary Esther, Shalimar</td></tr>
+            <tr><td>Okeechobee</td><td><a href="https://www.okeechobeepa.com/" target="_blank" rel="noopener">Okeechobee County Property Search</a></td><td class="communities">Okeechobee</td></tr>
+            <tr><td>Orange (Orlando)</td><td><a href="https://ocpaweb.ocpafl.org/parcelsearch" target="_blank" rel="noopener">Orange County Property Search</a></td><td class="communities">Orlando, Winter Park, Apopka, Ocoee, Winter Garden, Maitland, Belle Isle, Eatonville, Edgewood, Oakland, Windermere, Lake Buena Vista</td></tr>
+            <tr><td>Osceola (Kissimmee)</td><td><a href="https://www.property-appraiser.org/" target="_blank" rel="noopener">Osceola County Property Search</a></td><td class="communities">Kissimmee, St. Cloud, Celebration, Poinciana</td></tr>
+            <tr><td>Palm Beach</td><td><a href="https://pbcpao.gov/index.htm" target="_blank" rel="noopener">Palm Beach County Property Search</a></td><td class="communities">West Palm Beach, Boca Raton, Boynton Beach, Delray Beach, Jupiter, Palm Beach Gardens, Wellington, Royal Palm Beach, Lake Worth Beach, Riviera Beach, Lantana, Tequesta</td></tr>
+            <tr><td>Pasco</td><td><a href="https://www.pascopa.com/" target="_blank" rel="noopener">Pasco County Property Search</a></td><td class="communities">Dade City, New Port Richey, Zephyrhills, Wesley Chapel, Land O' Lakes, Holiday, Hudson, Trinity, Odessa</td></tr>
+            <tr><td>Pinellas (St. Pete)</td><td><a href="https://www.pcpao.org/" target="_blank" rel="noopener">Pinellas County Property Search</a></td><td class="communities">St. Petersburg, Clearwater, Largo, Dunedin, Pinellas Park, Seminole, Tarpon Springs, Oldsmar, Safety Harbor, St. Pete Beach, Treasure Island, Palm Harbor</td></tr>
+            <tr><td>Polk (Lakeland)</td><td><a href="https://www.polkpa.org/" target="_blank" rel="noopener">Polk County Property Search</a></td><td class="communities">Lakeland, Winter Haven, Bartow, Haines City, Lake Wales, Auburndale, Davenport, Frostproof, Mulberry</td></tr>
+            <tr><td>Putnam</td><td><a href="https://apps.putnam-fl.com/pa/property/" target="_blank" rel="noopener">Putnam County Property Search</a></td><td class="communities">Palatka, Crescent City, Interlachen, Welaka, East Palatka, Bostwick, Florahome, Georgetown, Melrose, San Mateo, Satsuma</td></tr>
+            <tr><td>Santa Rosa</td><td><a href="https://www.srcpa.org/" target="_blank" rel="noopener">Santa Rosa County Property Search</a></td><td class="communities">Milton, Gulf Breeze, Jay, Navarre, Pace</td></tr>
+            <tr><td>Sarasota</td><td><a href="https://www.sc-pa.com/" target="_blank" rel="noopener">Sarasota County Property Search</a></td><td class="communities">Sarasota, Venice, North Port, Longboat Key, Osprey, Nokomis, Englewood</td></tr>
+            <tr><td>Seminole</td><td><a href="https://www.scpafl.org/" target="_blank" rel="noopener">Seminole County Property Search</a></td><td class="communities">Sanford, Altamonte Springs, Casselberry, Lake Mary, Longwood, Oviedo, Winter Springs, Chuluota, Fern Park, Geneva, Heathrow</td></tr>
+            <tr><td>St. Johns (St. Augustine)</td><td><a href="https://qpublic.schneidercorp.com/Application.aspx?App=StJohnsCountyFL&Layer=Parcels&PageType=Search" target="_blank" rel="noopener">St. Johns County Property Search</a></td><td class="communities">St. Augustine, St. Augustine Beach, Ponte Vedra, Hastings, Crescent Beach, Fruit Cove, Vilano Beach, Nocatee</td></tr>
+            <tr><td>St. Lucie</td><td><a href="https://www.paslc.gov/property-search/real-estate/basic-site-address" target="_blank" rel="noopener">St. Lucie County Property Search</a></td><td class="communities">Fort Pierce, Port St. Lucie, Hutchinson Island South, Lakewood Park, St. Lucie Village, White City</td></tr>
+            <tr><td>Sumter (The Villages)</td><td><a href="https://www.sumterpa.com/" target="_blank" rel="noopener">Sumter County Property Search</a></td><td class="communities">The Villages, Bushnell, Center Hill, Coleman, Webster, Wildwood</td></tr>
+            <tr><td>Suwannee</td><td><a href="https://www.suwanneepa.com/" target="_blank" rel="noopener">Suwannee County Property Search</a></td><td class="communities">Live Oak, Branford</td></tr>
+            <tr><td>Taylor</td><td><a href="https://www.taylorpa.com/" target="_blank" rel="noopener">Taylor County Property Search</a></td><td class="communities">Perry, Steinhatchee</td></tr>
+            <tr><td>Union</td><td><a href="https://union.floridapa.com/" target="_blank" rel="noopener">Union County Property Search</a></td><td class="communities">Lake Butler, Raiford, Worthington Springs</td></tr>
+            <tr><td>Volusia (Daytona)</td><td><a href="https://vcpa.vcgov.org/search/real-property#gsc.tab=0" target="_blank" rel="noopener">Volusia County Property Search</a></td><td class="communities">Daytona Beach, DeLand, Deltona, New Smyrna Beach, Ormond Beach, Port Orange, South Daytona, DeBary, Edgewater, Holly Hill, Lake Helen, Orange City, Pierson, Ponce Inlet</td></tr>
+            <tr><td>Wakulla</td><td><a href="https://www.wakullapa.com/" target="_blank" rel="noopener">Wakulla County Property Search</a></td><td class="communities">Crawfordville, Sopchoppy, St. Marks, Panacea</td></tr>
+            <tr><td>Walton</td><td><a href="https://www.waltonpa.com/" target="_blank" rel="noopener">Walton County Property Search</a></td><td class="communities">DeFuniak Springs, Freeport, Paxton, 30A, Rosemary Beach, Seaside, Miramar Beach</td></tr>
+            <tr><td>Washington</td><td><a href="https://www.washingtonpa.com/" target="_blank" rel="noopener">Washington County Property Search</a></td><td class="communities">Chipley, Vernon, Caryville, Ebro, Wausau</td></tr>
           </tbody>
         </table>
       </div>
@@ -287,11 +301,11 @@
     <div class="container">
       <div class="section-intro">
         <h2>Florida County Building &amp; Permit Search</h2>
-        <p>Look up building permits, inspections, code violations, and construction history. Essential for due diligence when buying, selling, or insuring a property.</p>
+        <p>Direct links to permit search portals. Look up building permits, inspections, code violations, and construction history. Some cities have their own permit systems separate from the county &mdash; check the alternate links if you don't find what you need.</p>
       </div>
 
       <div class="county-search-box">
-        <input type="text" class="county-search-input" id="permitSearch" placeholder="Search by county name..." oninput="filterTable('permitSearch', 'permitTable')">
+        <input type="text" class="county-search-input" id="permitSearch" placeholder="Search by county or city name..." oninput="filterTable('permitSearch', 'permitTable')">
         <div class="county-count" id="permitCount">Showing all 67 counties</div>
       </div>
 
@@ -300,85 +314,85 @@
           <thead>
             <tr>
               <th>County</th>
-              <th>Permits &amp; Building Dept.</th>
-              <th>What You Can Look Up</th>
+              <th>Permit Search</th>
+              <th>Communities Covered</th>
             </tr>
           </thead>
           <tbody>
-            <tr><td>Alachua</td><td><a href="https://growth-management.alachuacounty.us/" target="_blank" rel="noopener">Alachua Growth Management</a></td><td>Permits, inspections, code enforcement</td></tr>
-            <tr><td>Baker</td><td><a href="https://www.bakercountyfl.org/building" target="_blank" rel="noopener">Baker County Building</a></td><td>Permits, inspections</td></tr>
-            <tr><td>Bay</td><td><a href="https://www.baycountyfl.gov/departments/building-inspection" target="_blank" rel="noopener">Bay County Building</a></td><td>Permits, inspections, code enforcement</td></tr>
-            <tr><td>Bradford</td><td><a href="https://www.bradfordcountyfl.gov/building" target="_blank" rel="noopener">Bradford County Building</a></td><td>Permits, inspections</td></tr>
-            <tr><td>Brevard</td><td><a href="https://www.brevardcounty.us/BuildingPermit" target="_blank" rel="noopener">Brevard County Permits</a></td><td>Permits, inspections, online search</td></tr>
-            <tr><td>Broward</td><td><a href="https://www.broward.org/Building/" target="_blank" rel="noopener">Broward County Building</a></td><td>Permits, inspections, contractor search</td></tr>
-            <tr><td>Calhoun</td><td><a href="https://www.calhouncountyfl.org/" target="_blank" rel="noopener">Calhoun County</a></td><td>Permits, inspections</td></tr>
-            <tr><td>Charlotte</td><td><a href="https://www.charlottecountyfl.gov/departments/community-development/building-construction-services.stml" target="_blank" rel="noopener">Charlotte County Building</a></td><td>Permits, inspections, online search</td></tr>
-            <tr><td>Citrus</td><td><a href="https://www.citrusbocc.com/departments/building" target="_blank" rel="noopener">Citrus County Building</a></td><td>Permits, inspections</td></tr>
-            <tr><td>Clay</td><td><a href="https://www.claycountygov.com/government/building" target="_blank" rel="noopener">Clay County Building</a></td><td>Permits, inspections, online search</td></tr>
-            <tr><td>Collier</td><td><a href="https://www.colliercountyfl.gov/government/growth-management-department" target="_blank" rel="noopener">Collier Growth Management</a></td><td>Permits, inspections, code enforcement</td></tr>
-            <tr><td>Columbia</td><td><a href="https://www.columbiacountyfla.com/BuildingDept.asp" target="_blank" rel="noopener">Columbia County Building</a></td><td>Permits, inspections</td></tr>
-            <tr><td>DeSoto</td><td><a href="https://www.desotobocc.com/departments/building" target="_blank" rel="noopener">DeSoto County Building</a></td><td>Permits, inspections</td></tr>
-            <tr><td>Dixie</td><td><a href="https://www.dixiecounty.us/" target="_blank" rel="noopener">Dixie County</a></td><td>Permits, inspections</td></tr>
-            <tr><td>Duval (Jacksonville)</td><td><a href="https://www.coj.net/departments/regulatory-compliance-department/building-inspection-division" target="_blank" rel="noopener">Jacksonville Building Inspection</a></td><td>Permits, inspections, code enforcement, online search</td></tr>
-            <tr><td>Escambia (Pensacola)</td><td><a href="https://www.myescambia.com/our-services/building-inspections" target="_blank" rel="noopener">Escambia Building Inspections</a></td><td>Permits, inspections, online search</td></tr>
-            <tr><td>Flagler</td><td><a href="https://www.flaglercounty.gov/government/departments/building" target="_blank" rel="noopener">Flagler County Building</a></td><td>Permits, inspections</td></tr>
-            <tr><td>Franklin</td><td><a href="https://www.franklincountyflorida.com/departments/building/" target="_blank" rel="noopener">Franklin County Building</a></td><td>Permits, inspections</td></tr>
-            <tr><td>Gadsden</td><td><a href="https://www.gadsdencountyfl.gov/building-department" target="_blank" rel="noopener">Gadsden County Building</a></td><td>Permits, inspections</td></tr>
-            <tr><td>Gilchrist</td><td><a href="https://www.gilchristcounty.com/" target="_blank" rel="noopener">Gilchrist County</a></td><td>Permits, inspections</td></tr>
-            <tr><td>Glades</td><td><a href="https://www.myglades.com/" target="_blank" rel="noopener">Glades County</a></td><td>Permits, inspections</td></tr>
-            <tr><td>Gulf</td><td><a href="https://www.gulfcounty-fl.gov/" target="_blank" rel="noopener">Gulf County</a></td><td>Permits, inspections</td></tr>
-            <tr><td>Hamilton</td><td><a href="https://www.hamiltoncountyfl.com/" target="_blank" rel="noopener">Hamilton County</a></td><td>Permits, inspections</td></tr>
-            <tr><td>Hardee</td><td><a href="https://www.hardeecounty.net/building" target="_blank" rel="noopener">Hardee County Building</a></td><td>Permits, inspections</td></tr>
-            <tr><td>Hendry</td><td><a href="https://www.hendryfla.net/building/" target="_blank" rel="noopener">Hendry County Building</a></td><td>Permits, inspections</td></tr>
-            <tr><td>Hernando</td><td><a href="https://www.hernandocounty.us/departments/building-division" target="_blank" rel="noopener">Hernando County Building</a></td><td>Permits, inspections, online search</td></tr>
-            <tr><td>Highlands</td><td><a href="https://www.highlandsfl.gov/government/departments-f-m/building-department" target="_blank" rel="noopener">Highlands County Building</a></td><td>Permits, inspections</td></tr>
-            <tr><td>Hillsborough (Tampa)</td><td><a href="https://www.hillsboroughcounty.org/en/residents/property-owners-and-renters/building-and-renovations" target="_blank" rel="noopener">Hillsborough County Building</a></td><td>Permits, inspections, code enforcement, online search</td></tr>
-            <tr><td>Holmes</td><td><a href="https://www.holmescountyfl.com/" target="_blank" rel="noopener">Holmes County</a></td><td>Permits, inspections</td></tr>
-            <tr><td>Indian River</td><td><a href="https://www.ircgov.com/departments/community_development/building/" target="_blank" rel="noopener">Indian River Building</a></td><td>Permits, inspections, online search</td></tr>
-            <tr><td>Jackson</td><td><a href="https://www.jacksoncountyfl.gov/departments/building" target="_blank" rel="noopener">Jackson County Building</a></td><td>Permits, inspections</td></tr>
-            <tr><td>Jefferson</td><td><a href="https://www.jeffersoncountyfl.gov/" target="_blank" rel="noopener">Jefferson County</a></td><td>Permits, inspections</td></tr>
-            <tr><td>Lafayette</td><td><a href="https://www.lafayettecountyfl.net/" target="_blank" rel="noopener">Lafayette County</a></td><td>Permits, inspections</td></tr>
-            <tr><td>Lake</td><td><a href="https://www.lakecountyfl.gov/offices/building_services/" target="_blank" rel="noopener">Lake County Building Services</a></td><td>Permits, inspections, online search</td></tr>
-            <tr><td>Lee (Fort Myers)</td><td><a href="https://www.leegov.com/dcd/bldp" target="_blank" rel="noopener">Lee County Building</a></td><td>Permits, inspections, code enforcement, online search</td></tr>
-            <tr><td>Leon (Tallahassee)</td><td><a href="https://www.leoncountyfl.gov/ei/" target="_blank" rel="noopener">Leon County EI</a></td><td>Permits, inspections, online search</td></tr>
-            <tr><td>Levy</td><td><a href="https://www.levycounty.org/" target="_blank" rel="noopener">Levy County</a></td><td>Permits, inspections</td></tr>
-            <tr><td>Liberty</td><td><a href="https://www.libertycountyfl.com/" target="_blank" rel="noopener">Liberty County</a></td><td>Permits, inspections</td></tr>
-            <tr><td>Madison</td><td><a href="https://www.madisoncountyfl.com/" target="_blank" rel="noopener">Madison County</a></td><td>Permits, inspections</td></tr>
-            <tr><td>Manatee</td><td><a href="https://www.mymanatee.org/departments/building___development_services" target="_blank" rel="noopener">Manatee Building &amp; Development</a></td><td>Permits, inspections, online search</td></tr>
-            <tr><td>Marion (Ocala)</td><td><a href="https://www.marioncountyfl.org/departments-agencies/growth-management/building-safety" target="_blank" rel="noopener">Marion Building Safety</a></td><td>Permits, inspections, online search</td></tr>
-            <tr><td>Martin</td><td><a href="https://www.martin.fl.us/building-department" target="_blank" rel="noopener">Martin County Building</a></td><td>Permits, inspections</td></tr>
-            <tr><td>Miami-Dade</td><td><a href="https://www.miamidade.gov/permits/" target="_blank" rel="noopener">Miami-Dade Permits</a></td><td>Permits, inspections, code violations, online search</td></tr>
-            <tr><td>Monroe (Keys)</td><td><a href="https://www.monroecounty-fl.gov/174/Building" target="_blank" rel="noopener">Monroe County Building</a></td><td>Permits, inspections, online search</td></tr>
-            <tr><td>Nassau</td><td><a href="https://www.nassaucountyfl.com/96/Building" target="_blank" rel="noopener">Nassau County Building</a></td><td>Permits, inspections</td></tr>
-            <tr><td>Okaloosa</td><td><a href="https://www.myokaloosa.com/growth-management/building-inspections" target="_blank" rel="noopener">Okaloosa Building Inspections</a></td><td>Permits, inspections</td></tr>
-            <tr><td>Okeechobee</td><td><a href="https://www.co.okeechobee.fl.us/building" target="_blank" rel="noopener">Okeechobee County Building</a></td><td>Permits, inspections</td></tr>
-            <tr><td>Orange (Orlando)</td><td><a href="https://www.orangecountyfl.net/BuildingPermitting.aspx" target="_blank" rel="noopener">Orange County Permitting</a></td><td>Permits, inspections, code enforcement, online search</td></tr>
-            <tr><td>Osceola (Kissimmee)</td><td><a href="https://www.osceola.org/agencies-departments/building/" target="_blank" rel="noopener">Osceola County Building</a></td><td>Permits, inspections, online search</td></tr>
-            <tr><td>Palm Beach</td><td><a href="https://www.pbcgov.org/building/" target="_blank" rel="noopener">Palm Beach County Building</a></td><td>Permits, inspections, code enforcement, online search</td></tr>
-            <tr><td>Pasco</td><td><a href="https://www.pascocountyfl.net/174/Building-Construction" target="_blank" rel="noopener">Pasco Building &amp; Construction</a></td><td>Permits, inspections, online search</td></tr>
-            <tr><td>Pinellas (St. Pete)</td><td><a href="https://www.pinellascounty.org/building/" target="_blank" rel="noopener">Pinellas County Building</a></td><td>Permits, inspections, code enforcement, online search</td></tr>
-            <tr><td>Polk (Lakeland)</td><td><a href="https://www.polk-county.net/building" target="_blank" rel="noopener">Polk County Building</a></td><td>Permits, inspections, online search</td></tr>
-            <tr><td>Putnam</td><td><a href="https://www.putnam-fl.com/building-department/" target="_blank" rel="noopener">Putnam County Building</a></td><td>Permits, inspections</td></tr>
-            <tr><td>Santa Rosa</td><td><a href="https://www.santarosa.fl.gov/building" target="_blank" rel="noopener">Santa Rosa County Building</a></td><td>Permits, inspections</td></tr>
-            <tr><td>Sarasota</td><td><a href="https://www.scgov.net/government/building-and-development-services" target="_blank" rel="noopener">Sarasota Building Services</a></td><td>Permits, inspections, code enforcement, online search</td></tr>
-            <tr><td>Seminole</td><td><a href="https://www.seminolecountyfl.gov/departments-services/development-services/building-division/" target="_blank" rel="noopener">Seminole County Building</a></td><td>Permits, inspections, online search</td></tr>
-            <tr><td>St. Johns (St. Augustine)</td><td><a href="https://www.sjcfl.us/BuildingServices/" target="_blank" rel="noopener">St. Johns Building Services</a></td><td>Permits, inspections, online search</td></tr>
-            <tr><td>St. Lucie</td><td><a href="https://www.stlucieco.gov/departments/community-development/building-services" target="_blank" rel="noopener">St. Lucie Building Services</a></td><td>Permits, inspections, online search</td></tr>
-            <tr><td>Sumter (The Villages)</td><td><a href="https://www.sumtercountyfl.gov/166/Building" target="_blank" rel="noopener">Sumter County Building</a></td><td>Permits, inspections</td></tr>
-            <tr><td>Suwannee</td><td><a href="https://www.suwanneecountyfl.gov/" target="_blank" rel="noopener">Suwannee County</a></td><td>Permits, inspections</td></tr>
-            <tr><td>Taylor</td><td><a href="https://www.taylorcountygov.com/" target="_blank" rel="noopener">Taylor County</a></td><td>Permits, inspections</td></tr>
-            <tr><td>Union</td><td><a href="https://www.unioncounty-fl.gov/" target="_blank" rel="noopener">Union County</a></td><td>Permits, inspections</td></tr>
-            <tr><td>Volusia (Daytona)</td><td><a href="https://www.volusia.org/services/growth-and-resource-management/building-and-code-administration/" target="_blank" rel="noopener">Volusia Building &amp; Code</a></td><td>Permits, inspections, code enforcement, online search</td></tr>
-            <tr><td>Wakulla</td><td><a href="https://www.mywakulla.com/departments/building_inspection/" target="_blank" rel="noopener">Wakulla Building Inspection</a></td><td>Permits, inspections</td></tr>
-            <tr><td>Walton</td><td><a href="https://www.co.walton.fl.us/171/Building-Department" target="_blank" rel="noopener">Walton County Building</a></td><td>Permits, inspections</td></tr>
-            <tr><td>Washington</td><td><a href="https://www.washingtonfl.com/" target="_blank" rel="noopener">Washington County</a></td><td>Permits, inspections</td></tr>
+            <tr><td>Alachua</td><td><a href="https://growth-management.alachuacounty.us/" target="_blank" rel="noopener">Alachua County Permits</a></td><td class="communities">Gainesville, Alachua, Archer, Hawthorne, High Springs, Micanopy, Newberry, Waldo</td></tr>
+            <tr><td>Baker</td><td><a href="https://www.bakercountyfl.org/building" target="_blank" rel="noopener">Baker County Permits</a></td><td class="communities">Macclenny, Glen St. Mary, Olustee, Sanderson</td></tr>
+            <tr><td>Bay</td><td><a href="https://www.baycountyfl.gov/departments/building-inspection" target="_blank" rel="noopener">Bay County Permits</a></td><td class="communities">Panama City, Panama City Beach, Lynn Haven, Springfield, Callaway</td></tr>
+            <tr><td>Bradford</td><td><a href="https://bradfordfl.portal.iworq.net/portalhome/bradfordfl" target="_blank" rel="noopener">Bradford County Permit Search</a></td><td class="communities">Starke, Lawtey, Brooker, Hampton</td></tr>
+            <tr><td>Brevard</td><td><a href="https://www.brevardcounty.us/BuildingPermit" target="_blank" rel="noopener">Brevard County Permits</a></td><td class="communities">Cape Canaveral, Cocoa, Cocoa Beach, Melbourne, Palm Bay, Rockledge, Satellite Beach, Titusville, West Melbourne</td></tr>
+            <tr><td>Broward</td><td><a href="https://dpepp.broward.org/BCS/Default.aspx?PossePresentation=ParcelSearchByAddress" target="_blank" rel="noopener">Broward County Permit Search</a></td><td class="communities">Fort Lauderdale, Hollywood, Pembroke Pines, Coral Springs, Miramar, Plantation, Davie, Sunrise, Deerfield Beach, Pompano Beach, Coconut Creek, Weston, Wilton Manors</td></tr>
+            <tr><td>Calhoun</td><td><a href="https://www.calhouncountyfl.org/" target="_blank" rel="noopener">Calhoun County Permits</a></td><td class="communities">Blountstown, Altha</td></tr>
+            <tr><td>Charlotte</td><td><a href="https://www.charlottecountyfl.gov/departments/community-development/building-construction-services.stml" target="_blank" rel="noopener">Charlotte County Permits</a></td><td class="communities">Punta Gorda, Port Charlotte, Englewood</td></tr>
+            <tr><td>Citrus</td><td><a href="https://apps.citrusbocc.com/permitsearch/" target="_blank" rel="noopener">Citrus County Permit Search</a></td><td class="communities">Crystal River, Inverness, Beverly Hills, Citrus Hills, Citrus Springs, Homosassa, Homosassa Springs, Lecanto, Sugarmill Woods</td></tr>
+            <tr><td>Clay</td><td><a href="https://public.claycountygov.com/PermitSearch/" target="_blank" rel="noopener">Clay County Permit Search</a><span class="alt-site">Also try: <a href="https://ci-greencovesprings-fl.smartgovcommunity.com/ApplicationPublic/ApplicationHome" target="_blank" rel="noopener">Green Cove Springs permits</a> if not found</span></td><td class="communities">Green Cove Springs, Keystone Heights, Orange Park, Penney Farms, Middleburg, Fleming Island, Lakeside</td></tr>
+            <tr><td>Collier</td><td><a href="https://www.colliercountyfl.gov/government/growth-management-department" target="_blank" rel="noopener">Collier County Permits</a></td><td class="communities">Naples, Marco Island, Immokalee, Everglades City</td></tr>
+            <tr><td>Columbia</td><td><a href="https://www.columbiacountyfla.com/BuildingDept.asp" target="_blank" rel="noopener">Columbia County Permits</a></td><td class="communities">Lake City</td></tr>
+            <tr><td>DeSoto</td><td><a href="https://www.desotobocc.com/departments/building" target="_blank" rel="noopener">DeSoto County Permits</a></td><td class="communities">Arcadia</td></tr>
+            <tr><td>Dixie</td><td><a href="https://www.dixiecounty.us/" target="_blank" rel="noopener">Dixie County Permits</a></td><td class="communities">Cross City, Horseshoe Beach, Old Town</td></tr>
+            <tr><td>Duval (Jacksonville)</td><td><a href="https://jaxepics.coj.net/Search/SearchResults" target="_blank" rel="noopener">Duval County Permit Search</a><span class="alt-site">Also try: <a href="https://jakb-egov.aspgov.com/Click2GovBP/selectpermit.html" target="_blank" rel="noopener">Jacksonville Beach</a> &bull; <a href="https://atlb-trk.aspgov.com/eTRAKiT/Search/permit.aspx" target="_blank" rel="noopener">Atlantic Beach</a></span></td><td class="communities">Jacksonville, Jacksonville Beach, Neptune Beach, Atlantic Beach, Baldwin</td></tr>
+            <tr><td>Escambia (Pensacola)</td><td><a href="https://www.myescambia.com/our-services/building-inspections" target="_blank" rel="noopener">Escambia County Permits</a></td><td class="communities">Pensacola, Pensacola Beach, Century, Perdido Key</td></tr>
+            <tr><td>Flagler</td><td><a href="https://cdpweb.flaglercounty.gov/oprs_pt_prod/oprswebv2.dll/2zrjwat11EuXLvHgS0umlwEgW0G/" target="_blank" rel="noopener">Flagler County Permit Search</a></td><td class="communities">Palm Coast, Bunnell, Flagler Beach, Beverly Beach, Marineland</td></tr>
+            <tr><td>Franklin</td><td><a href="https://www.franklincountyflorida.com/departments/building/" target="_blank" rel="noopener">Franklin County Permits</a></td><td class="communities">Apalachicola, Carrabelle, Eastpoint, St. George Island</td></tr>
+            <tr><td>Gadsden</td><td><a href="https://www.gadsdencountyfl.gov/building-department" target="_blank" rel="noopener">Gadsden County Permits</a></td><td class="communities">Quincy, Chattahoochee, Gretna, Havana, Midway</td></tr>
+            <tr><td>Gilchrist</td><td><a href="https://www.gilchristcounty.com/" target="_blank" rel="noopener">Gilchrist County Permits</a></td><td class="communities">Trenton, Bell, Fanning Springs</td></tr>
+            <tr><td>Glades</td><td><a href="https://www.myglades.com/" target="_blank" rel="noopener">Glades County Permits</a></td><td class="communities">Moore Haven</td></tr>
+            <tr><td>Gulf</td><td><a href="https://www.gulfcounty-fl.gov/" target="_blank" rel="noopener">Gulf County Permits</a></td><td class="communities">Port St. Joe, Wewahitchka</td></tr>
+            <tr><td>Hamilton</td><td><a href="https://www.hamiltoncountyfl.com/" target="_blank" rel="noopener">Hamilton County Permits</a></td><td class="communities">Jasper, Jennings, White Springs</td></tr>
+            <tr><td>Hardee</td><td><a href="https://www.hardeecounty.net/building" target="_blank" rel="noopener">Hardee County Permits</a></td><td class="communities">Wauchula, Bowling Green, Zolfo Springs</td></tr>
+            <tr><td>Hendry</td><td><a href="https://www.hendryfla.net/building/" target="_blank" rel="noopener">Hendry County Permits</a></td><td class="communities">LaBelle, Clewiston</td></tr>
+            <tr><td>Hernando</td><td><a href="https://www.hernandocounty.us/departments/building-division" target="_blank" rel="noopener">Hernando County Permits</a></td><td class="communities">Brooksville, Spring Hill, Weeki Wachee</td></tr>
+            <tr><td>Highlands</td><td><a href="https://www.highlandsfl.gov/government/departments-f-m/building-department" target="_blank" rel="noopener">Highlands County Permits</a></td><td class="communities">Sebring, Avon Park, Lake Placid</td></tr>
+            <tr><td>Hillsborough (Tampa)</td><td><a href="https://aca-prod.accela.com/HCFL/Cap/CapHome.aspx?module=Building&TabName=Building" target="_blank" rel="noopener">Hillsborough County Permit Search</a><span class="alt-site">Also try: <a href="https://aca-prod.accela.com/TAMPA/Cap/CapHome.aspx?module=Building&TabName=Home" target="_blank" rel="noopener">City of Tampa permits</a> if not found</span></td><td class="communities">Tampa, Plant City, Temple Terrace, Brandon, Riverview, Valrico, Seffner, Lutz, Ruskin, Sun City Center, Apollo Beach</td></tr>
+            <tr><td>Holmes</td><td><a href="https://www.holmescountyfl.com/" target="_blank" rel="noopener">Holmes County Permits</a></td><td class="communities">Bonifay, Esto, Noma, Ponce de Leon, Westville</td></tr>
+            <tr><td>Indian River</td><td><a href="https://qpublic.schneidercorp.com/Application.aspx?App=IndianRiverCountyFL&PageType=Search" target="_blank" rel="noopener">Indian River County Permit Search</a></td><td class="communities">Vero Beach, Sebastian, Fellsmere, Indian River Shores, Orchid, Florida Ridge, Wabasso, Winter Beach</td></tr>
+            <tr><td>Jackson</td><td><a href="https://www.jacksoncountyfl.gov/departments/building" target="_blank" rel="noopener">Jackson County Permits</a></td><td class="communities">Marianna, Graceville, Sneads, Cottondale</td></tr>
+            <tr><td>Jefferson</td><td><a href="https://www.jeffersoncountyfl.gov/" target="_blank" rel="noopener">Jefferson County Permits</a></td><td class="communities">Monticello</td></tr>
+            <tr><td>Lafayette</td><td><a href="https://www.lafayettecountyfl.net/" target="_blank" rel="noopener">Lafayette County Permits</a></td><td class="communities">Mayo</td></tr>
+            <tr><td>Lake</td><td><a href="https://www.lakecountyfl.gov/offices/building_services/" target="_blank" rel="noopener">Lake County Permits</a></td><td class="communities">Clermont, Eustis, Leesburg, Mount Dora, Tavares, Lady Lake, Groveland, Minneola</td></tr>
+            <tr><td>Lee (Fort Myers)</td><td><a href="https://www.leegov.com/dcd/bldp" target="_blank" rel="noopener">Lee County Permits</a></td><td class="communities">Fort Myers, Cape Coral, Bonita Springs, Sanibel, Fort Myers Beach, Estero, Lehigh Acres</td></tr>
+            <tr><td>Leon (Tallahassee)</td><td><a href="https://www2.leoncountyfl.gov/PermitHistory/" target="_blank" rel="noopener">Leon County Permit Search</a></td><td class="communities">Tallahassee, Bradfordville, Woodville, Fort Braden, Miccosukee, Chaires, Capitola</td></tr>
+            <tr><td>Levy</td><td><a href="https://www.levycounty.org/" target="_blank" rel="noopener">Levy County Permits</a></td><td class="communities">Bronson, Cedar Key, Chiefland, Williston, Yankeetown</td></tr>
+            <tr><td>Liberty</td><td><a href="https://www.libertycountyfl.com/" target="_blank" rel="noopener">Liberty County Permits</a></td><td class="communities">Bristol</td></tr>
+            <tr><td>Madison</td><td><a href="https://www.madisoncountyfl.com/" target="_blank" rel="noopener">Madison County Permits</a></td><td class="communities">Madison, Greenville, Lee</td></tr>
+            <tr><td>Manatee</td><td><a href="https://www.mymanatee.org/departments/building___development_services" target="_blank" rel="noopener">Manatee County Permits</a></td><td class="communities">Bradenton, Bradenton Beach, Holmes Beach, Anna Maria, Palmetto, Lakewood Ranch</td></tr>
+            <tr><td>Marion (Ocala)</td><td><a href="https://www.marioncountyfl.org/departments-agencies/growth-management/building-safety" target="_blank" rel="noopener">Marion County Permits</a></td><td class="communities">Ocala, Belleview, Dunnellon, McIntosh, Reddick, Anthony, Silver Springs, Summerfield</td></tr>
+            <tr><td>Martin</td><td><a href="https://aca-prod.accela.com/MARTINCO/Cap/CapHome.aspx?module=Building&TabName=Building" target="_blank" rel="noopener">Martin County Permit Search</a></td><td class="communities">Stuart, Jupiter Island, Sewall's Point, Indiantown, Hobe Sound, Jensen Beach, Palm City, Port Salerno</td></tr>
+            <tr><td>Miami-Dade</td><td><a href="https://wwwx.miamidade.gov/Apps/RER/ePermittingMenu/Home/Permits" target="_blank" rel="noopener">Miami-Dade Permit Search</a></td><td class="communities">Miami, Miami Beach, Hialeah, Coral Gables, Doral, Homestead, Aventura, Key Biscayne, Miami Gardens, Miami Lakes, North Miami, Pinecrest, Sunny Isles Beach</td></tr>
+            <tr><td>Monroe (Keys)</td><td><a href="https://www.monroecounty-fl.gov/174/Building" target="_blank" rel="noopener">Monroe County Permits</a></td><td class="communities">Key West, Key Largo, Marathon, Islamorada, Big Pine Key</td></tr>
+            <tr><td>Nassau</td><td><a href="https://www.nassaucountyfl.com/96/Building" target="_blank" rel="noopener">Nassau County Permits</a></td><td class="communities">Fernandina Beach, Callahan, Hilliard, Yulee</td></tr>
+            <tr><td>Okaloosa</td><td><a href="https://www.myokaloosa.com/growth-management/building-inspections" target="_blank" rel="noopener">Okaloosa County Permits</a></td><td class="communities">Fort Walton Beach, Crestview, Destin, Niceville, Valparaiso</td></tr>
+            <tr><td>Okeechobee</td><td><a href="https://www.co.okeechobee.fl.us/building" target="_blank" rel="noopener">Okeechobee County Permits</a></td><td class="communities">Okeechobee</td></tr>
+            <tr><td>Orange (Orlando)</td><td><a href="https://fasttrack.ocfl.net/OnlineServices/permit-building.aspx" target="_blank" rel="noopener">Orange County Permit Search</a></td><td class="communities">Orlando, Winter Park, Apopka, Ocoee, Winter Garden, Maitland, Belle Isle, Windermere</td></tr>
+            <tr><td>Osceola (Kissimmee)</td><td><a href="https://www.osceola.org/agencies-departments/building/" target="_blank" rel="noopener">Osceola County Permits</a></td><td class="communities">Kissimmee, St. Cloud, Celebration, Poinciana</td></tr>
+            <tr><td>Palm Beach</td><td><a href="https://www.pbcgov.org/ePZB.Admin.WebSPA/#/Container/Permits_Inspections" target="_blank" rel="noopener">Palm Beach County Permit Search</a><span class="alt-site">Also try: <a href="https://byb2-egov.aspgov.com/Click2GovBP/selectpermit.html" target="_blank" rel="noopener">Boynton Beach</a> &bull; <a href="https://permitting.delraybeachfl.gov/" target="_blank" rel="noopener">Delray Beach</a> &bull; <a href="https://bsaonline.com/?uid=2607" target="_blank" rel="noopener">Tequesta</a></span></td><td class="communities">West Palm Beach, Boca Raton, Boynton Beach, Delray Beach, Jupiter, Palm Beach Gardens, Wellington, Royal Palm Beach, Lake Worth Beach, Tequesta, Lantana, Riviera Beach</td></tr>
+            <tr><td>Pasco</td><td><a href="https://aca-prod.accela.com/PASCO/Cap/CapHome.aspx?module=Permits&TabName=Home" target="_blank" rel="noopener">Pasco County Permit Search</a></td><td class="communities">Dade City, New Port Richey, Zephyrhills, Wesley Chapel, Land O' Lakes, Holiday, Hudson, Trinity, Odessa</td></tr>
+            <tr><td>Pinellas (St. Pete)</td><td><a href="https://aca-prod.accela.com/PINELLAS/Cap/CapHome.aspx?module=Building&TabName=Building" target="_blank" rel="noopener">Pinellas County Permit Search</a></td><td class="communities">St. Petersburg, Clearwater, Largo, Dunedin, Pinellas Park, Seminole, Tarpon Springs, Oldsmar, Safety Harbor, St. Pete Beach, Treasure Island, Palm Harbor</td></tr>
+            <tr><td>Polk (Lakeland)</td><td><a href="https://www.polk-county.net/building" target="_blank" rel="noopener">Polk County Permits</a></td><td class="communities">Lakeland, Winter Haven, Bartow, Haines City, Lake Wales, Auburndale, Davenport</td></tr>
+            <tr><td>Putnam</td><td><a href="https://www.putnam-fl.com/building-department/" target="_blank" rel="noopener">Putnam County Permits</a></td><td class="communities">Palatka, Crescent City, Interlachen, Welaka</td></tr>
+            <tr><td>Santa Rosa</td><td><a href="https://www.santarosa.fl.gov/building" target="_blank" rel="noopener">Santa Rosa County Permits</a></td><td class="communities">Milton, Gulf Breeze, Jay, Navarre, Pace</td></tr>
+            <tr><td>Sarasota</td><td><a href="https://www.scgov.net/government/building-and-development-services" target="_blank" rel="noopener">Sarasota County Permits</a></td><td class="communities">Sarasota, Venice, North Port, Longboat Key, Osprey, Nokomis</td></tr>
+            <tr><td>Seminole</td><td><a href="https://semc-egov.aspgov.com/Click2GovBP/selectpermit.html" target="_blank" rel="noopener">Seminole County Permit Search</a></td><td class="communities">Sanford, Altamonte Springs, Casselberry, Lake Mary, Longwood, Oviedo, Winter Springs, Chuluota, Fern Park, Geneva, Heathrow</td></tr>
+            <tr><td>St. Johns (St. Augustine)</td><td><a href="https://webapp.sjcfl.us/WATSWebX/Permit/SearchPermit.aspx" target="_blank" rel="noopener">St. Johns County Permit Search</a><span class="alt-site">Also try: <a href="https://gis.citystaug.com/COSAPermits/login" target="_blank" rel="noopener">City of St. Augustine permits</a> (requires account)</span></td><td class="communities">St. Augustine, St. Augustine Beach, Ponte Vedra, Hastings, Crescent Beach, Fruit Cove, Vilano Beach, Nocatee</td></tr>
+            <tr><td>St. Lucie</td><td><a href="https://www.stlucieco.gov/departments/community-development/building-services" target="_blank" rel="noopener">St. Lucie County Permits</a></td><td class="communities">Fort Pierce, Port St. Lucie, Hutchinson Island South, St. Lucie Village</td></tr>
+            <tr><td>Sumter (The Villages)</td><td><a href="https://www.sumtercountyfl.gov/166/Building" target="_blank" rel="noopener">Sumter County Permits</a></td><td class="communities">The Villages, Bushnell, Center Hill, Coleman, Webster, Wildwood</td></tr>
+            <tr><td>Suwannee</td><td><a href="https://www.suwanneecountyfl.gov/" target="_blank" rel="noopener">Suwannee County Permits</a></td><td class="communities">Live Oak, Branford</td></tr>
+            <tr><td>Taylor</td><td><a href="https://www.taylorcountygov.com/" target="_blank" rel="noopener">Taylor County Permits</a></td><td class="communities">Perry, Steinhatchee</td></tr>
+            <tr><td>Union</td><td><a href="https://www.unioncounty-fl.gov/" target="_blank" rel="noopener">Union County Permits</a></td><td class="communities">Lake Butler, Raiford, Worthington Springs</td></tr>
+            <tr><td>Volusia (Daytona)</td><td><a href="https://connectlivepermits.org/citizenportal/app/landing" target="_blank" rel="noopener">Volusia County Permit Search</a><span class="alt-site">Also try: <a href="https://ormondbeachfl-energovweb.tylerhost.net/apps/selfservice#/search" target="_blank" rel="noopener">Ormond Beach</a> &bull; <a href="https://newsmyrnabeachfl-energovweb.tylerhost.net/apps/SelfService#/home" target="_blank" rel="noopener">New Smyrna Beach</a></span></td><td class="communities">Daytona Beach, DeLand, Deltona, New Smyrna Beach, Ormond Beach, Port Orange, South Daytona, DeBary, Edgewater, Orange City</td></tr>
+            <tr><td>Wakulla</td><td><a href="https://www.mywakulla.com/departments/building_inspection/" target="_blank" rel="noopener">Wakulla County Permits</a></td><td class="communities">Crawfordville, Sopchoppy, St. Marks, Panacea</td></tr>
+            <tr><td>Walton</td><td><a href="https://www.co.walton.fl.us/171/Building-Department" target="_blank" rel="noopener">Walton County Permits</a></td><td class="communities">DeFuniak Springs, Freeport, Paxton, 30A, Rosemary Beach, Seaside</td></tr>
+            <tr><td>Washington</td><td><a href="https://www.washingtonfl.com/" target="_blank" rel="noopener">Washington County Permits</a></td><td class="communities">Chipley, Vernon, Caryville, Ebro, Wausau</td></tr>
           </tbody>
         </table>
       </div>
 
       <div class="callout" style="margin-top:32px;">
         <div class="callout-title">Pro Tip for Realtors</div>
-        <p>When listing a home or preparing for a sale, pull both the <strong>property appraiser record</strong> (for assessed value, square footage, and exemptions) and the <strong>permit history</strong> (to verify that additions, renovations, and roof replacements were properly permitted). Unpermitted work can delay closings and cause insurance complications.</p>
+        <p>When listing a home or preparing for a sale, pull both the <strong>property appraiser record</strong> (for assessed value, square footage, and exemptions) and the <strong>permit history</strong> (to verify that additions, renovations, and roof replacements were properly permitted). Unpermitted work can delay closings and cause insurance complications. Some cities run their own permit systems separate from the county &mdash; if you don't find a permit in the county portal, check the city-specific links.</p>
       </div>
     </div>
   </section>
@@ -414,7 +428,8 @@
 
       rows.forEach(function(row) {
         var county = row.cells[0].textContent.toLowerCase();
-        if (!query || county.indexOf(query) !== -1) {
+        var communities = row.cells[2] ? row.cells[2].textContent.toLowerCase() : '';
+        if (!query || county.indexOf(query) !== -1 || communities.indexOf(query) !== -1) {
           row.classList.remove('hidden');
           visible++;
         } else {
