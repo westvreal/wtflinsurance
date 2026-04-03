@@ -112,7 +112,31 @@
             <li><strong>Zone X (Moderate to Low Risk):</strong> Areas outside the 100-year floodplain. Flood insurance is not required but <strong>strongly recommended</strong>. Remember: 40% of NFIP claims come from these zones.</li>
           </ul>
 
-          <p>You can look up your flood zone at <strong>FEMA's Flood Map Service Center</strong> or ask your insurance agent.</p>
+          <!-- Flood Zone Lookup Tool -->
+          <div id="flood-zone-lookup" style="background:var(--gray-50);border:2px solid var(--primary);border-radius:12px;padding:32px;margin:32px 0;">
+            <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px;">
+              <div style="width:48px;height:48px;background:var(--primary);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;color:#fff;flex-shrink:0;">&#127754;</div>
+              <h3 style="margin:0;font-size:1.4rem;">Look Up Your Flood Zone</h3>
+            </div>
+            <p style="color:var(--gray-600);margin-bottom:20px;">Enter your Florida address below to see your FEMA flood zone designation on an interactive map.</p>
+            <form id="floodZoneForm" onsubmit="return lookupFloodZone(event)" style="display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;">
+              <input type="text" id="floodAddress" class="form-control" placeholder="e.g. 123 Main St, Miami, FL 33101" required style="flex:1;min-width:240px;">
+              <button type="submit" class="btn btn-primary" id="floodSearchBtn">Search Map</button>
+            </form>
+            <div id="floodMapContainer" style="position:relative;width:100%;height:500px;border-radius:8px;overflow:hidden;background:var(--gray-100);display:none;">
+              <iframe id="floodMapFrame" style="width:100%;height:100%;border:none;" title="FEMA Flood Zone Map" loading="lazy"></iframe>
+              <div id="floodMapLoading" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(255,255,255,0.85);font-weight:600;color:var(--gray-600);">Loading flood map...</div>
+            </div>
+            <div id="floodMapDefault" style="text-align:center;padding:40px 20px;color:var(--gray-500);">
+              <div style="font-size:2.5rem;margin-bottom:8px;">&#128506;</div>
+              <p style="margin:0;">Enter an address above to load the interactive FEMA flood map.</p>
+            </div>
+            <div id="floodMapError" style="display:none;text-align:center;padding:20px;color:var(--error);background:#fef2f2;border-radius:8px;margin-top:12px;">
+              <p style="margin:0 0 8px;font-weight:600;">Could not locate that address.</p>
+              <p style="margin:0;font-size:0.9rem;">Try entering a full address with city and state, or look it up directly on <a href="https://msc.fema.gov/portal/search" target="_blank" rel="noopener" style="color:var(--primary);font-weight:600;">FEMA's Flood Map Service Center</a>.</p>
+            </div>
+            <p style="font-size:0.8rem;color:var(--gray-400);margin-top:12px;margin-bottom:0;">Map data from FEMA's National Flood Hazard Layer (NFHL). For official determinations, visit <a href="https://msc.fema.gov/portal/search" target="_blank" rel="noopener" style="color:var(--primary);">msc.fema.gov</a> or consult your insurance agent.</p>
+          </div>
 
           <h2 id="cost">How Much Does Flood Insurance Cost?</h2>
           <p>Under FEMA's Risk Rating 2.0 (implemented October 2021), rates are now based on individual property risk rather than just flood zone. Factors include:</p>
@@ -182,6 +206,7 @@
               <li><a href="#why">Why Flood Insurance Matters</a></li>
               <li><a href="#nfip-vs-private">NFIP vs. Private Flood</a></li>
               <li><a href="#flood-zones">Understanding Flood Zones</a></li>
+              <li><a href="#flood-zone-lookup">Look Up Your Flood Zone</a></li>
               <li><a href="#cost">Cost in Florida</a></li>
               <li><a href="#covered">What's Covered</a></li>
               <li><a href="#not-covered">What's Not Covered</a></li>
@@ -220,5 +245,69 @@
     </div>
   </footer>
   <script src="../js/main.js"></script>
+  <script>
+    function lookupFloodZone(e) {
+      e.preventDefault();
+      var address = document.getElementById('floodAddress').value.trim();
+      if (!address) return false;
+
+      var btn = document.getElementById('floodSearchBtn');
+      var mapContainer = document.getElementById('floodMapContainer');
+      var mapDefault = document.getElementById('floodMapDefault');
+      var mapError = document.getElementById('floodMapError');
+      var mapFrame = document.getElementById('floodMapFrame');
+      var mapLoading = document.getElementById('floodMapLoading');
+
+      btn.textContent = 'Searching...';
+      btn.disabled = true;
+      mapError.style.display = 'none';
+
+      // Use ESRI World Geocoding Service to convert address to coordinates
+      var geocodeUrl = 'https://geocode.arcgis.com/arcgis/rest/services/World/GeocodeServer/findAddressCandidates'
+        + '?f=json&singleLine=' + encodeURIComponent(address)
+        + '&outFields=Match_addr'
+        + '&maxLocations=1';
+
+      fetch(geocodeUrl)
+        .then(function(res) { return res.json(); })
+        .then(function(data) {
+          if (!data.candidates || data.candidates.length === 0) {
+            throw new Error('No results');
+          }
+          var loc = data.candidates[0].location;
+          var lon = loc.x;
+          var lat = loc.y;
+
+          // Build extent around the point (~0.005 degrees ≈ a few blocks)
+          var offset = 0.005;
+          var extent = (lon - offset) + ',' + (lat - offset) + ',' + (lon + offset) + ',' + (lat + offset);
+
+          var nfhlUrl = 'https://hazards-fema.maps.arcgis.com/apps/webappviewer/index.html'
+            + '?id=8b0adb51996444d4879338b5529aa9cd'
+            + '&extent=' + extent + ',4326';
+
+          mapDefault.style.display = 'none';
+          mapContainer.style.display = 'block';
+          mapLoading.style.display = 'flex';
+          mapFrame.src = nfhlUrl;
+
+          mapFrame.onload = function() {
+            mapLoading.style.display = 'none';
+          };
+          // Fallback: hide loading after 8 seconds regardless
+          setTimeout(function() { mapLoading.style.display = 'none'; }, 8000);
+
+          btn.textContent = 'Search Map';
+          btn.disabled = false;
+        })
+        .catch(function() {
+          mapError.style.display = 'block';
+          btn.textContent = 'Search Map';
+          btn.disabled = false;
+        });
+
+      return false;
+    }
+  </script>
 </body>
 </html>
