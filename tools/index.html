@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Florida Insurance Tools &amp; Property Lookups - WTFLinsurance</title>
+  <meta name="description" content="Free Florida property tools: look up your FEMA flood zone, find your county property appraiser, and search building permits by county.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .tool-hero {
+      background: linear-gradient(135deg, var(--primary) 0%, #1e40af 100%);
+      color: #fff;
+      padding: 48px 0;
+      text-align: center;
+    }
+    .tool-hero h1 { color: #fff; margin-bottom: 8px; }
+    .tool-hero p { color: rgba(255,255,255,0.8); max-width: 600px; margin: 0 auto; }
+
+    .tool-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+      margin-bottom: 48px;
+    }
+    .tool-card {
+      background: #fff;
+      border: 1px solid var(--gray-200);
+      border-radius: 12px;
+      padding: 28px;
+      text-align: center;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .tool-card:hover {
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      transform: translateY(-2px);
+    }
+    .tool-card-icon {
+      width: 56px; height: 56px;
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem;
+      margin: 0 auto 16px;
+    }
+    .tool-card h3 { margin-bottom: 8px; }
+    .tool-card p { font-size: 0.9rem; color: var(--gray-600); margin-bottom: 16px; }
+
+    .county-search-box {
+      background: var(--gray-50);
+      border: 2px solid var(--gray-200);
+      border-radius: 12px;
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+    .county-search-box:focus-within {
+      border-color: var(--primary);
+    }
+    .county-search-input {
+      width: 100%;
+      padding: 12px 16px 12px 44px;
+      border: 1px solid var(--gray-200);
+      border-radius: 8px;
+      font-size: 1rem;
+      background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' stroke='%239ca3af' stroke-width='2' viewBox='0 0 24 24'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.35-4.35'/%3E%3C/svg%3E") 12px center / 20px no-repeat;
+    }
+    .county-search-input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
+    }
+
+    .county-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    .county-table thead {
+      background: var(--gray-50);
+      position: sticky;
+      top: 0;
+    }
+    .county-table th {
+      padding: 12px 16px;
+      text-align: left;
+      font-weight: 600;
+      color: var(--gray-700);
+      border-bottom: 2px solid var(--gray-200);
+    }
+    .county-table td {
+      padding: 10px 16px;
+      border-bottom: 1px solid var(--gray-100);
+      vertical-align: top;
+    }
+    .county-table tr:hover { background: var(--gray-50); }
+    .county-table tr.hidden { display: none; }
+    .county-table a {
+      color: var(--primary);
+      font-weight: 500;
+      text-decoration: none;
+    }
+    .county-table a:hover { text-decoration: underline; }
+
+    .county-count {
+      font-size: 0.85rem;
+      color: var(--gray-500);
+      margin-top: 8px;
+    }
+
+    .section-intro {
+      max-width: 700px;
+      margin-bottom: 32px;
+    }
+    .section-intro h2 { margin-bottom: 8px; }
+    .section-intro p { color: var(--gray-600); }
+
+    @media (max-width: 768px) {
+      .county-table th:nth-child(3),
+      .county-table td:nth-child(3) { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="container header-inner">
+      <a href="../index.html" class="logo">WTFLinsurance</a>
+      <nav class="nav">
+        <div class="nav-item">
+          <a href="#" class="nav-link">Insurance Types &#9662;</a>
+          <div class="nav-dropdown">
+            <a href="../knowledge-base/auto-insurance.html">Auto Insurance</a>
+            <a href="../knowledge-base/home-insurance.html">Home Insurance</a>
+            <a href="../knowledge-base/flood-insurance.html">Flood Insurance</a>
+            <a href="../knowledge-base/boat-insurance.html">Boat Insurance</a>
+            <a href="../knowledge-base/rental-property-insurance.html">Rental Property Insurance</a>
+            <a href="../knowledge-base/business-insurance.html">Business Insurance</a>
+          </div>
+        </div>
+        <a href="../articles/index.html" class="nav-link">Articles</a>
+        <a href="../knowledge-base/index.html" class="nav-link">Knowledge Base</a>
+        <a href="../resources/index.html" class="nav-link">Resources</a>
+        <a href="index.html" class="nav-link active">Tools</a>
+      </nav>
+      <div class="header-actions">
+        <a href="../pages/login.html" class="nav-link">Log In</a>
+        <a href="../pages/signup.html" class="btn btn-primary btn-sm">Get Started Free</a>
+      </div>
+      <button class="mobile-toggle" aria-label="Menu">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="tool-hero">
+    <div class="container">
+      <h1>Florida Property &amp; Insurance Tools</h1>
+      <p>Free lookup tools for realtors, homeowners, and insurance professionals. Find property appraisals, building permits, and flood zones by county.</p>
+    </div>
+  </section>
+
+  <!-- Quick Tool Cards -->
+  <section class="section">
+    <div class="container">
+      <div class="tool-cards">
+        <a href="../knowledge-base/flood-insurance.html#flood-zone-lookup" class="tool-card" style="text-decoration:none;color:inherit;">
+          <div class="tool-card-icon" style="background:#dbeafe;color:#1e40af;">&#127754;</div>
+          <h3>FEMA Flood Zone Lookup</h3>
+          <p>Enter any Florida address and see your flood zone on an interactive FEMA map.</p>
+          <span class="btn btn-primary btn-sm">Look Up Flood Zone</span>
+        </a>
+        <div class="tool-card">
+          <div class="tool-card-icon" style="background:#fef3c7;color:#92400e;">&#127968;</div>
+          <h3>Property Appraiser Lookup</h3>
+          <p>Find your county's property appraiser site to search assessed values, ownership, and tax records.</p>
+          <a href="#property-appraisers" class="btn btn-outline btn-sm">Browse Counties</a>
+        </div>
+        <div class="tool-card">
+          <div class="tool-card-icon" style="background:#ecfdf5;color:#065f46;">&#128196;</div>
+          <h3>Building Permit Search</h3>
+          <p>Look up open and closed building permits, inspections, and code violations by county.</p>
+          <a href="#building-permits" class="btn btn-outline btn-sm">Browse Counties</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Property Appraisers -->
+  <section class="section bg-light" id="property-appraisers">
+    <div class="container">
+      <div class="section-intro">
+        <h2>Florida County Property Appraisers</h2>
+        <p>Every Florida county has a Property Appraiser who maintains records on property values, ownership history, exemptions, and tax assessments. Search below to find your county's site.</p>
+      </div>
+
+      <div class="county-search-box">
+        <input type="text" class="county-search-input" id="appraiserSearch" placeholder="Search by county name..." oninput="filterTable('appraiserSearch', 'appraiserTable')">
+        <div class="county-count" id="appraiserCount">Showing all 67 counties</div>
+      </div>
+
+      <div style="overflow-x:auto;background:#fff;border-radius:8px;border:1px solid var(--gray-200);">
+        <table class="county-table" id="appraiserTable">
+          <thead>
+            <tr>
+              <th>County</th>
+              <th>Property Appraiser Website</th>
+              <th>What You Can Look Up</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Alachua</td><td><a href="https://www.acpafl.org/" target="_blank" rel="noopener">acpafl.org</a></td><td>Property values, ownership, exemptions</td></tr>
+            <tr><td>Baker</td><td><a href="https://www.bakerpa.com/" target="_blank" rel="noopener">bakerpa.com</a></td><td>Property values, ownership, exemptions</td></tr>
+            <tr><td>Bay</td><td><a href="https://www.baypa.net/" target="_blank" rel="noopener">baypa.net</a></td><td>Property values, ownership, exemptions</td></tr>
+            <tr><td>Bradford</td><td><a href="https://www.bradfordappraiser.com/" target="_blank" rel="noopener">bradfordappraiser.com</a></td><td>Property values, ownership, exemptions</td></tr>
+            <tr><td>Brevard</td><td><a href="https://www.bcpao.us/" target="_blank" rel="noopener">bcpao.us</a></td><td>Property values, ownership, exemptions, maps</td></tr>
+            <tr><td>Broward</td><td><a href="https://www.bcpa.net/" target="_blank" rel="noopener">bcpa.net</a></td><td>Property values, ownership, exemptions, sales</td></tr>
+            <tr><td>Calhoun</td><td><a href="https://www.calhounpa.com/" target="_blank" rel="noopener">calhounpa.com</a></td><td>Property values, ownership, exemptions</td></tr>
+            <tr><td>Charlotte</td><td><a href="https://www.ccappraiser.com/" target="_blank" rel="noopener">ccappraiser.com</a></td><td>Property values, ownership, exemptions, maps</td></tr>
+            <tr><td>Citrus</td><td><a href="https://www.citruspa.org/" target="_blank" rel="noopener">citruspa.org</a></td><td>Property values, ownership, exemptions</td></tr>
+            <tr><td>Clay</td><td><a href="https://www.ccpao.com/" target="_blank" rel="noopener">ccpao.com</a></td><td>Property values, ownership, exemptions</td></tr>
+            <tr><td>Collier</td><td><a href="https://www.collierappraiser.com/" target="_blank" rel="noopener">collierappraiser.com</a></td><td>Property values, ownership, exemptions, sales</td></tr>
+            <tr><td>Columbia</td><td><a href="https://www.columbiaappraiser.com/" target="_blank" rel="noopener">columbiaappraiser.com</a></td><td>Property values, ownership, exemptions</td></tr>
+            <tr><td>DeSoto</td><td><a href="https://www.desotopa.com/" target="_blank" rel="noopener">desotopa.com</a></td><td>Property values, ownership, exemptions</td></tr>
+            <tr><td>Dixie</td><td><a href="https://www.dixiepa.com/" target="_blank" rel="noopener">dixiepa.com</a></td><td>Property values, ownership, exemptions</td></tr>
+            <tr><td>Duval (Jacksonville)</td><td><a href="https://www.coj.net/departments/property-appraiser" target="_blank" rel="noopener">coj.net/property-appraiser</a></td><td>Property values, ownership, exemptions, sales</td></tr>
+            <tr><td>Escambia (Pensacola)</td><td><a href="https://www.escpa.org/" target="_blank" rel="noopener">escpa.org</a></td><td>Property values, ownership, exemptions, maps</td></tr>
+            <tr><td>Flagler</td><td><a href="https://www.flaglerpa.com/" target="_blank" rel="noopener">flaglerpa.com</a></td><td>Property values, ownership, exemptions</td></tr>
+            <tr><td>Franklin</td><td><a href="https://www.franklinpa.com/" target="_blank" rel="noopener">franklinpa.com</a></td><td>Property values, ownership, exemptions</td></tr>
+            <tr><td>Gadsden</td><td><a href="https://www.gadsdenpa.com/" target="_blank" rel="noopener">gadsdenpa.com</a></td><td>Property values, ownership, exemptions</td></tr>
+            <tr><td>Gilchrist</td><td><a href="https://www.gilchristpa.com/" target="_blank" rel="noopener">gilchristpa.com</a></td><td>Property values, ownership, exemptions</td></tr>
+            <tr><td>Glades</td><td><a href="https://www.gladespa.com/" target="_blank" rel="noopener">gladespa.com</a></td><td>Property values, ownership, exemptions</td></tr>
+            <tr><td>Gulf</td><td><a href="https://www.gulfpa.com/" target="_blank" rel="noopener">gulfpa.com</a></td><td>Property values, ownership, exemptions</td></tr>
+            <tr><td>Hamilton</td><td><a href="https://www.hamiltonpa.com/" target="_blank" rel="noopener">hamiltonpa.com</a></td><td>Property values, ownership, exemptions</td></tr>
+            <tr><td>Hardee</td><td><a href="https://www.hardeepa.com/" target="_blank" rel="noopener">hardeepa.com</a></td><td>Property values, ownership, exemptions</td></tr>
+            <tr><td>Hendry</td><td><a href="https://www.hendrypa.org/" target="_blank" rel="noopener">hendrypa.org</a></td><td>Property values, ownership, exemptions</td></tr>
+            <tr><td>Hernando</td><td><a href="https://www.hernandopa.org/" target="_blank" rel="noopener">hernandopa.org</a></td><td>Property values, ownership, exemptions</td></tr>
+            <tr><td>Highlands</td><td><a href="https://www.hcpao.org/" target="_blank" rel="noopener">hcpao.org</a></td><td>Property values, ownership, exemptions</td></tr>
+            <tr><td>Hillsborough (Tampa)</td><td><a href="https://www.hcpafl.org/" target="_blank" rel="noopener">hcpafl.org</a></td><td>Property values, ownership, exemptions, sales, maps</td></tr>
+            <tr><td>Holmes</td><td><a href="https://www.holmespa.com/" target="_blank" rel="noopener">holmespa.com</a></td><td>Property values, ownership, exemptions</td></tr>
+            <tr><td>Indian River</td><td><a href="https://www.ircpa.org/" target="_blank" rel="noopener">ircpa.org</a></td><td>Property values, ownership, exemptions</td></tr>
+            <tr><td>Jackson</td><td><a href="https://www.jacksonpa.com/" target="_blank" rel="noopener">jacksonpa.com</a></td><td>Property values, ownership, exemptions</td></tr>
+            <tr><td>Jefferson</td><td><a href="https://www.jeffersonpa.net/" target="_blank" rel="noopener">jeffersonpa.net</a></td><td>Property values, ownership, exemptions</td></tr>
+            <tr><td>Lafayette</td><td><a href="https://www.lafayettepa.com/" target="_blank" rel="noopener">lafayettepa.com</a></td><td>Property values, ownership, exemptions</td></tr>
+            <tr><td>Lake</td><td><a href="https://www.lakecopropappr.com/" target="_blank" rel="noopener">lakecopropappr.com</a></td><td>Property values, ownership, exemptions, maps</td></tr>
+            <tr><td>Lee (Fort Myers)</td><td><a href="https://www.leepa.org/" target="_blank" rel="noopener">leepa.org</a></td><td>Property values, ownership, exemptions, sales, maps</td></tr>
+            <tr><td>Leon (Tallahassee)</td><td><a href="https://www.leonpa.org/" target="_blank" rel="noopener">leonpa.org</a></td><td>Property values, ownership, exemptions</td></tr>
+            <tr><td>Levy</td><td><a href="https://www.levypa.com/" target="_blank" rel="noopener">levypa.com</a></td><td>Property values, ownership, exemptions</td></tr>
+            <tr><td>Liberty</td><td><a href="https://www.libertypa.com/" target="_blank" rel="noopener">libertypa.com</a></td><td>Property values, ownership, exemptions</td></tr>
+            <tr><td>Madison</td><td><a href="https://www.madisonpa.com/" target="_blank" rel="noopener">madisonpa.com</a></td><td>Property values, ownership, exemptions</td></tr>
+            <tr><td>Manatee</td><td><a href="https://www.manateepao.com/" target="_blank" rel="noopener">manateepao.com</a></td><td>Property values, ownership, exemptions, maps</td></tr>
+            <tr><td>Marion (Ocala)</td><td><a href="https://www.pa.marion.fl.us/" target="_blank" rel="noopener">pa.marion.fl.us</a></td><td>Property values, ownership, exemptions</td></tr>
+            <tr><td>Martin</td><td><a href="https://www.pa.martin.fl.us/" target="_blank" rel="noopener">pa.martin.fl.us</a></td><td>Property values, ownership, exemptions</td></tr>
+            <tr><td>Miami-Dade</td><td><a href="https://www.miamidade.gov/pa/" target="_blank" rel="noopener">miamidade.gov/pa</a></td><td>Property values, ownership, exemptions, sales, maps</td></tr>
+            <tr><td>Monroe (Keys)</td><td><a href="https://www.mcpafl.org/" target="_blank" rel="noopener">mcpafl.org</a></td><td>Property values, ownership, exemptions</td></tr>
+            <tr><td>Nassau</td><td><a href="https://www.nassauflpa.com/" target="_blank" rel="noopener">nassauflpa.com</a></td><td>Property values, ownership, exemptions</td></tr>
+            <tr><td>Okaloosa</td><td><a href="https://www.okaloosapa.com/" target="_blank" rel="noopener">okaloosapa.com</a></td><td>Property values, ownership, exemptions</td></tr>
+            <tr><td>Okeechobee</td><td><a href="https://www.okeechobeepa.com/" target="_blank" rel="noopener">okeechobeepa.com</a></td><td>Property values, ownership, exemptions</td></tr>
+            <tr><td>Orange (Orlando)</td><td><a href="https://www.ocpafl.org/" target="_blank" rel="noopener">ocpafl.org</a></td><td>Property values, ownership, exemptions, sales, maps</td></tr>
+            <tr><td>Osceola (Kissimmee)</td><td><a href="https://www.property-appraiser.org/" target="_blank" rel="noopener">property-appraiser.org</a></td><td>Property values, ownership, exemptions</td></tr>
+            <tr><td>Palm Beach</td><td><a href="https://www.pbcgov.org/papa/" target="_blank" rel="noopener">pbcgov.org/papa</a></td><td>Property values, ownership, exemptions, sales, maps</td></tr>
+            <tr><td>Pasco</td><td><a href="https://www.pascopa.com/" target="_blank" rel="noopener">pascopa.com</a></td><td>Property values, ownership, exemptions</td></tr>
+            <tr><td>Pinellas (St. Pete)</td><td><a href="https://www.pcpao.org/" target="_blank" rel="noopener">pcpao.org</a></td><td>Property values, ownership, exemptions, sales, maps</td></tr>
+            <tr><td>Polk (Lakeland)</td><td><a href="https://www.polkpa.org/" target="_blank" rel="noopener">polkpa.org</a></td><td>Property values, ownership, exemptions</td></tr>
+            <tr><td>Putnam</td><td><a href="https://www.putnam-fl.com/property-appraiser/" target="_blank" rel="noopener">putnam-fl.com/property-appraiser</a></td><td>Property values, ownership, exemptions</td></tr>
+            <tr><td>Santa Rosa</td><td><a href="https://www.srcpa.org/" target="_blank" rel="noopener">srcpa.org</a></td><td>Property values, ownership, exemptions</td></tr>
+            <tr><td>Sarasota</td><td><a href="https://www.sc-pa.com/" target="_blank" rel="noopener">sc-pa.com</a></td><td>Property values, ownership, exemptions, sales, maps</td></tr>
+            <tr><td>Seminole</td><td><a href="https://www.scpafl.org/" target="_blank" rel="noopener">scpafl.org</a></td><td>Property values, ownership, exemptions</td></tr>
+            <tr><td>St. Johns (St. Augustine)</td><td><a href="https://www.sjcpa.us/" target="_blank" rel="noopener">sjcpa.us</a></td><td>Property values, ownership, exemptions</td></tr>
+            <tr><td>St. Lucie</td><td><a href="https://www.paslc.org/" target="_blank" rel="noopener">paslc.org</a></td><td>Property values, ownership, exemptions</td></tr>
+            <tr><td>Sumter (The Villages)</td><td><a href="https://www.sumterpa.com/" target="_blank" rel="noopener">sumterpa.com</a></td><td>Property values, ownership, exemptions</td></tr>
+            <tr><td>Suwannee</td><td><a href="https://www.suwanneepa.com/" target="_blank" rel="noopener">suwanneepa.com</a></td><td>Property values, ownership, exemptions</td></tr>
+            <tr><td>Taylor</td><td><a href="https://www.taylorpa.com/" target="_blank" rel="noopener">taylorpa.com</a></td><td>Property values, ownership, exemptions</td></tr>
+            <tr><td>Union</td><td><a href="https://www.unionpa.com/" target="_blank" rel="noopener">unionpa.com</a></td><td>Property values, ownership, exemptions</td></tr>
+            <tr><td>Volusia (Daytona)</td><td><a href="https://www.volusia.org/services/property-appraiser/" target="_blank" rel="noopener">volusia.org/property-appraiser</a></td><td>Property values, ownership, exemptions, maps</td></tr>
+            <tr><td>Wakulla</td><td><a href="https://www.wakullapa.com/" target="_blank" rel="noopener">wakullapa.com</a></td><td>Property values, ownership, exemptions</td></tr>
+            <tr><td>Walton</td><td><a href="https://www.waltonpa.com/" target="_blank" rel="noopener">waltonpa.com</a></td><td>Property values, ownership, exemptions</td></tr>
+            <tr><td>Washington</td><td><a href="https://www.washingtonpa.com/" target="_blank" rel="noopener">washingtonpa.com</a></td><td>Property values, ownership, exemptions</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Building Permits -->
+  <section class="section" id="building-permits">
+    <div class="container">
+      <div class="section-intro">
+        <h2>Florida County Building &amp; Permit Search</h2>
+        <p>Look up building permits, inspections, code violations, and construction history. Essential for due diligence when buying, selling, or insuring a property.</p>
+      </div>
+
+      <div class="county-search-box">
+        <input type="text" class="county-search-input" id="permitSearch" placeholder="Search by county name..." oninput="filterTable('permitSearch', 'permitTable')">
+        <div class="county-count" id="permitCount">Showing all 67 counties</div>
+      </div>
+
+      <div style="overflow-x:auto;background:#fff;border-radius:8px;border:1px solid var(--gray-200);">
+        <table class="county-table" id="permitTable">
+          <thead>
+            <tr>
+              <th>County</th>
+              <th>Permits &amp; Building Dept.</th>
+              <th>What You Can Look Up</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Alachua</td><td><a href="https://growth-management.alachuacounty.us/" target="_blank" rel="noopener">Alachua Growth Management</a></td><td>Permits, inspections, code enforcement</td></tr>
+            <tr><td>Baker</td><td><a href="https://www.bakercountyfl.org/building" target="_blank" rel="noopener">Baker County Building</a></td><td>Permits, inspections</td></tr>
+            <tr><td>Bay</td><td><a href="https://www.baycountyfl.gov/departments/building-inspection" target="_blank" rel="noopener">Bay County Building</a></td><td>Permits, inspections, code enforcement</td></tr>
+            <tr><td>Bradford</td><td><a href="https://www.bradfordcountyfl.gov/building" target="_blank" rel="noopener">Bradford County Building</a></td><td>Permits, inspections</td></tr>
+            <tr><td>Brevard</td><td><a href="https://www.brevardcounty.us/BuildingPermit" target="_blank" rel="noopener">Brevard County Permits</a></td><td>Permits, inspections, online search</td></tr>
+            <tr><td>Broward</td><td><a href="https://www.broward.org/Building/" target="_blank" rel="noopener">Broward County Building</a></td><td>Permits, inspections, contractor search</td></tr>
+            <tr><td>Calhoun</td><td><a href="https://www.calhouncountyfl.org/" target="_blank" rel="noopener">Calhoun County</a></td><td>Permits, inspections</td></tr>
+            <tr><td>Charlotte</td><td><a href="https://www.charlottecountyfl.gov/departments/community-development/building-construction-services.stml" target="_blank" rel="noopener">Charlotte County Building</a></td><td>Permits, inspections, online search</td></tr>
+            <tr><td>Citrus</td><td><a href="https://www.citrusbocc.com/departments/building" target="_blank" rel="noopener">Citrus County Building</a></td><td>Permits, inspections</td></tr>
+            <tr><td>Clay</td><td><a href="https://www.claycountygov.com/government/building" target="_blank" rel="noopener">Clay County Building</a></td><td>Permits, inspections, online search</td></tr>
+            <tr><td>Collier</td><td><a href="https://www.colliercountyfl.gov/government/growth-management-department" target="_blank" rel="noopener">Collier Growth Management</a></td><td>Permits, inspections, code enforcement</td></tr>
+            <tr><td>Columbia</td><td><a href="https://www.columbiacountyfla.com/BuildingDept.asp" target="_blank" rel="noopener">Columbia County Building</a></td><td>Permits, inspections</td></tr>
+            <tr><td>DeSoto</td><td><a href="https://www.desotobocc.com/departments/building" target="_blank" rel="noopener">DeSoto County Building</a></td><td>Permits, inspections</td></tr>
+            <tr><td>Dixie</td><td><a href="https://www.dixiecounty.us/" target="_blank" rel="noopener">Dixie County</a></td><td>Permits, inspections</td></tr>
+            <tr><td>Duval (Jacksonville)</td><td><a href="https://www.coj.net/departments/regulatory-compliance-department/building-inspection-division" target="_blank" rel="noopener">Jacksonville Building Inspection</a></td><td>Permits, inspections, code enforcement, online search</td></tr>
+            <tr><td>Escambia (Pensacola)</td><td><a href="https://www.myescambia.com/our-services/building-inspections" target="_blank" rel="noopener">Escambia Building Inspections</a></td><td>Permits, inspections, online search</td></tr>
+            <tr><td>Flagler</td><td><a href="https://www.flaglercounty.gov/government/departments/building" target="_blank" rel="noopener">Flagler County Building</a></td><td>Permits, inspections</td></tr>
+            <tr><td>Franklin</td><td><a href="https://www.franklincountyflorida.com/departments/building/" target="_blank" rel="noopener">Franklin County Building</a></td><td>Permits, inspections</td></tr>
+            <tr><td>Gadsden</td><td><a href="https://www.gadsdencountyfl.gov/building-department" target="_blank" rel="noopener">Gadsden County Building</a></td><td>Permits, inspections</td></tr>
+            <tr><td>Gilchrist</td><td><a href="https://www.gilchristcounty.com/" target="_blank" rel="noopener">Gilchrist County</a></td><td>Permits, inspections</td></tr>
+            <tr><td>Glades</td><td><a href="https://www.myglades.com/" target="_blank" rel="noopener">Glades County</a></td><td>Permits, inspections</td></tr>
+            <tr><td>Gulf</td><td><a href="https://www.gulfcounty-fl.gov/" target="_blank" rel="noopener">Gulf County</a></td><td>Permits, inspections</td></tr>
+            <tr><td>Hamilton</td><td><a href="https://www.hamiltoncountyfl.com/" target="_blank" rel="noopener">Hamilton County</a></td><td>Permits, inspections</td></tr>
+            <tr><td>Hardee</td><td><a href="https://www.hardeecounty.net/building" target="_blank" rel="noopener">Hardee County Building</a></td><td>Permits, inspections</td></tr>
+            <tr><td>Hendry</td><td><a href="https://www.hendryfla.net/building/" target="_blank" rel="noopener">Hendry County Building</a></td><td>Permits, inspections</td></tr>
+            <tr><td>Hernando</td><td><a href="https://www.hernandocounty.us/departments/building-division" target="_blank" rel="noopener">Hernando County Building</a></td><td>Permits, inspections, online search</td></tr>
+            <tr><td>Highlands</td><td><a href="https://www.highlandsfl.gov/government/departments-f-m/building-department" target="_blank" rel="noopener">Highlands County Building</a></td><td>Permits, inspections</td></tr>
+            <tr><td>Hillsborough (Tampa)</td><td><a href="https://www.hillsboroughcounty.org/en/residents/property-owners-and-renters/building-and-renovations" target="_blank" rel="noopener">Hillsborough County Building</a></td><td>Permits, inspections, code enforcement, online search</td></tr>
+            <tr><td>Holmes</td><td><a href="https://www.holmescountyfl.com/" target="_blank" rel="noopener">Holmes County</a></td><td>Permits, inspections</td></tr>
+            <tr><td>Indian River</td><td><a href="https://www.ircgov.com/departments/community_development/building/" target="_blank" rel="noopener">Indian River Building</a></td><td>Permits, inspections, online search</td></tr>
+            <tr><td>Jackson</td><td><a href="https://www.jacksoncountyfl.gov/departments/building" target="_blank" rel="noopener">Jackson County Building</a></td><td>Permits, inspections</td></tr>
+            <tr><td>Jefferson</td><td><a href="https://www.jeffersoncountyfl.gov/" target="_blank" rel="noopener">Jefferson County</a></td><td>Permits, inspections</td></tr>
+            <tr><td>Lafayette</td><td><a href="https://www.lafayettecountyfl.net/" target="_blank" rel="noopener">Lafayette County</a></td><td>Permits, inspections</td></tr>
+            <tr><td>Lake</td><td><a href="https://www.lakecountyfl.gov/offices/building_services/" target="_blank" rel="noopener">Lake County Building Services</a></td><td>Permits, inspections, online search</td></tr>
+            <tr><td>Lee (Fort Myers)</td><td><a href="https://www.leegov.com/dcd/bldp" target="_blank" rel="noopener">Lee County Building</a></td><td>Permits, inspections, code enforcement, online search</td></tr>
+            <tr><td>Leon (Tallahassee)</td><td><a href="https://www.leoncountyfl.gov/ei/" target="_blank" rel="noopener">Leon County EI</a></td><td>Permits, inspections, online search</td></tr>
+            <tr><td>Levy</td><td><a href="https://www.levycounty.org/" target="_blank" rel="noopener">Levy County</a></td><td>Permits, inspections</td></tr>
+            <tr><td>Liberty</td><td><a href="https://www.libertycountyfl.com/" target="_blank" rel="noopener">Liberty County</a></td><td>Permits, inspections</td></tr>
+            <tr><td>Madison</td><td><a href="https://www.madisoncountyfl.com/" target="_blank" rel="noopener">Madison County</a></td><td>Permits, inspections</td></tr>
+            <tr><td>Manatee</td><td><a href="https://www.mymanatee.org/departments/building___development_services" target="_blank" rel="noopener">Manatee Building &amp; Development</a></td><td>Permits, inspections, online search</td></tr>
+            <tr><td>Marion (Ocala)</td><td><a href="https://www.marioncountyfl.org/departments-agencies/growth-management/building-safety" target="_blank" rel="noopener">Marion Building Safety</a></td><td>Permits, inspections, online search</td></tr>
+            <tr><td>Martin</td><td><a href="https://www.martin.fl.us/building-department" target="_blank" rel="noopener">Martin County Building</a></td><td>Permits, inspections</td></tr>
+            <tr><td>Miami-Dade</td><td><a href="https://www.miamidade.gov/permits/" target="_blank" rel="noopener">Miami-Dade Permits</a></td><td>Permits, inspections, code violations, online search</td></tr>
+            <tr><td>Monroe (Keys)</td><td><a href="https://www.monroecounty-fl.gov/174/Building" target="_blank" rel="noopener">Monroe County Building</a></td><td>Permits, inspections, online search</td></tr>
+            <tr><td>Nassau</td><td><a href="https://www.nassaucountyfl.com/96/Building" target="_blank" rel="noopener">Nassau County Building</a></td><td>Permits, inspections</td></tr>
+            <tr><td>Okaloosa</td><td><a href="https://www.myokaloosa.com/growth-management/building-inspections" target="_blank" rel="noopener">Okaloosa Building Inspections</a></td><td>Permits, inspections</td></tr>
+            <tr><td>Okeechobee</td><td><a href="https://www.co.okeechobee.fl.us/building" target="_blank" rel="noopener">Okeechobee County Building</a></td><td>Permits, inspections</td></tr>
+            <tr><td>Orange (Orlando)</td><td><a href="https://www.orangecountyfl.net/BuildingPermitting.aspx" target="_blank" rel="noopener">Orange County Permitting</a></td><td>Permits, inspections, code enforcement, online search</td></tr>
+            <tr><td>Osceola (Kissimmee)</td><td><a href="https://www.osceola.org/agencies-departments/building/" target="_blank" rel="noopener">Osceola County Building</a></td><td>Permits, inspections, online search</td></tr>
+            <tr><td>Palm Beach</td><td><a href="https://www.pbcgov.org/building/" target="_blank" rel="noopener">Palm Beach County Building</a></td><td>Permits, inspections, code enforcement, online search</td></tr>
+            <tr><td>Pasco</td><td><a href="https://www.pascocountyfl.net/174/Building-Construction" target="_blank" rel="noopener">Pasco Building &amp; Construction</a></td><td>Permits, inspections, online search</td></tr>
+            <tr><td>Pinellas (St. Pete)</td><td><a href="https://www.pinellascounty.org/building/" target="_blank" rel="noopener">Pinellas County Building</a></td><td>Permits, inspections, code enforcement, online search</td></tr>
+            <tr><td>Polk (Lakeland)</td><td><a href="https://www.polk-county.net/building" target="_blank" rel="noopener">Polk County Building</a></td><td>Permits, inspections, online search</td></tr>
+            <tr><td>Putnam</td><td><a href="https://www.putnam-fl.com/building-department/" target="_blank" rel="noopener">Putnam County Building</a></td><td>Permits, inspections</td></tr>
+            <tr><td>Santa Rosa</td><td><a href="https://www.santarosa.fl.gov/building" target="_blank" rel="noopener">Santa Rosa County Building</a></td><td>Permits, inspections</td></tr>
+            <tr><td>Sarasota</td><td><a href="https://www.scgov.net/government/building-and-development-services" target="_blank" rel="noopener">Sarasota Building Services</a></td><td>Permits, inspections, code enforcement, online search</td></tr>
+            <tr><td>Seminole</td><td><a href="https://www.seminolecountyfl.gov/departments-services/development-services/building-division/" target="_blank" rel="noopener">Seminole County Building</a></td><td>Permits, inspections, online search</td></tr>
+            <tr><td>St. Johns (St. Augustine)</td><td><a href="https://www.sjcfl.us/BuildingServices/" target="_blank" rel="noopener">St. Johns Building Services</a></td><td>Permits, inspections, online search</td></tr>
+            <tr><td>St. Lucie</td><td><a href="https://www.stlucieco.gov/departments/community-development/building-services" target="_blank" rel="noopener">St. Lucie Building Services</a></td><td>Permits, inspections, online search</td></tr>
+            <tr><td>Sumter (The Villages)</td><td><a href="https://www.sumtercountyfl.gov/166/Building" target="_blank" rel="noopener">Sumter County Building</a></td><td>Permits, inspections</td></tr>
+            <tr><td>Suwannee</td><td><a href="https://www.suwanneecountyfl.gov/" target="_blank" rel="noopener">Suwannee County</a></td><td>Permits, inspections</td></tr>
+            <tr><td>Taylor</td><td><a href="https://www.taylorcountygov.com/" target="_blank" rel="noopener">Taylor County</a></td><td>Permits, inspections</td></tr>
+            <tr><td>Union</td><td><a href="https://www.unioncounty-fl.gov/" target="_blank" rel="noopener">Union County</a></td><td>Permits, inspections</td></tr>
+            <tr><td>Volusia (Daytona)</td><td><a href="https://www.volusia.org/services/growth-and-resource-management/building-and-code-administration/" target="_blank" rel="noopener">Volusia Building &amp; Code</a></td><td>Permits, inspections, code enforcement, online search</td></tr>
+            <tr><td>Wakulla</td><td><a href="https://www.mywakulla.com/departments/building_inspection/" target="_blank" rel="noopener">Wakulla Building Inspection</a></td><td>Permits, inspections</td></tr>
+            <tr><td>Walton</td><td><a href="https://www.co.walton.fl.us/171/Building-Department" target="_blank" rel="noopener">Walton County Building</a></td><td>Permits, inspections</td></tr>
+            <tr><td>Washington</td><td><a href="https://www.washingtonfl.com/" target="_blank" rel="noopener">Washington County</a></td><td>Permits, inspections</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="callout" style="margin-top:32px;">
+        <div class="callout-title">Pro Tip for Realtors</div>
+        <p>When listing a home or preparing for a sale, pull both the <strong>property appraiser record</strong> (for assessed value, square footage, and exemptions) and the <strong>permit history</strong> (to verify that additions, renovations, and roof replacements were properly permitted). Unpermitted work can delay closings and cause insurance complications.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-banner">
+    <div class="container">
+      <h2>Need Help With Insurance?</h2>
+      <p>Get matched with the right Florida insurance coverage for your property.</p>
+      <a href="../pages/signup.html" class="btn btn-white btn-lg">Get Free Quotes</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-about"><div class="logo">WTFLinsurance</div><p>Free insurance tools, guides, and expert advice.</p></div>
+        <div><h4>Insurance</h4><ul><li><a href="../knowledge-base/auto-insurance.html">Auto</a></li><li><a href="../knowledge-base/home-insurance.html">Home</a></li><li><a href="../knowledge-base/flood-insurance.html">Flood</a></li><li><a href="../knowledge-base/boat-insurance.html">Boat</a></li><li><a href="../knowledge-base/rental-property-insurance.html">Rental Property</a></li><li><a href="../knowledge-base/business-insurance.html">Business</a></li></ul></div>
+        <div><h4>Resources</h4><ul><li><a href="../articles/index.html">Articles</a></li><li><a href="../knowledge-base/index.html">Knowledge Base</a></li><li><a href="../resources/index.html">Downloads</a></li><li><a href="index.html">Tools</a></li></ul></div>
+        <div><h4>Company</h4><ul><li><a href="#">About</a></li><li><a href="#">Contact</a></li><li><a href="#">Privacy</a></li></ul></div>
+      </div>
+      <div class="footer-bottom"><span>&copy; 2026 WTFLinsurance.com</span><span>For educational purposes only.</span></div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script>
+    function filterTable(inputId, tableId) {
+      var query = document.getElementById(inputId).value.toLowerCase().trim();
+      var table = document.getElementById(tableId);
+      var rows = table.querySelectorAll('tbody tr');
+      var visible = 0;
+
+      rows.forEach(function(row) {
+        var county = row.cells[0].textContent.toLowerCase();
+        if (!query || county.indexOf(query) !== -1) {
+          row.classList.remove('hidden');
+          visible++;
+        } else {
+          row.classList.add('hidden');
+        }
+      });
+
+      var countId = inputId.replace('Search', 'Count');
+      var countEl = document.getElementById(countId);
+      if (countEl) {
+        countEl.textContent = query
+          ? 'Showing ' + visible + ' of 67 counties'
+          : 'Showing all 67 counties';
+      }
+    }
+  </script>
+</body>
+</html>
