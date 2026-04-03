@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Log In - WTFLinsurance</title>
+  <meta name="description" content="Log in to your WTFLinsurance account to access personalized insurance recommendations and resources.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <header class="header">
+    <div class="container header-inner">
+      <a href="../index.html" class="logo">WTFLinsurance</a>
+      <nav class="nav">
+        <div class="nav-item">
+          <a href="#" class="nav-link">Insurance Types &#9662;</a>
+          <div class="nav-dropdown">
+            <a href="../knowledge-base/auto-insurance.html">Auto Insurance</a>
+            <a href="../knowledge-base/home-insurance.html">Home Insurance</a>
+            <a href="../knowledge-base/health-insurance.html">Health Insurance</a>
+            <a href="../knowledge-base/business-insurance.html">Business Insurance</a>
+          </div>
+        </div>
+        <a href="../articles/index.html" class="nav-link">Articles</a>
+        <a href="../knowledge-base/index.html" class="nav-link">Knowledge Base</a>
+        <a href="../resources/index.html" class="nav-link">Resources</a>
+      </nav>
+      <div class="header-actions">
+        <a href="login.html" class="nav-link">Log In</a>
+        <a href="signup.html" class="btn btn-primary btn-sm">Get Started Free</a>
+      </div>
+      <button class="mobile-toggle" aria-label="Menu">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="auth-page">
+    <div class="auth-card">
+      <h1>Welcome Back</h1>
+      <p class="subtitle">Log in to access your personalized insurance dashboard.</p>
+
+      <form id="loginForm" onsubmit="return handleLogin(event)">
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" class="form-control" placeholder="john@example.com" required>
+        </div>
+
+        <div class="form-group">
+          <label for="password" style="display:flex;justify-content:space-between;">
+            Password
+            <a href="#" style="font-weight:400;font-size:0.85rem;">Forgot password?</a>
+          </label>
+          <input type="password" id="password" class="form-control" placeholder="Enter your password" required>
+        </div>
+
+        <div class="form-group">
+          <label class="form-check">
+            <input type="checkbox" id="rememberMe">
+            Remember me for 30 days
+          </label>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block btn-lg">Log In</button>
+      </form>
+
+      <div class="form-divider">or</div>
+
+      <button class="btn btn-outline btn-block" onclick="showToast('Google login would be integrated in production', 'success')">
+        Continue with Google
+      </button>
+
+      <div class="auth-footer">
+        Don't have an account? <a href="signup.html"><strong>Sign up free</strong></a>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/main.js"></script>
+  <script>
+    // Redirect if already logged in
+    if (UserAuth.isLoggedIn()) {
+      document.querySelector('.auth-card').innerHTML = `
+        <div style="text-align:center;padding:32px 0;">
+          <div style="font-size:3rem;margin-bottom:16px;">&#9989;</div>
+          <h2>You're already logged in!</h2>
+          <p style="color:var(--gray-500);margin-bottom:24px;">Welcome back, ${UserAuth.getSession().firstName}.</p>
+          <div style="display:flex;gap:12px;justify-content:center;">
+            <a href="../index.html" class="btn btn-primary">Go to Homepage</a>
+            <a href="#" class="btn btn-outline" onclick="event.preventDefault();UserAuth.logout();window.location.reload();">Log Out</a>
+          </div>
+        </div>
+      `;
+    }
+
+    function handleLogin(e) {
+      e.preventDefault();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value;
+
+      if (!email || !password) {
+        showToast('Please fill in all fields.', 'error');
+        return false;
+      }
+
+      const result = UserAuth.login(email, password);
+
+      if (result.success) {
+        showToast('Welcome back, ' + result.user.firstName + '!', 'success');
+        setTimeout(() => {
+          window.location.href = '../index.html';
+        }, 1000);
+      } else {
+        showToast(result.message, 'error');
+      }
+
+      return false;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Insurance Knowledge Base - WTFLinsurance</title>
+  <meta name="description" content="Your comprehensive insurance knowledge base. Find answers to common questions about auto, home, life, health, and business insurance.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <header class="header">
+    <div class="container header-inner">
+      <a href="../index.html" class="logo">WTFLinsurance</a>
+      <nav class="nav">
+        <div class="nav-item">
+          <a href="#" class="nav-link">Insurance Types &#9662;</a>
+          <div class="nav-dropdown">
+            <a href="auto-insurance.html">Auto Insurance</a>
+            <a href="home-insurance.html">Home Insurance</a>
+
+            <a href="health-insurance.html">Health Insurance</a>
+            <a href="business-insurance.html">Business Insurance</a>
+          </div>
+        </div>
+        <a href="../articles/index.html" class="nav-link">Articles</a>
+        <a href="index.html" class="nav-link active">Knowledge Base</a>
+        <a href="../resources/index.html" class="nav-link">Resources</a>
+      </nav>
+      <div class="header-actions">
+        <a href="../pages/login.html" class="nav-link">Log In</a>
+        <a href="../pages/signup.html" class="btn btn-primary btn-sm">Get Started Free</a>
+      </div>
+      <button class="mobile-toggle" aria-label="Menu">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- KB Hero with Search -->
+  <section class="kb-hero">
+    <div class="container">
+      <h1>Insurance Knowledge Base</h1>
+      <p class="text-muted">Find answers to your insurance questions. Browse by category or search below.</p>
+      <div class="kb-search">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        <input type="text" id="kbSearch" placeholder="Search the knowledge base...">
+      </div>
+    </div>
+  </section>
+
+  <!-- Knowledge Base Categories -->
+  <section class="section">
+    <div class="container">
+      <div class="grid grid-2">
+
+        <!-- Auto Insurance -->
+        <div class="kb-category">
+          <h3>&#128663; Auto Insurance</h3>
+          <ul>
+            <li><a href="auto-insurance.html">What does auto insurance cover?</a></li>
+            <li><a href="auto-insurance.html">How much auto insurance do I need?</a></li>
+            <li><a href="auto-insurance.html">What factors affect my car insurance rate?</a></li>
+            <li><a href="auto-insurance.html">Liability vs. full coverage explained</a></li>
+            <li><a href="auto-insurance.html">How to file an auto insurance claim</a></li>
+            <li><a href="auto-insurance.html">Understanding uninsured motorist coverage</a></li>
+          </ul>
+          <a href="auto-insurance.html" class="btn btn-sm btn-outline" style="margin-top:12px;">View All Auto Topics</a>
+        </div>
+
+        <!-- Home Insurance -->
+        <div class="kb-category">
+          <h3>&#127968; Home Insurance</h3>
+          <ul>
+            <li><a href="home-insurance.html">What does homeowners insurance cover?</a></li>
+            <li><a href="home-insurance.html">Homeowners vs. renters insurance</a></li>
+            <li><a href="home-insurance.html">How to choose the right coverage amount</a></li>
+            <li><a href="home-insurance.html">What's not covered by home insurance?</a></li>
+            <li><a href="home-insurance.html">Understanding flood and earthquake insurance</a></li>
+            <li><a href="home-insurance.html">How to lower your home insurance premium</a></li>
+          </ul>
+          <a href="home-insurance.html" class="btn btn-sm btn-outline" style="margin-top:12px;">View All Home Topics</a>
+        </div>
+
+        <!-- Health Insurance -->
+        <div class="kb-category">
+          <h3>&#127973; Health Insurance</h3>
+          <ul>
+            <li><a href="health-insurance.html">HMO vs. PPO vs. EPO plans</a></li>
+            <li><a href="health-insurance.html">Understanding premiums, deductibles, and copays</a></li>
+            <li><a href="health-insurance.html">How to choose a health insurance plan</a></li>
+            <li><a href="health-insurance.html">What is a Health Savings Account (HSA)?</a></li>
+            <li><a href="health-insurance.html">Open enrollment explained</a></li>
+            <li><a href="health-insurance.html">Marketplace vs. employer coverage</a></li>
+          </ul>
+          <a href="health-insurance.html" class="btn btn-sm btn-outline" style="margin-top:12px;">View All Health Topics</a>
+        </div>
+
+        <!-- Business Insurance -->
+        <div class="kb-category" style="grid-column: 1 / -1;">
+          <h3>&#128188; Business Insurance</h3>
+          <ul style="columns:2;column-gap:48px;">
+            <li><a href="business-insurance.html">General liability insurance basics</a></li>
+            <li><a href="business-insurance.html">Professional liability (E&amp;O) insurance</a></li>
+            <li><a href="business-insurance.html">Workers' compensation requirements</a></li>
+            <li><a href="business-insurance.html">Business owner's policy (BOP) explained</a></li>
+            <li><a href="business-insurance.html">Commercial auto insurance</a></li>
+            <li><a href="business-insurance.html">Cyber liability insurance for small businesses</a></li>
+          </ul>
+          <a href="business-insurance.html" class="btn btn-sm btn-outline" style="margin-top:12px;">View All Business Topics</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-banner">
+    <div class="container">
+      <h2>Still Have Questions?</h2>
+      <p>Create a free account and get personalized insurance recommendations.</p>
+      <a href="../pages/signup.html" class="btn btn-white btn-lg">Get Started Free</a>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-about">
+          <div class="logo">WTFLinsurance</div>
+          <p>Your trusted source for insurance education and comparison.</p>
+        </div>
+        <div><h4>Insurance</h4><ul><li><a href="auto-insurance.html">Auto</a></li><li><a href="home-insurance.html">Home</a></li><li><a href="health-insurance.html">Health</a></li><li><a href="business-insurance.html">Business</a></li></ul></div>
+        <div><h4>Resources</h4><ul><li><a href="../articles/index.html">Articles</a></li><li><a href="index.html">Knowledge Base</a></li><li><a href="../resources/index.html">Downloads</a></li></ul></div>
+        <div><h4>Company</h4><ul><li><a href="#">About</a></li><li><a href="#">Contact</a></li><li><a href="#">Privacy</a></li></ul></div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 WTFLinsurance.com</span>
+        <span>For educational purposes only.</span>
+      </div>
+    </div>
+  </footer>
+  <script src="../js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Insurance Articles &amp; Guides - WTFLinsurance</title>
+  <meta name="description" content="Expert insurance articles, guides, and tips to help you save money and make smarter coverage decisions.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-inner">
+      <a href="../index.html" class="logo">WTFLinsurance</a>
+      <nav class="nav">
+        <div class="nav-item">
+          <a href="#" class="nav-link">Insurance Types &#9662;</a>
+          <div class="nav-dropdown">
+            <a href="../knowledge-base/auto-insurance.html">Auto Insurance</a>
+            <a href="../knowledge-base/home-insurance.html">Home Insurance</a>
+            <a href="../knowledge-base/health-insurance.html">Health Insurance</a>
+            <a href="../knowledge-base/business-insurance.html">Business Insurance</a>
+          </div>
+        </div>
+        <a href="index.html" class="nav-link active">Articles</a>
+        <a href="../knowledge-base/index.html" class="nav-link">Knowledge Base</a>
+        <a href="../resources/index.html" class="nav-link">Resources</a>
+      </nav>
+      <div class="header-actions">
+        <a href="../pages/login.html" class="nav-link">Log In</a>
+        <a href="../pages/signup.html" class="btn btn-primary btn-sm">Get Started Free</a>
+      </div>
+      <button class="mobile-toggle" aria-label="Menu">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Page Hero -->
+  <section class="kb-hero">
+    <div class="container">
+      <h1>Insurance Articles &amp; Expert Guides</h1>
+      <p class="text-muted">In-depth articles to help you understand, compare, and save on insurance.</p>
+    </div>
+  </section>
+
+  <!-- Articles Grid -->
+  <section class="section">
+    <div class="container">
+
+      <!-- Filter Tags -->
+      <div style="display:flex;gap:8px;flex-wrap:wrap;margin-bottom:32px;">
+        <button class="btn btn-primary btn-sm" onclick="filterArticles('all')">All</button>
+        <button class="btn btn-outline btn-sm" onclick="filterArticles('auto')">Auto</button>
+        <button class="btn btn-outline btn-sm" onclick="filterArticles('home')">Home</button>
+        <button class="btn btn-outline btn-sm" onclick="filterArticles('health')">Health</button>
+        <button class="btn btn-outline btn-sm" onclick="filterArticles('business')">Business</button>
+      </div>
+
+      <div class="grid grid-3" id="articlesGrid">
+
+        <a href="how-to-lower-car-insurance.html" class="card article-card" data-category="auto">
+          <div class="article-card-img">&#128663;</div>
+          <div class="article-card-body">
+            <div class="article-card-meta">
+              <span class="tag">Auto</span>
+              <span>Mar 28, 2026</span>
+              <span>8 min</span>
+            </div>
+            <h3>7 Proven Ways to Lower Your Car Insurance Premium</h3>
+            <p>Actionable strategies that could save you $500+ per year on auto coverage.</p>
+          </div>
+        </a>
+
+        <a href="home-insurance-claims.html" class="card article-card" data-category="home">
+          <div class="article-card-img">&#127968;</div>
+          <div class="article-card-body">
+            <div class="article-card-meta">
+              <span class="tag">Home</span>
+              <span>Mar 15, 2026</span>
+              <span>6 min</span>
+            </div>
+            <h3>How to File a Home Insurance Claim (Step-by-Step)</h3>
+            <p>A straightforward guide to navigating the claims process.</p>
+          </div>
+        </a>
+
+        <a href="#" class="card article-card" data-category="health">
+          <div class="article-card-img">&#127973;</div>
+          <div class="article-card-body">
+            <div class="article-card-meta">
+              <span class="tag">Health</span>
+              <span>Mar 10, 2026</span>
+              <span>10 min</span>
+            </div>
+            <h3>HMO vs. PPO vs. EPO: Which Health Plan Is Right for You?</h3>
+            <p>Compare plan types and find the best fit for your healthcare needs and budget.</p>
+          </div>
+        </a>
+
+        <a href="#" class="card article-card" data-category="business">
+          <div class="article-card-img">&#128188;</div>
+          <div class="article-card-body">
+            <div class="article-card-meta">
+              <span class="tag">Business</span>
+              <span>Mar 5, 2026</span>
+              <span>9 min</span>
+            </div>
+            <h3>5 Insurance Policies Every Small Business Needs</h3>
+            <p>Protect your business from lawsuits, property damage, and employee injuries.</p>
+          </div>
+        </a>
+
+        <a href="#" class="card article-card" data-category="auto">
+          <div class="article-card-img">&#128663;</div>
+          <div class="article-card-body">
+            <div class="article-card-meta">
+              <span class="tag">Auto</span>
+              <span>Feb 28, 2026</span>
+              <span>7 min</span>
+            </div>
+            <h3>What to Do After a Car Accident: Insurance Edition</h3>
+            <p>Step-by-step guide to handling insurance after a collision.</p>
+          </div>
+        </a>
+
+        <a href="#" class="card article-card" data-category="home">
+          <div class="article-card-img">&#127968;</div>
+          <div class="article-card-body">
+            <div class="article-card-meta">
+              <span class="tag">Home</span>
+              <span>Feb 20, 2026</span>
+              <span>5 min</span>
+            </div>
+            <h3>Renters Insurance: Why You Need It and What It Covers</h3>
+            <p>Most renters are underinsured. Here's why coverage matters.</p>
+          </div>
+        </a>
+
+        <a href="#" class="card article-card" data-category="health">
+          <div class="article-card-img">&#127973;</div>
+          <div class="article-card-body">
+            <div class="article-card-meta">
+              <span class="tag">Health</span>
+              <span>Feb 10, 2026</span>
+              <span>8 min</span>
+            </div>
+            <h3>Understanding Health Insurance Deductibles and Copays</h3>
+            <p>Decode the jargon and learn how your out-of-pocket costs really work.</p>
+          </div>
+        </a>
+
+      </div>
+
+      <!-- Pagination -->
+      <div class="pagination">
+        <span class="active">1</span>
+        <a href="#">2</a>
+        <a href="#">3</a>
+        <a href="#">&rarr;</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-banner">
+    <div class="container">
+      <h2>Never Miss an Article</h2>
+      <p>Get weekly insurance insights delivered to your inbox.</p>
+      <form class="newsletter-form">
+        <input type="email" placeholder="Enter your email address" required>
+        <button type="submit" class="btn btn-white">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-about">
+          <div class="logo">WTFL<span>insurance</span></div>
+          <p>Expert insurance advice, guides, and tools &mdash; always free.</p>
+        </div>
+        <div>
+          <h4>Insurance</h4>
+          <ul>
+            <li><a href="../knowledge-base/auto-insurance.html">Auto Insurance</a></li>
+            <li><a href="../knowledge-base/home-insurance.html">Home Insurance</a></li>
+            <li><a href="../knowledge-base/health-insurance.html">Health Insurance</a></li>
+            <li><a href="../knowledge-base/business-insurance.html">Business Insurance</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="index.html">Articles</a></li>
+            <li><a href="../knowledge-base/index.html">Knowledge Base</a></li>
+            <li><a href="../resources/index.html">Downloads</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 WTFLinsurance.com. All rights reserved.</span>
+        <span>For educational purposes only.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/main.js"></script>
+  <script>
+    function filterArticles(category) {
+      const cards = document.querySelectorAll('#articlesGrid .article-card');
+      cards.forEach(card => {
+        card.style.display = (category === 'all' || card.dataset.category === category) ? '' : 'none';
+      });
+      // Update active button
+      document.querySelectorAll('[onclick^="filterArticles"]').forEach(btn => {
+        btn.className = btn.getAttribute('onclick').includes(`'${category}'`) ? 'btn btn-primary btn-sm' : 'btn btn-outline btn-sm';
+      });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Your Free Account - WTFLinsurance</title>
+  <meta name="description" content="Sign up for a free WTFLinsurance account to compare quotes, download resources, and get personalized insurance recommendations.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <header class="header">
+    <div class="container header-inner">
+      <a href="../index.html" class="logo">WTFLinsurance</a>
+      <nav class="nav">
+        <div class="nav-item">
+          <a href="#" class="nav-link">Insurance Types &#9662;</a>
+          <div class="nav-dropdown">
+            <a href="../knowledge-base/auto-insurance.html">Auto Insurance</a>
+            <a href="../knowledge-base/home-insurance.html">Home Insurance</a>
+            <a href="../knowledge-base/health-insurance.html">Health Insurance</a>
+            <a href="../knowledge-base/business-insurance.html">Business Insurance</a>
+          </div>
+        </div>
+        <a href="../articles/index.html" class="nav-link">Articles</a>
+        <a href="../knowledge-base/index.html" class="nav-link">Knowledge Base</a>
+        <a href="../resources/index.html" class="nav-link">Resources</a>
+      </nav>
+      <div class="header-actions">
+        <a href="login.html" class="nav-link">Log In</a>
+        <a href="signup.html" class="btn btn-primary btn-sm">Get Started Free</a>
+      </div>
+      <button class="mobile-toggle" aria-label="Menu">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="auth-page">
+    <div class="auth-card">
+      <h1>Create Your Free Account</h1>
+      <p class="subtitle">Compare quotes, download resources, and get personalized recommendations.</p>
+
+      <form id="signupForm" onsubmit="return handleSignup(event)">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+          <div class="form-group">
+            <label for="firstName">First Name *</label>
+            <input type="text" id="firstName" class="form-control" placeholder="John" required>
+          </div>
+          <div class="form-group">
+            <label for="lastName">Last Name *</label>
+            <input type="text" id="lastName" class="form-control" placeholder="Smith" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address *</label>
+          <input type="email" id="email" class="form-control" placeholder="john@example.com" required>
+        </div>
+
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" class="form-control" placeholder="(555) 123-4567">
+        </div>
+
+        <div class="form-group">
+          <label for="zipCode">ZIP Code</label>
+          <input type="text" id="zipCode" class="form-control" placeholder="12345" maxlength="5" pattern="[0-9]{5}">
+        </div>
+
+        <div class="form-group">
+          <label>Insurance Interests</label>
+          <div style="display:flex;flex-wrap:wrap;gap:12px;margin-top:4px;">
+            <label class="form-check"><input type="checkbox" name="interests" value="auto"> Auto</label>
+            <label class="form-check"><input type="checkbox" name="interests" value="home"> Home</label>
+            <label class="form-check"><input type="checkbox" name="interests" value="health"> Health</label>
+            <label class="form-check"><input type="checkbox" name="interests" value="business"> Business</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password *</label>
+          <input type="password" id="password" class="form-control" placeholder="Create a password (8+ characters)" required minlength="8">
+        </div>
+
+        <div class="form-group">
+          <label class="form-check">
+            <input type="checkbox" id="agreeTerms" required>
+            I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+          </label>
+        </div>
+
+        <div class="form-group">
+          <label class="form-check">
+            <input type="checkbox" id="agreeMarketing" checked>
+            Send me insurance tips and money-saving offers (optional)
+          </label>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block btn-lg">Create Free Account</button>
+      </form>
+
+      <div class="form-divider">or</div>
+
+      <button class="btn btn-outline btn-block" style="margin-bottom:8px;" onclick="showToast('Google signup would be integrated in production', 'success')">
+        Continue with Google
+      </button>
+
+      <div class="auth-footer">
+        Already have an account? <a href="login.html"><strong>Log in</strong></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Success Modal -->
+  <div class="modal-overlay" id="successModal">
+    <div class="modal" style="position:relative;text-align:center;">
+      <button class="modal-close" onclick="closeSuccessModal()">&times;</button>
+      <div style="font-size:3rem;margin-bottom:16px;">&#127881;</div>
+      <h2 style="margin-bottom:8px;">Welcome to WTFLinsurance!</h2>
+      <p style="color:var(--gray-500);">Your account has been created. You now have access to all our free resources and tools.</p>
+      <div style="display:flex;gap:12px;margin-top:24px;justify-content:center;">
+        <a href="../index.html" class="btn btn-primary">Explore Insurance</a>
+        <a href="../resources/index.html" class="btn btn-outline">Download Resources</a>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/main.js"></script>
+  <script>
+    // Redirect if already logged in
+    if (UserAuth.isLoggedIn()) {
+      document.querySelector('.auth-card').innerHTML = `
+        <div style="text-align:center;padding:32px 0;">
+          <div style="font-size:3rem;margin-bottom:16px;">&#9989;</div>
+          <h2>You're already signed in!</h2>
+          <p style="color:var(--gray-500);margin-bottom:24px;">Welcome back, ${UserAuth.getSession().firstName}.</p>
+          <a href="../index.html" class="btn btn-primary">Go to Homepage</a>
+        </div>
+      `;
+    }
+
+    function handleSignup(e) {
+      e.preventDefault();
+      const form = document.getElementById('signupForm');
+
+      if (!validateForm(form)) {
+        showToast('Please fill in all required fields.', 'error');
+        return false;
+      }
+
+      // Collect insurance interests
+      const interests = [];
+      form.querySelectorAll('input[name="interests"]:checked').forEach(cb => interests.push(cb.value));
+
+      const data = {
+        firstName: document.getElementById('firstName').value.trim(),
+        lastName: document.getElementById('lastName').value.trim(),
+        email: document.getElementById('email').value.trim(),
+        phone: document.getElementById('phone').value.trim(),
+        zipCode: document.getElementById('zipCode').value.trim(),
+        insuranceInterests: interests,
+        password: document.getElementById('password').value,
+        marketingOptIn: document.getElementById('agreeMarketing').checked
+      };
+
+      const result = UserAuth.register(data);
+
+      if (result.success) {
+        document.getElementById('successModal').classList.add('active');
+      } else {
+        showToast(result.message, 'error');
+      }
+
+      return false;
+    }
+
+    function closeSuccessModal() {
+      document.getElementById('successModal').classList.remove('active');
+      window.location.href = '../index.html';
+    }
+  </script>
+</body>
+</html>
