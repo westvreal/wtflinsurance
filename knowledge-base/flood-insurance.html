@@ -135,6 +135,54 @@
               <p style="margin:0 0 8px;font-weight:600;">Could not locate that address.</p>
               <p style="margin:0;font-size:0.9rem;">Try entering a full address with city and state, or look it up directly on <a href="https://msc.fema.gov/portal/search" target="_blank" rel="noopener" style="color:var(--primary);font-weight:600;">FEMA's Flood Map Service Center</a>.</p>
             </div>
+            <!-- Flood Zone Legend -->
+            <div id="floodZoneLegend" style="margin-top:16px;padding:20px;background:#fff;border:1px solid var(--gray-200);border-radius:8px;">
+              <h4 style="margin:0 0 12px;font-size:0.95rem;">Flood Zone Legend &mdash; What the Colors Mean</h4>
+              <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px;">
+                <div style="display:flex;align-items:flex-start;gap:10px;">
+                  <div style="width:28px;height:28px;min-width:28px;border-radius:4px;background:#6baed6;border:1px solid #4292c6;"></div>
+                  <div>
+                    <strong style="font-size:0.85rem;">Zone A / AE</strong>
+                    <p style="margin:2px 0 0;font-size:0.8rem;color:var(--gray-600);line-height:1.4;">High risk &mdash; 1% annual flood chance. Insurance <strong>required</strong> with a mortgage. ~26% chance of flooding over 30 years.</p>
+                  </div>
+                </div>
+                <div style="display:flex;align-items:flex-start;gap:10px;">
+                  <div style="width:28px;height:28px;min-width:28px;border-radius:4px;background:#4a1486;border:1px solid #3a0f6e;"></div>
+                  <div>
+                    <strong style="font-size:0.85rem;">Zone V / VE</strong>
+                    <p style="margin:2px 0 0;font-size:0.8rem;color:var(--gray-600);line-height:1.4;">Coastal high risk &mdash; storm surge + wave action. Highest rates. Insurance <strong>required</strong> with a mortgage.</p>
+                  </div>
+                </div>
+                <div style="display:flex;align-items:flex-start;gap:10px;">
+                  <div style="width:28px;height:28px;min-width:28px;border-radius:4px;background:#fe9929;border:1px solid #d98a1f;"></div>
+                  <div>
+                    <strong style="font-size:0.85rem;">Zone X (shaded)</strong>
+                    <p style="margin:2px 0 0;font-size:0.8rem;color:var(--gray-600);line-height:1.4;">Moderate risk &mdash; 0.2% annual chance (500-year floodplain). Not required but <strong>recommended</strong>.</p>
+                  </div>
+                </div>
+                <div style="display:flex;align-items:flex-start;gap:10px;">
+                  <div style="width:28px;height:28px;min-width:28px;border-radius:4px;background:#f7f7f7;border:1px solid #ccc;"></div>
+                  <div>
+                    <strong style="font-size:0.85rem;">Zone X (unshaded)</strong>
+                    <p style="margin:2px 0 0;font-size:0.8rem;color:var(--gray-600);line-height:1.4;">Low risk &mdash; outside 500-year floodplain. Not required, but 40% of claims come from these areas.</p>
+                  </div>
+                </div>
+                <div style="display:flex;align-items:flex-start;gap:10px;">
+                  <div style="width:28px;height:28px;min-width:28px;border-radius:4px;background:repeating-linear-gradient(45deg,#6baed6,#6baed6 3px,#fff 3px,#fff 6px);border:1px solid #4292c6;"></div>
+                  <div>
+                    <strong style="font-size:0.85rem;">Floodway</strong>
+                    <p style="margin:2px 0 0;font-size:0.8rem;color:var(--gray-600);line-height:1.4;">Channel of a river or waterway. Highest danger &mdash; strict building restrictions apply.</p>
+                  </div>
+                </div>
+                <div style="display:flex;align-items:flex-start;gap:10px;">
+                  <div style="width:28px;height:28px;min-width:28px;border-radius:4px;background:#d9d9d9;border:1px solid #aaa;position:relative;overflow:hidden;"><span style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:0.65rem;font-weight:700;color:#666;">N/A</span></div>
+                  <div>
+                    <strong style="font-size:0.85rem;">Area Not Mapped</strong>
+                    <p style="margin:2px 0 0;font-size:0.8rem;color:var(--gray-600);line-height:1.4;">No FEMA flood data available. Contact your local floodplain manager for information.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
             <p style="font-size:0.8rem;color:var(--gray-400);margin-top:12px;margin-bottom:0;">Map data from FEMA's National Flood Hazard Layer (NFHL). For official determinations, visit <a href="https://msc.fema.gov/portal/search" target="_blank" rel="noopener" style="color:var(--primary);">msc.fema.gov</a> or consult your insurance agent.</p>
           </div>
 
@@ -278,8 +326,8 @@
           var lon = loc.x;
           var lat = loc.y;
 
-          // Build extent around the point (~0.005 degrees ≈ a few blocks)
-          var offset = 0.005;
+          // Build extent around the point (~0.001 degrees ≈ street level)
+          var offset = 0.001;
           var extent = (lon - offset) + ',' + (lat - offset) + ',' + (lon + offset) + ',' + (lat + offset);
 
           var nfhlUrl = 'https://hazards-fema.maps.arcgis.com/apps/webappviewer/index.html'
