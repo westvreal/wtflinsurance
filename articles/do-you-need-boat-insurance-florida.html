@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Do You Really Need Boat Insurance in Florida? - WTFLinsurance</title>
+  <meta name="description" content="Florida doesn't require boat insurance by law, but here's why going without it is a gamble you can't afford. Visual breakdowns and real cost scenarios.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .vs-card {
+      border: 2px solid var(--gray-300);
+      border-radius: 12px;
+      overflow: hidden;
+      margin: 32px 0;
+    }
+    .vs-card-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .vs-card-header div {
+      padding: 20px 24px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+    .vs-card-header .bad-header {
+      background: #fef3c7;
+      color: #92400e;
+    }
+    .vs-card-header .good-header {
+      background: #d1fae5;
+      color: #065f46;
+    }
+    .vs-card-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .vs-card-body div {
+      padding: 20px 24px;
+      border-top: 1px solid var(--gray-300);
+    }
+    .vs-card-body div:nth-child(odd) {
+      border-right: 1px solid var(--gray-300);
+    }
+    .vs-card-body .vs-label {
+      font-size: 0.85rem;
+      color: var(--gray-500);
+      margin-bottom: 4px;
+      font-weight: 600;
+    }
+
+    .cost-visual {
+      background: var(--gray-100);
+      border-radius: 12px;
+      padding: 32px;
+      margin: 32px 0;
+      text-align: center;
+    }
+    .cost-bar-container {
+      max-width: 500px;
+      margin: 20px auto;
+    }
+    .cost-bar-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .cost-bar-row .cost-label {
+      width: 130px;
+      text-align: right;
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: var(--gray-700);
+      flex-shrink: 0;
+    }
+    .cost-bar-row .bar-track {
+      flex: 1;
+      height: 32px;
+      background: var(--gray-300);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .cost-bar-row .bar-fill {
+      height: 100%;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 10px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    .cost-bar-row .bar-fill.green { background: #10b981; }
+    .cost-bar-row .bar-fill.teal { background: #14b8a6; }
+    .cost-bar-row .bar-fill.blue { background: #3b82f6; }
+    .cost-bar-row .bar-fill.purple { background: #8b5cf6; }
+    .cost-bar-row .bar-fill.orange { background: #f59e0b; }
+
+    .scenario-box {
+      border: 2px solid var(--gray-300);
+      border-radius: 12px;
+      padding: 32px;
+      margin: 32px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .scenario-box::before {
+      content: attr(data-label);
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: var(--primary);
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 6px 16px;
+      border-radius: 0 0 0 12px;
+    }
+    .scenario-box.good { border-color: #10b981; }
+    .scenario-box.good::before { background: #10b981; }
+    .scenario-box.bad { border-color: #ef4444; }
+    .scenario-box.bad::before { background: #ef4444; }
+    .scenario-math {
+      background: var(--gray-100);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin: 16px 0;
+      font-family: monospace;
+      font-size: 1rem;
+      line-height: 2;
+    }
+    .scenario-math .result {
+      font-size: 1.3rem;
+      font-weight: 800;
+    }
+    .scenario-math .result.green { color: #065f46; }
+    .scenario-math .result.red { color: #dc2626; }
+
+    .tip-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 24px 0;
+    }
+    .tip-card {
+      border: 2px solid var(--gray-200);
+      border-radius: 12px;
+      padding: 24px;
+      background: #fff;
+    }
+    .tip-card h4 { margin: 0 0 8px 0; font-size: 1rem; }
+    .tip-card p { margin: 0; font-size: 0.9rem; color: var(--gray-600); }
+    .tip-card .tip-tag {
+      display: inline-block;
+      margin-top: 10px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+    .tip-card .tip-tag.covered { background: #d1fae5; color: #065f46; }
+    .tip-card .tip-tag.not-covered { background: #fee2e2; color: #dc2626; }
+
+    .tldr-box {
+      background: linear-gradient(135deg, #1a56db, #0ea5e9);
+      color: #fff;
+      border-radius: 12px;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    .tldr-box h3 { color: #fff; margin-bottom: 12px; }
+    .tldr-box p { color: rgba(255,255,255,0.9); }
+    .tldr-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .tldr-item {
+      background: rgba(255,255,255,0.15);
+      border-radius: 8px;
+      padding: 16px;
+    }
+    .tldr-item h4 { color: #fff; font-size: 0.95rem; margin-bottom: 4px; }
+    .tldr-item p { font-size: 0.9rem; margin: 0; }
+
+    @media (max-width: 640px) {
+      .vs-card-header, .vs-card-body, .tldr-grid, .tip-grid { grid-template-columns: 1fr; }
+      .vs-card-body div:nth-child(odd) { border-right: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="container header-inner">
+      <a href="../index.html" class="logo">WTFLinsurance</a>
+      <nav class="nav">
+        <div class="nav-item">
+          <a href="#" class="nav-link">Insurance Types &#9662;</a>
+          <div class="nav-dropdown">
+            <a href="../knowledge-base/auto-insurance.html">Auto Insurance</a>
+            <a href="../knowledge-base/home-insurance.html">Home Insurance</a>
+            <a href="../knowledge-base/flood-insurance.html">Flood Insurance</a>
+            <a href="../knowledge-base/boat-insurance.html">Boat Insurance</a>
+            <a href="../knowledge-base/rental-property-insurance.html">Rental Property Insurance</a>
+            <a href="../knowledge-base/business-insurance.html">Business Insurance</a>
+          </div>
+        </div>
+        <a href="index.html" class="nav-link active">Articles</a>
+        <a href="../knowledge-base/index.html" class="nav-link">Knowledge Base</a>
+        <a href="../resources/index.html" class="nav-link">Resources</a>
+      </nav>
+      <div class="header-actions">
+        <a href="../pages/login.html" class="nav-link">Log In</a>
+        <a href="../pages/signup.html" class="btn btn-primary btn-sm">Get Started Free</a>
+      </div>
+      <button class="mobile-toggle" aria-label="Menu">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="breadcrumbs">
+    <div class="container">
+      <a href="../index.html">Home</a><span>/</span>
+      <a href="index.html">Articles</a><span>/</span>
+      <strong>Do You Need Boat Insurance?</strong>
+    </div>
+  </div>
+
+  <article>
+    <div class="container">
+      <div class="article-layout">
+        <div>
+          <div class="article-header">
+            <span class="tag">Boat Insurance</span>
+            <h1>Do You Really Need Boat Insurance in Florida?</h1>
+            <div class="article-meta">
+              <span>By <strong>WTFLinsurance Team</strong></span>
+              <span>April 3, 2026</span>
+              <span>7 min read</span>
+            </div>
+          </div>
+
+          <div class="article-content">
+
+            <p>Here's something that surprises a lot of people: <strong>Florida doesn't require boat insurance by law.</strong> You can register a boat, launch it, and cruise around all day without a single dollar of marine coverage.</p>
+
+            <p>Sounds like a money-saver, right?</p>
+
+            <p>It is &mdash; right up until you hit a $40,000 sailboat at the marina. Or your engine catches fire. Or a hurricane rolls through and turns your center console into driftwood.</p>
+
+            <p>Let's look at what's actually at stake, what boat insurance costs, and why most Florida boat owners can't afford to skip it.</p>
+
+            <div class="callout">
+              <div class="callout-title">What You'll Learn</div>
+              <p>The real cost of going uninsured on Florida waters, what boat insurance actually covers, how much it costs for different vessel types, and how to save on your policy.</p>
+            </div>
+
+            <!-- ===== WHAT BOAT INSURANCE COSTS ===== -->
+            <h2>What Boat Insurance Actually Costs</h2>
+
+            <p>Most people overestimate how expensive boat insurance is. The general rule is <strong>1&ndash;3% of your boat's value per year.</strong> Here's what that looks like in practice:</p>
+
+            <div class="cost-visual">
+              <h3 style="margin-bottom:4px;">Annual Boat Insurance Cost by Vessel Type</h3>
+              <p style="color:var(--gray-500);margin-bottom:20px;">Based on typical Florida policies with standard coverage</p>
+              <div class="cost-bar-container">
+                <div class="cost-bar-row">
+                  <span class="cost-label">Jet Ski ($8K)</span>
+                  <div class="bar-track">
+                    <div class="bar-fill green" style="width:15%;">$200</div>
+                  </div>
+                </div>
+                <div class="cost-bar-row">
+                  <span class="cost-label">Bass Boat ($20K)</span>
+                  <div class="bar-track">
+                    <div class="bar-fill teal" style="width:25%;">$350</div>
+                  </div>
+                </div>
+                <div class="cost-bar-row">
+                  <span class="cost-label">Center Console ($45K)</span>
+                  <div class="bar-track">
+                    <div class="bar-fill blue" style="width:50%;">$700</div>
+                  </div>
+                </div>
+                <div class="cost-bar-row">
+                  <span class="cost-label">Pontoon ($55K)</span>
+                  <div class="bar-track">
+                    <div class="bar-fill purple" style="width:60%;">$850</div>
+                  </div>
+                </div>
+                <div class="cost-bar-row">
+                  <span class="cost-label">Cabin Cruiser ($90K)</span>
+                  <div class="bar-track">
+                    <div class="bar-fill orange" style="width:100%;">$1,500</div>
+                  </div>
+                </div>
+              </div>
+              <p style="font-size:0.85rem;color:var(--gray-500);margin:0;">Rates vary based on experience, location, and coverage limits</p>
+            </div>
+
+            <p>To put that in perspective: insuring a $45,000 center console costs about <strong>$58/month</strong>. That's less than a single tank of fuel for most boats.</p>
+
+            <!-- ===== INSURED VS UNINSURED ===== -->
+            <h2>Insured vs. Uninsured: What Happens When Things Go Wrong</h2>
+
+            <p>Let's walk through three real scenarios that happen to Florida boaters every single day.</p>
+
+            <h3>Scenario 1: You Hit Another Boat</h3>
+
+            <div class="vs-card">
+              <div class="vs-card-header">
+                <div class="bad-header">Without Insurance</div>
+                <div class="good-header">With Insurance</div>
+              </div>
+              <div class="vs-card-body">
+                <div>
+                  <div class="vs-label">What happened</div>
+                  <p style="margin:0;">You misjudge the current and collide with a $60,000 sailboat at the dock. Two people are injured.</p>
+                </div>
+                <div>
+                  <div class="vs-label">What happened</div>
+                  <p style="margin:0;">Same accident, same damage, same injuries.</p>
+                </div>
+                <div>
+                  <div class="vs-label">Damage to their boat</div>
+                  <p style="margin:0;font-weight:700;color:#dc2626;">$22,000 &mdash; you pay all of it</p>
+                </div>
+                <div>
+                  <div class="vs-label">Damage to their boat</div>
+                  <p style="margin:0;font-weight:700;color:#065f46;">$22,000 &mdash; liability coverage pays</p>
+                </div>
+                <div>
+                  <div class="vs-label">Their medical bills</div>
+                  <p style="margin:0;font-weight:700;color:#dc2626;">$35,000 &mdash; you pay all of it</p>
+                </div>
+                <div>
+                  <div class="vs-label">Their medical bills</div>
+                  <p style="margin:0;font-weight:700;color:#065f46;">$35,000 &mdash; liability coverage pays</p>
+                </div>
+                <div>
+                  <div class="vs-label">Your boat repair</div>
+                  <p style="margin:0;font-weight:700;color:#dc2626;">$8,000 &mdash; you pay all of it</p>
+                </div>
+                <div>
+                  <div class="vs-label">Your boat repair</div>
+                  <p style="margin:0;font-weight:700;color:#065f46;">$8,000 &mdash; hull coverage pays (minus deductible)</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="scenario-box bad" data-label="WITHOUT INSURANCE">
+              <h3>Your Total Cost: Uninsured</h3>
+              <div class="scenario-math">
+                Their boat damage: $22,000<br>
+                Their medical bills: $35,000<br>
+                Your boat repair: $8,000<br>
+                Legal fees (if they sue): $10,000+<br>
+                <hr style="border:none;border-top:2px solid var(--gray-300);margin:8px 0;">
+                <span class="result red">= $75,000+ out of your pocket</span>
+              </div>
+              <p>And that's assuming they don't sue for pain and suffering, which could add tens of thousands more.</p>
+            </div>
+
+            <div class="scenario-box good" data-label="WITH INSURANCE">
+              <h3>Your Total Cost: Insured</h3>
+              <div class="scenario-math">
+                Annual premium: $700<br>
+                Deductible on your hull claim: $500<br>
+                <hr style="border:none;border-top:2px solid var(--gray-300);margin:8px 0;">
+                <span class="result green">= $1,200 total. Everything else is covered.</span>
+              </div>
+            </div>
+
+            <p style="text-align:center;font-size:1.2rem;font-weight:700;margin:32px 0;">That's <span style="color:#dc2626;font-size:1.4rem;">$73,800</span> you didn't have to pay.</p>
+
+            <!-- ===== SCENARIO 2: HURRICANE ===== -->
+            <h3>Scenario 2: Hurricane Season</h3>
+
+            <p>Florida averages a direct hurricane hit every <strong>3&ndash;4 years</strong>. When a storm comes, boats that aren't properly stored take catastrophic damage &mdash; and that damage isn't covered under your homeowners policy.</p>
+
+            <div class="scenario-box bad" data-label="UNINSURED IN A HURRICANE">
+              <h3>Your $45,000 Center Console After a Category 2</h3>
+              <div class="scenario-math">
+                Boat value: $45,000<br>
+                Storm surge + wind damage: Total loss<br>
+                Homeowners coverage: $0 (boats aren't covered)<br>
+                <hr style="border:none;border-top:2px solid var(--gray-300);margin:8px 0;">
+                <span class="result red">= $45,000 gone. No recovery.</span>
+              </div>
+            </div>
+
+            <div class="scenario-box good" data-label="INSURED WITH AGREED VALUE">
+              <h3>Same Boat, Same Storm &mdash; With Insurance</h3>
+              <div class="scenario-math">
+                Agreed value policy: $45,000<br>
+                Hurricane deductible (5%): &minus;$2,250<br>
+                <hr style="border:none;border-top:2px solid var(--gray-300);margin:8px 0;">
+                <span class="result green">= $42,750 check to replace your boat</span>
+              </div>
+              <p>This is why <strong>agreed value</strong> policies matter. With ACV, your 5-year-old boat might only be "worth" $28,000 after depreciation. With agreed value, you get what you and the insurer agreed on &mdash; the full $45,000.</p>
+            </div>
+
+            <!-- ===== WHAT'S COVERED ===== -->
+            <h2>What Boat Insurance Actually Covers</h2>
+
+            <div class="tip-grid">
+              <div class="tip-card">
+                <h4>Hull Damage</h4>
+                <p>Collision, grounding, fire, theft, vandalism, storm damage to your boat, motor, and permanently attached equipment.</p>
+                <span class="tip-tag covered">Covered</span>
+              </div>
+              <div class="tip-card">
+                <h4>Liability</h4>
+                <p>Injury to others, damage to their property, legal defense costs if you're sued.</p>
+                <span class="tip-tag covered">Covered</span>
+              </div>
+              <div class="tip-card">
+                <h4>On-Water Towing</h4>
+                <p>Breakdown towing on open water. A single tow can cost $500&ndash;$2,000+ without coverage.</p>
+                <span class="tip-tag covered">Covered</span>
+              </div>
+              <div class="tip-card">
+                <h4>Fuel Spill Cleanup</h4>
+                <p>You're legally responsible for any fuel spill from your vessel. Cleanup costs can be enormous.</p>
+                <span class="tip-tag covered">Covered</span>
+              </div>
+              <div class="tip-card">
+                <h4>Mechanical Breakdown</h4>
+                <p>Engine failure from wear and tear, corrosion, or electrical problems. This is maintenance, not a loss.</p>
+                <span class="tip-tag not-covered">Not Covered</span>
+              </div>
+              <div class="tip-card">
+                <h4>Racing &amp; Commercial Use</h4>
+                <p>Using your boat for races or as a charter business. Requires separate endorsements or commercial policies.</p>
+                <span class="tip-tag not-covered">Not Covered</span>
+              </div>
+            </div>
+
+            <!-- ===== AGREED VALUE VS ACV ===== -->
+            <h2>Agreed Value vs. Actual Cash Value</h2>
+
+            <p>This is the most important choice on your boat policy. It determines how much you get paid if your boat is totaled.</p>
+
+            <div class="vs-card">
+              <div class="vs-card-header">
+                <div class="bad-header">Actual Cash Value (ACV)</div>
+                <div class="good-header">Agreed Value</div>
+              </div>
+              <div class="vs-card-body">
+                <div>
+                  <div class="vs-label">How it works</div>
+                  <p style="margin:0;">Insurer pays the <strong>depreciated market value</strong> at the time of loss. Your payout shrinks every year.</p>
+                </div>
+                <div>
+                  <div class="vs-label">How it works</div>
+                  <p style="margin:0;">You and the insurer agree on a value upfront. That's what you get paid &mdash; <strong>period</strong>.</p>
+                </div>
+                <div>
+                  <div class="vs-label">5-year-old $45K boat total loss</div>
+                  <p style="margin:0;font-weight:700;color:#92400e;">Payout: ~$28,000</p>
+                </div>
+                <div>
+                  <div class="vs-label">5-year-old $45K boat total loss</div>
+                  <p style="margin:0;font-weight:700;color:#065f46;">Payout: $45,000</p>
+                </div>
+                <div>
+                  <div class="vs-label">In plain English</div>
+                  <p style="margin:0;">"Here's what your used boat would sell for today."</p>
+                </div>
+                <div>
+                  <div class="vs-label">In plain English</div>
+                  <p style="margin:0;">"Here's the amount we both agreed on. No surprises."</p>
+                </div>
+              </div>
+            </div>
+
+            <p><strong>Always choose agreed value if you can.</strong> The premium difference is small, and the payout difference on a total loss can be tens of thousands of dollars. For more on how this works, read our <a href="actual-cash-value-vs-replacement-cost.html">ACV vs. Replacement Cost guide</a>.</p>
+
+            <!-- ===== HOW TO SAVE ===== -->
+            <h2>How to Lower Your Boat Insurance Premium</h2>
+
+            <ol>
+              <li><strong>Take a boating safety course.</strong> Most insurers offer 5&ndash;15% off for completing an approved course. In Florida, the FWC boating safety course qualifies.</li>
+              <li><strong>Bundle with auto or home insurance.</strong> Multi-policy discounts typically save 10&ndash;15%.</li>
+              <li><strong>Choose a higher deductible.</strong> Going from $250 to $1,000 can cut your premium by 15&ndash;20%.</li>
+              <li><strong>Install safety equipment.</strong> Fire suppression, GPS tracking, automatic bilge pumps, and VHF radios can all earn discounts.</li>
+              <li><strong>Ask about lay-up credits.</strong> If your boat sits idle for part of the year, some insurers reduce your premium for those months.</li>
+              <li><strong>Store your boat properly.</strong> A documented hurricane haul-out plan can lower rates and prevent claims denials.</li>
+            </ol>
+
+            <!-- ===== THE BOTTOM LINE ===== -->
+            <div class="tldr-box">
+              <h3>The Bottom Line</h3>
+              <p>Florida doesn't require boat insurance. But the water doesn't care about legal requirements.</p>
+              <div class="tldr-grid">
+                <div class="tldr-item">
+                  <h4>The Cost</h4>
+                  <p>1&ndash;3% of your boat's value per year. For most boats, that's $30&ndash;$125/month &mdash; less than a tank of fuel.</p>
+                </div>
+                <div class="tldr-item">
+                  <h4>The Risk Without It</h4>
+                  <p>One accident can cost $50,000&ndash;$100,000+. One hurricane can total your boat with zero recovery.</p>
+                </div>
+                <div class="tldr-item">
+                  <h4>The Right Policy</h4>
+                  <p>Agreed value, $300K+ liability, towing coverage, and fuel spill liability. Don't skimp on liability.</p>
+                </div>
+                <div class="tldr-item">
+                  <h4>The Smart Move</h4>
+                  <p>Get quotes from 3+ marine insurers. Take a safety course. Bundle with your existing policies.</p>
+                </div>
+              </div>
+            </div>
+
+            <blockquote>
+              <p>"The two best days in a boat owner's life are the day they buy the boat and the day their insurance pays for a new one after a hurricane." &mdash; Florida marina wisdom</p>
+            </blockquote>
+
+            <h2>Ready to Protect Your Boat?</h2>
+            <p>Create a free WTFLinsurance account and compare marine insurance quotes from top Florida providers. It takes about 5 minutes, and it could save you from a financial disaster on the water.</p>
+
+            <div style="text-align:center;margin:32px 0;">
+              <a href="../pages/signup.html" class="btn btn-primary btn-lg">Compare Boat Insurance &rarr;</a>
+            </div>
+
+            <p><strong>Related articles:</strong></p>
+            <ul>
+              <li><a href="actual-cash-value-vs-replacement-cost.html">ACV vs. Replacement Cost: The Difference That Could Cost You Thousands</a></li>
+              <li><a href="florida-flood-insurance-guide.html">Florida Flood Insurance: What Your Home Policy Doesn't Cover</a></li>
+              <li><a href="../knowledge-base/boat-insurance.html">Boat Insurance Knowledge Base</a></li>
+            </ul>
+
+          </div>
+        </div>
+
+        <aside class="article-sidebar">
+          <div class="sidebar-card">
+            <h4>In This Article</h4>
+            <ul>
+              <li><a href="#">What Boat Insurance Costs</a></li>
+              <li><a href="#">Insured vs. Uninsured Scenarios</a></li>
+              <li><a href="#">What's Covered (and Not)</a></li>
+              <li><a href="#">Agreed Value vs. ACV</a></li>
+              <li><a href="#">How to Save</a></li>
+            </ul>
+          </div>
+          <div class="sidebar-card" style="background:var(--primary);color:#fff;text-align:center;">
+            <h4 style="color:#fff;">Compare Boat Insurance</h4>
+            <p style="color:rgba(255,255,255,0.85);font-size:0.9rem;">Get quotes from top Florida marine insurers.</p>
+            <a href="../pages/signup.html" class="btn btn-white btn-block" style="margin-top:12px;">Get Free Quotes</a>
+          </div>
+          <div class="sidebar-card">
+            <h4>Quick Numbers</h4>
+            <p style="font-size:0.9rem;color:var(--gray-700);margin:0;">
+              <strong>FL registered boats:</strong> 900,000+<br>
+              <strong>Avg. cost:</strong> 1&ndash;3% of boat value<br>
+              <strong>Avg. liability claim:</strong> $50,000+<br>
+              <strong>Hurricane total loss:</strong> $0 recovery without insurance
+            </p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </article>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-about"><div class="logo">WTFLinsurance</div><p>Expert insurance advice &mdash; always free.</p></div>
+        <div><h4>Insurance</h4><ul><li><a href="../knowledge-base/auto-insurance.html">Auto</a></li><li><a href="../knowledge-base/home-insurance.html">Home</a></li><li><a href="../knowledge-base/flood-insurance.html">Flood</a></li><li><a href="../knowledge-base/boat-insurance.html">Boat</a></li><li><a href="../knowledge-base/rental-property-insurance.html">Rental Property</a></li><li><a href="../knowledge-base/business-insurance.html">Business</a></li></ul></div>
+        <div><h4>Resources</h4><ul><li><a href="index.html">Articles</a></li><li><a href="../knowledge-base/index.html">Knowledge Base</a></li><li><a href="../resources/index.html">Downloads</a></li></ul></div>
+        <div><h4>Company</h4><ul><li><a href="#">About</a></li><li><a href="#">Contact</a></li><li><a href="#">Privacy</a></li></ul></div>
+      </div>
+      <div class="footer-bottom"><span>&copy; 2026 WTFLinsurance.com</span><span>For educational purposes only.</span></div>
+    </div>
+  </footer>
+  <script src="../js/main.js"></script>
+</body>
+</html>

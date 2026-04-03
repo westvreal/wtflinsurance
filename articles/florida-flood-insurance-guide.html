@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Florida Flood Insurance: What Your Home Policy Doesn't Cover - WTFLinsurance</title>
+  <meta name="description" content="Your homeowners insurance doesn't cover floods. Learn about NFIP vs. private flood insurance, Florida flood zones, costs, and why 40% of claims come from 'low-risk' areas.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .vs-card {
+      border: 2px solid var(--gray-300);
+      border-radius: 12px;
+      overflow: hidden;
+      margin: 32px 0;
+    }
+    .vs-card-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .vs-card-header div {
+      padding: 20px 24px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+    .vs-card-header .nfip-header {
+      background: #dbeafe;
+      color: #1e40af;
+    }
+    .vs-card-header .private-header {
+      background: #d1fae5;
+      color: #065f46;
+    }
+    .vs-card-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .vs-card-body div {
+      padding: 20px 24px;
+      border-top: 1px solid var(--gray-300);
+    }
+    .vs-card-body div:nth-child(odd) {
+      border-right: 1px solid var(--gray-300);
+    }
+    .vs-card-body .vs-label {
+      font-size: 0.85rem;
+      color: var(--gray-500);
+      margin-bottom: 4px;
+      font-weight: 600;
+    }
+
+    .risk-visual {
+      background: var(--gray-100);
+      border-radius: 12px;
+      padding: 32px;
+      margin: 32px 0;
+      text-align: center;
+    }
+    .risk-bar-container {
+      max-width: 500px;
+      margin: 20px auto;
+    }
+    .risk-bar-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .risk-bar-row .zone-label {
+      width: 110px;
+      text-align: right;
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: var(--gray-700);
+      flex-shrink: 0;
+    }
+    .risk-bar-row .bar-track {
+      flex: 1;
+      height: 32px;
+      background: var(--gray-300);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .risk-bar-row .bar-fill {
+      height: 100%;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 10px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    .risk-bar-row .bar-fill.extreme { background: #dc2626; }
+    .risk-bar-row .bar-fill.high { background: #f97316; }
+    .risk-bar-row .bar-fill.moderate { background: #f59e0b; }
+    .risk-bar-row .bar-fill.low { background: #10b981; }
+
+    .scenario-box {
+      border: 2px solid var(--gray-300);
+      border-radius: 12px;
+      padding: 32px;
+      margin: 32px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .scenario-box::before {
+      content: attr(data-label);
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: var(--primary);
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 6px 16px;
+      border-radius: 0 0 0 12px;
+    }
+    .scenario-box.good { border-color: #10b981; }
+    .scenario-box.good::before { background: #10b981; }
+    .scenario-box.bad { border-color: #ef4444; }
+    .scenario-box.bad::before { background: #ef4444; }
+    .scenario-box.warning { border-color: #f59e0b; }
+    .scenario-box.warning::before { background: #f59e0b; }
+    .scenario-math {
+      background: var(--gray-100);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin: 16px 0;
+      font-family: monospace;
+      font-size: 1rem;
+      line-height: 2;
+    }
+    .scenario-math .result {
+      font-size: 1.3rem;
+      font-weight: 800;
+    }
+    .scenario-math .result.green { color: #065f46; }
+    .scenario-math .result.red { color: #dc2626; }
+    .scenario-math .result.orange { color: #92400e; }
+
+    .myth-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 24px 0;
+    }
+    .myth-card {
+      border: 2px solid var(--gray-200);
+      border-radius: 12px;
+      padding: 24px;
+    }
+    .myth-card.myth { border-color: #ef4444; }
+    .myth-card.fact { border-color: #10b981; }
+    .myth-card .myth-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+    }
+    .myth-card.myth .myth-label { color: #dc2626; }
+    .myth-card.fact .myth-label { color: #065f46; }
+    .myth-card h4 { margin: 0 0 8px; }
+    .myth-card p { margin: 0; font-size: 0.9rem; color: var(--gray-600); }
+
+    .cost-card {
+      border: 2px solid var(--gray-300);
+      border-radius: 12px;
+      overflow: hidden;
+      margin: 32px 0;
+    }
+    .cost-card-header {
+      background: var(--gray-100);
+      padding: 16px 24px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      border-bottom: 2px solid var(--gray-300);
+    }
+    .cost-row {
+      display: grid;
+      grid-template-columns: 1fr auto auto;
+      align-items: center;
+      padding: 16px 24px;
+      border-bottom: 1px solid var(--gray-100);
+      gap: 16px;
+    }
+    .cost-row:last-child { border-bottom: none; }
+    .cost-row .zone-name { font-weight: 600; }
+    .cost-row .cost-range {
+      font-family: monospace;
+      font-size: 0.95rem;
+      text-align: right;
+      font-weight: 600;
+    }
+    .cost-row .required-tag {
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 20px;
+      text-align: center;
+      min-width: 80px;
+    }
+    .cost-row .required-tag.yes { background: #fee2e2; color: #dc2626; }
+    .cost-row .required-tag.no { background: #d1fae5; color: #065f46; }
+
+    .tldr-box {
+      background: linear-gradient(135deg, #1a56db, #0ea5e9);
+      color: #fff;
+      border-radius: 12px;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    .tldr-box h3 { color: #fff; margin-bottom: 12px; }
+    .tldr-box p { color: rgba(255,255,255,0.9); }
+    .tldr-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .tldr-item {
+      background: rgba(255,255,255,0.15);
+      border-radius: 8px;
+      padding: 16px;
+    }
+    .tldr-item h4 { color: #fff; font-size: 0.95rem; margin-bottom: 4px; }
+    .tldr-item p { font-size: 0.9rem; margin: 0; }
+
+    @media (max-width: 640px) {
+      .vs-card-header, .vs-card-body, .tldr-grid, .myth-grid { grid-template-columns: 1fr; }
+      .vs-card-body div:nth-child(odd) { border-right: none; }
+      .cost-row { grid-template-columns: 1fr; gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="container header-inner">
+      <a href="../index.html" class="logo">WTFLinsurance</a>
+      <nav class="nav">
+        <div class="nav-item">
+          <a href="#" class="nav-link">Insurance Types &#9662;</a>
+          <div class="nav-dropdown">
+            <a href="../knowledge-base/auto-insurance.html">Auto Insurance</a>
+            <a href="../knowledge-base/home-insurance.html">Home Insurance</a>
+            <a href="../knowledge-base/flood-insurance.html">Flood Insurance</a>
+            <a href="../knowledge-base/boat-insurance.html">Boat Insurance</a>
+            <a href="../knowledge-base/rental-property-insurance.html">Rental Property Insurance</a>
+            <a href="../knowledge-base/business-insurance.html">Business Insurance</a>
+          </div>
+        </div>
+        <a href="index.html" class="nav-link active">Articles</a>
+        <a href="../knowledge-base/index.html" class="nav-link">Knowledge Base</a>
+        <a href="../resources/index.html" class="nav-link">Resources</a>
+      </nav>
+      <div class="header-actions">
+        <a href="../pages/login.html" class="nav-link">Log In</a>
+        <a href="../pages/signup.html" class="btn btn-primary btn-sm">Get Started Free</a>
+      </div>
+      <button class="mobile-toggle" aria-label="Menu">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="breadcrumbs">
+    <div class="container">
+      <a href="../index.html">Home</a><span>/</span>
+      <a href="index.html">Articles</a><span>/</span>
+      <strong>Florida Flood Insurance Guide</strong>
+    </div>
+  </div>
+
+  <article>
+    <div class="container">
+      <div class="article-layout">
+        <div>
+          <div class="article-header">
+            <span class="tag">Flood Insurance</span>
+            <h1>Florida Flood Insurance: What Your Home Policy Doesn't Cover</h1>
+            <div class="article-meta">
+              <span>By <strong>WTFLinsurance Team</strong></span>
+              <span>April 3, 2026</span>
+              <span>8 min read</span>
+            </div>
+          </div>
+
+          <div class="article-content">
+
+            <p>Pop quiz: your home floods after a week of heavy rain. Water is 6 inches deep across your entire first floor. You file a claim with your homeowners insurance. How much do they pay?</p>
+
+            <p><strong>$0.</strong></p>
+
+            <p>Not a penny. Your homeowners insurance &mdash; no matter how comprehensive &mdash; does not cover flooding. Not from rain, not from storm surge, not from a river overflowing its banks. It's the most expensive gap in most Florida homeowners' coverage, and most people don't find out until they're standing in a flooded living room.</p>
+
+            <p>Let's make sure that's not you.</p>
+
+            <div class="callout">
+              <div class="callout-title">What You'll Learn</div>
+              <p>Why your home policy doesn't cover floods, the difference between NFIP and private flood insurance, what flood zones mean for your risk and cost, and why "low-risk" doesn't mean "no-risk" in Florida.</p>
+            </div>
+
+            <!-- ===== THE $0 PROBLEM ===== -->
+            <h2>The Most Expensive Gap in Florida Insurance</h2>
+
+            <p>Let's look at what just 6 inches of flood water does to a typical Florida home:</p>
+
+            <div class="scenario-box bad" data-label="6 INCHES OF WATER">
+              <h3>The Damage from "Just" 6 Inches</h3>
+              <div class="scenario-math">
+                Drywall replacement (first 2 feet): $3,500<br>
+                Flooring replacement: $6,000<br>
+                Baseboards and trim: $1,500<br>
+                Furniture and belongings: $4,000<br>
+                Appliances (washer, dryer, water heater): $3,000<br>
+                Mold remediation: $4,000<br>
+                Electrical and HVAC damage: $3,000<br>
+                <hr style="border:none;border-top:2px solid var(--gray-300);margin:8px 0;">
+                <span class="result red">= $25,000+ in damage from 6 inches of water</span>
+              </div>
+              <p>And that's a best case. A foot of water? You're looking at <strong>$50,000&ndash;$75,000</strong>. Storm surge from a hurricane? The national average flood claim is <strong>$52,000</strong>.</p>
+            </div>
+
+            <p>Now here's the part that matters: if you have homeowners insurance but no flood insurance, <strong>you pay every penny of that yourself.</strong></p>
+
+            <!-- ===== FLOOD ZONE RISK ===== -->
+            <h2>Understanding Your Flood Zone</h2>
+
+            <p>FEMA divides Florida into flood zones based on risk. Your zone determines whether flood insurance is required and how much it costs.</p>
+
+            <div class="risk-visual">
+              <h3 style="margin-bottom:4px;">Flood Risk by Zone</h3>
+              <p style="color:var(--gray-500);margin-bottom:20px;">Chance of flooding over a 30-year mortgage</p>
+              <div class="risk-bar-container">
+                <div class="risk-bar-row">
+                  <span class="zone-label">Zone V / VE</span>
+                  <div class="bar-track">
+                    <div class="bar-fill extreme" style="width:100%;">Coastal High Risk</div>
+                  </div>
+                </div>
+                <div class="risk-bar-row">
+                  <span class="zone-label">Zone A / AE</span>
+                  <div class="bar-track">
+                    <div class="bar-fill high" style="width:80%;">26% chance over 30 yrs</div>
+                  </div>
+                </div>
+                <div class="risk-bar-row">
+                  <span class="zone-label">Zone B / X500</span>
+                  <div class="bar-track">
+                    <div class="bar-fill moderate" style="width:45%;">Moderate risk</div>
+                  </div>
+                </div>
+                <div class="risk-bar-row">
+                  <span class="zone-label">Zone C / X</span>
+                  <div class="bar-track">
+                    <div class="bar-fill low" style="width:25%;">"Low risk"</div>
+                  </div>
+                </div>
+              </div>
+              <p style="font-size:0.85rem;color:var(--gray-500);margin:0;">40% of all NFIP flood claims come from zones labeled "low" or "moderate" risk</p>
+            </div>
+
+            <p>That last line is worth reading again. <strong>Four out of ten flood claims</strong> come from areas supposedly at low risk. In Florida, where afternoon thunderstorms can dump inches of rain in an hour, "low risk" is not the same as "no risk."</p>
+
+            <!-- ===== COST BY ZONE ===== -->
+            <h2>What Flood Insurance Costs in Florida</h2>
+
+            <div class="cost-card">
+              <div class="cost-card-header">Annual Flood Insurance Cost by Zone (NFIP)</div>
+              <div class="cost-row">
+                <span class="zone-name">Zone V / VE (Coastal High Risk)</span>
+                <span class="cost-range" style="color:#dc2626;">$2,500&ndash;$8,000+</span>
+                <span class="required-tag yes">Required</span>
+              </div>
+              <div class="cost-row">
+                <span class="zone-name">Zone A / AE (High Risk)</span>
+                <span class="cost-range" style="color:#f97316;">$1,200&ndash;$3,000+</span>
+                <span class="required-tag yes">Required</span>
+              </div>
+              <div class="cost-row">
+                <span class="zone-name">Zone B / X500 (Moderate Risk)</span>
+                <span class="cost-range" style="color:#f59e0b;">$700&ndash;$1,500</span>
+                <span class="required-tag no">Not Required</span>
+              </div>
+              <div class="cost-row">
+                <span class="zone-name">Zone C / X (Low Risk)</span>
+                <span class="cost-range" style="color:#065f46;">$400&ndash;$800</span>
+                <span class="required-tag no">Not Required</span>
+              </div>
+            </div>
+
+            <p>"Required" means your mortgage lender mandates it. But even in zones where it's not required, consider this: flood insurance in a low-risk zone costs about <strong>$400&ndash;$800/year</strong>. That's $33&ndash;$67/month to protect against a $25,000&ndash;$75,000 loss that your home insurance won't touch.</p>
+
+            <!-- ===== NFIP vs PRIVATE ===== -->
+            <h2>NFIP vs. Private Flood Insurance</h2>
+
+            <p>You have two options for flood coverage. Here's how they compare:</p>
+
+            <div class="vs-card">
+              <div class="vs-card-header">
+                <div class="nfip-header">NFIP (Federal Program)</div>
+                <div class="private-header">Private Flood Insurance</div>
+              </div>
+              <div class="vs-card-body">
+                <div>
+                  <div class="vs-label">Max building coverage</div>
+                  <p style="margin:0;font-weight:700;">$250,000</p>
+                </div>
+                <div>
+                  <div class="vs-label">Max building coverage</div>
+                  <p style="margin:0;font-weight:700;color:#065f46;">$500,000+ (varies by insurer)</p>
+                </div>
+                <div>
+                  <div class="vs-label">Max contents coverage</div>
+                  <p style="margin:0;font-weight:700;">$100,000</p>
+                </div>
+                <div>
+                  <div class="vs-label">Max contents coverage</div>
+                  <p style="margin:0;font-weight:700;color:#065f46;">$250,000+ (varies by insurer)</p>
+                </div>
+                <div>
+                  <div class="vs-label">Contents valuation</div>
+                  <p style="margin:0;">Actual Cash Value only (depreciated)</p>
+                </div>
+                <div>
+                  <div class="vs-label">Contents valuation</div>
+                  <p style="margin:0;color:#065f46;"><strong>Replacement cost</strong> available</p>
+                </div>
+                <div>
+                  <div class="vs-label">Additional living expenses</div>
+                  <p style="margin:0;color:#dc2626;font-weight:600;">Not covered</p>
+                </div>
+                <div>
+                  <div class="vs-label">Additional living expenses</div>
+                  <p style="margin:0;color:#065f46;font-weight:600;">Often included</p>
+                </div>
+                <div>
+                  <div class="vs-label">Waiting period</div>
+                  <p style="margin:0;">30 days</p>
+                </div>
+                <div>
+                  <div class="vs-label">Waiting period</div>
+                  <p style="margin:0;">10&ndash;15 days (some as low as 10)</p>
+                </div>
+                <div>
+                  <div class="vs-label">Backed by</div>
+                  <p style="margin:0;">U.S. Federal Government (FEMA)</p>
+                </div>
+                <div>
+                  <div class="vs-label">Backed by</div>
+                  <p style="margin:0;">Private insurance companies</p>
+                </div>
+              </div>
+            </div>
+
+            <p>The takeaway: <strong>get quotes for both</strong>. Private flood insurance often provides better coverage at competitive or lower prices, especially for newer homes and properties outside high-risk zones. But NFIP has the backing of the federal government and a decades-long track record.</p>
+
+            <!-- ===== REAL SCENARIO ===== -->
+            <h2>Let's See This in Action</h2>
+
+            <p>Meet <strong>The Nguyens</strong>. They bought a home in Jacksonville in a Zone X (low-risk) area. Their real estate agent told them flood insurance wasn't required. They skipped it to save money.</p>
+
+            <p>Two years later, a slow-moving tropical storm stalls over Northeast Florida and dumps 14 inches of rain in 36 hours.</p>
+
+            <div class="scenario-box bad" data-label="NO FLOOD INSURANCE">
+              <h3>The Nguyens: Uninsured</h3>
+              <div class="scenario-math">
+                Water depth in home: 8 inches<br>
+                Structural damage: $18,000<br>
+                Personal property destroyed: $12,000<br>
+                Mold remediation: $6,000<br>
+                Temporary housing (3 weeks): $3,500<br>
+                <hr style="border:none;border-top:2px solid var(--gray-300);margin:8px 0;">
+                Total damage: $39,500<br>
+                Homeowners insurance payout: $0<br>
+                <span class="result red">= $39,500 out of pocket</span>
+              </div>
+              <p>Their savings were wiped out. They took on a personal loan to cover the repairs. The money they "saved" by skipping flood insurance? About $1,200 over two years.</p>
+            </div>
+
+            <div class="scenario-box good" data-label="WITH FLOOD INSURANCE">
+              <h3>What If They Had Flood Insurance?</h3>
+              <div class="scenario-math">
+                Total damage: $39,500<br>
+                Flood insurance deductible: &minus;$1,500<br>
+                <hr style="border:none;border-top:2px solid var(--gray-300);margin:8px 0;">
+                Flood insurance payout: $38,000<br>
+                Two years of premiums paid: $1,200<br>
+                <span class="result green">Total out-of-pocket: $2,700 instead of $39,500</span>
+              </div>
+            </div>
+
+            <p style="text-align:center;font-size:1.2rem;font-weight:700;margin:32px 0;">They saved $1,200 by skipping flood insurance. It cost them <span style="color:#dc2626;font-size:1.4rem;">$36,800</span>.</p>
+
+            <!-- ===== MYTHS ===== -->
+            <h2>5 Flood Insurance Myths That Cost Florida Homeowners</h2>
+
+            <div class="myth-grid">
+              <div class="myth-card myth">
+                <div class="myth-label">Myth</div>
+                <h4>"My homeowners insurance covers floods."</h4>
+                <p>It doesn't. No standard homeowners policy in the United States covers flood damage. Not even the expensive ones.</p>
+              </div>
+              <div class="myth-card fact">
+                <div class="myth-label">Fact</div>
+                <h4>You need a separate flood policy.</h4>
+                <p>Either through NFIP or a private insurer. It's a completely separate policy from your homeowners insurance.</p>
+              </div>
+              <div class="myth-card myth">
+                <div class="myth-label">Myth</div>
+                <h4>"I'm not in a flood zone, so I don't need it."</h4>
+                <p>40% of NFIP claims come from outside high-risk zones. In Florida, heavy rain alone can flood any property.</p>
+              </div>
+              <div class="myth-card fact">
+                <div class="myth-label">Fact</div>
+                <h4>Every zone in Florida has flood risk.</h4>
+                <p>Low-risk zones still flood regularly. The coverage is cheap ($33&ndash;$67/month) and the potential loss is enormous.</p>
+              </div>
+              <div class="myth-card myth">
+                <div class="myth-label">Myth</div>
+                <h4>"I can buy flood insurance when a storm is coming."</h4>
+                <p>NFIP has a 30-day waiting period. Private flood has 10&ndash;15 days. You cannot buy coverage the day before a hurricane.</p>
+              </div>
+              <div class="myth-card fact">
+                <div class="myth-label">Fact</div>
+                <h4>Buy it now, not when you need it.</h4>
+                <p>The time to buy flood insurance is before hurricane season starts (June 1). Waiting until a storm is in the forecast is too late.</p>
+              </div>
+              <div class="myth-card myth">
+                <div class="myth-label">Myth</div>
+                <h4>"FEMA will pay for flood damage."</h4>
+                <p>FEMA disaster aid is a loan, not a grant. The average FEMA payout is under $5,000, and it must be repaid.</p>
+              </div>
+              <div class="myth-card fact">
+                <div class="myth-label">Fact</div>
+                <h4>Insurance pays. FEMA lends.</h4>
+                <p>The average NFIP flood claim pays $52,000. The average FEMA disaster loan creates years of debt. Insurance is the better deal.</p>
+              </div>
+            </div>
+
+            <!-- ===== WHAT TO DO ===== -->
+            <h2>What Should You Do Right Now?</h2>
+
+            <ol>
+              <li><strong>Look up your flood zone.</strong> Go to FEMA's Flood Map Service Center or ask your insurance agent. Know your risk level.</li>
+              <li><strong>Get quotes for both NFIP and private flood.</strong> Compare coverage limits, waiting periods, and whether contents are paid at replacement cost or ACV.</li>
+              <li><strong>Don't skip it just because it's not "required."</strong> Required means your lender demands it. But water doesn't check your mortgage documents before it enters your house.</li>
+              <li><strong>Buy before June 1.</strong> Florida's hurricane season runs June through November. Factor in the 30-day waiting period and buy no later than May.</li>
+              <li><strong>Consider an Elevation Certificate.</strong> If your home sits higher than the base flood elevation, an EC can significantly reduce your premium.</li>
+            </ol>
+
+            <!-- ===== THE BOTTOM LINE ===== -->
+            <div class="tldr-box">
+              <h3>The Bottom Line</h3>
+              <p>Your homeowners insurance will not save you from a flood. In Florida, the question isn't whether you'll see flooding &mdash; it's when.</p>
+              <div class="tldr-grid">
+                <div class="tldr-item">
+                  <h4>The Gap</h4>
+                  <p>Zero homeowners policies cover flood damage. You need a separate flood policy, period.</p>
+                </div>
+                <div class="tldr-item">
+                  <h4>The Cost</h4>
+                  <p>$400&ndash;$800/year in low-risk zones. $1,200&ndash;$3,000+ in high-risk zones. Compare NFIP and private.</p>
+                </div>
+                <div class="tldr-item">
+                  <h4>The Risk</h4>
+                  <p>6 inches of water = $25,000+ in damage. 40% of claims come from "low-risk" areas.</p>
+                </div>
+                <div class="tldr-item">
+                  <h4>The Deadline</h4>
+                  <p>30-day waiting period for NFIP. Buy before hurricane season, not during it.</p>
+                </div>
+              </div>
+            </div>
+
+            <blockquote>
+              <p>"Everybody has a plan until their living room has 6 inches of water in it." &mdash; Florida's unofficial flood insurance motto</p>
+            </blockquote>
+
+            <h2>Check Your Flood Risk</h2>
+            <p>Create a free WTFLinsurance account and we'll help you understand your flood zone, compare NFIP and private flood quotes, and make sure the most expensive gap in your coverage gets filled &mdash; before you need it.</p>
+
+            <div style="text-align:center;margin:32px 0;">
+              <a href="../pages/signup.html" class="btn btn-primary btn-lg">Compare Flood Insurance &rarr;</a>
+            </div>
+
+            <p><strong>Related articles:</strong></p>
+            <ul>
+              <li><a href="actual-cash-value-vs-replacement-cost.html">ACV vs. Replacement Cost: The Difference That Could Cost You Thousands</a></li>
+              <li><a href="do-you-need-boat-insurance-florida.html">Do You Really Need Boat Insurance in Florida?</a></li>
+              <li><a href="home-insurance-claims.html">How to File a Home Insurance Claim (Step-by-Step)</a></li>
+              <li><a href="../knowledge-base/flood-insurance.html">Flood Insurance Knowledge Base</a></li>
+            </ul>
+
+          </div>
+        </div>
+
+        <aside class="article-sidebar">
+          <div class="sidebar-card">
+            <h4>In This Article</h4>
+            <ul>
+              <li><a href="#">The $0 Home Insurance Payout</a></li>
+              <li><a href="#">Understanding Flood Zones</a></li>
+              <li><a href="#">Cost by Zone</a></li>
+              <li><a href="#">NFIP vs. Private Flood</a></li>
+              <li><a href="#">Real Scenario</a></li>
+              <li><a href="#">5 Myths Debunked</a></li>
+            </ul>
+          </div>
+          <div class="sidebar-card" style="background:var(--primary);color:#fff;text-align:center;">
+            <h4 style="color:#fff;">Compare Flood Insurance</h4>
+            <p style="color:rgba(255,255,255,0.85);font-size:0.9rem;">NFIP and private flood quotes for your area.</p>
+            <a href="../pages/signup.html" class="btn btn-white btn-block" style="margin-top:12px;">Get Free Quotes</a>
+          </div>
+          <div class="sidebar-card">
+            <h4>Key Numbers</h4>
+            <p style="font-size:0.9rem;color:var(--gray-700);margin:0;">
+              <strong>Avg. flood claim:</strong> $52,000<br>
+              <strong>6 inches of water:</strong> $25,000+<br>
+              <strong>Low-risk zone cost:</strong> $33&ndash;$67/mo<br>
+              <strong>NFIP waiting period:</strong> 30 days<br><br>
+              <strong>40%</strong> of claims come from outside high-risk zones.
+            </p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </article>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-about"><div class="logo">WTFLinsurance</div><p>Expert insurance advice &mdash; always free.</p></div>
+        <div><h4>Insurance</h4><ul><li><a href="../knowledge-base/auto-insurance.html">Auto</a></li><li><a href="../knowledge-base/home-insurance.html">Home</a></li><li><a href="../knowledge-base/flood-insurance.html">Flood</a></li><li><a href="../knowledge-base/boat-insurance.html">Boat</a></li><li><a href="../knowledge-base/rental-property-insurance.html">Rental Property</a></li><li><a href="../knowledge-base/business-insurance.html">Business</a></li></ul></div>
+        <div><h4>Resources</h4><ul><li><a href="index.html">Articles</a></li><li><a href="../knowledge-base/index.html">Knowledge Base</a></li><li><a href="../resources/index.html">Downloads</a></li></ul></div>
+        <div><h4>Company</h4><ul><li><a href="#">About</a></li><li><a href="#">Contact</a></li><li><a href="#">Privacy</a></li></ul></div>
+      </div>
+      <div class="footer-bottom"><span>&copy; 2026 WTFLinsurance.com</span><span>For educational purposes only.</span></div>
+    </div>
+  </footer>
+  <script src="../js/main.js"></script>
+</body>
+</html>
