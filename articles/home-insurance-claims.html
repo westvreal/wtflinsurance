@@ -4,10 +4,285 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>How to File a Home Insurance Claim (Step-by-Step) - WTFLinsurance</title>
-  <meta name="description" content="Step-by-step guide to filing a home insurance claim and maximizing your payout.">
+  <meta name="description" content="Step-by-step guide to filing a home insurance claim in Florida. Visual timeline, payout examples, and pro tips to maximize your settlement.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
+  <style>
+    /* Article-specific styles */
+    .timeline {
+      position: relative;
+      margin: 32px 0;
+      padding-left: 40px;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 15px;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: var(--gray-300);
+    }
+    .timeline-step {
+      position: relative;
+      margin-bottom: 32px;
+      padding: 24px;
+      background: #fff;
+      border: 2px solid var(--gray-200);
+      border-radius: 12px;
+    }
+    .timeline-step:last-child { margin-bottom: 0; }
+    .timeline-step::before {
+      content: attr(data-step);
+      position: absolute;
+      left: -40px;
+      top: 24px;
+      width: 32px;
+      height: 32px;
+      background: var(--primary);
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.85rem;
+    }
+    .timeline-step.active { border-color: var(--primary); }
+    .timeline-step h3 { margin-top: 0; margin-bottom: 8px; }
+    .timeline-step .step-timing {
+      display: inline-block;
+      background: var(--gray-100);
+      color: var(--gray-600);
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 20px;
+      margin-bottom: 12px;
+    }
+
+    .vs-card {
+      border: 2px solid var(--gray-300);
+      border-radius: 12px;
+      overflow: hidden;
+      margin: 32px 0;
+    }
+    .vs-card-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .vs-card-header div {
+      padding: 20px 24px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+    .vs-card-header .bad-header {
+      background: #fef3c7;
+      color: #92400e;
+    }
+    .vs-card-header .good-header {
+      background: #d1fae5;
+      color: #065f46;
+    }
+    .vs-card-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .vs-card-body div {
+      padding: 20px 24px;
+      border-top: 1px solid var(--gray-300);
+    }
+    .vs-card-body div:nth-child(odd) {
+      border-right: 1px solid var(--gray-300);
+    }
+    .vs-card-body .vs-label {
+      font-size: 0.85rem;
+      color: var(--gray-500);
+      margin-bottom: 4px;
+      font-weight: 600;
+    }
+
+    .scenario-box {
+      border: 2px solid var(--gray-300);
+      border-radius: 12px;
+      padding: 32px;
+      margin: 32px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .scenario-box::before {
+      content: attr(data-label);
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: var(--primary);
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 6px 16px;
+      border-radius: 0 0 0 12px;
+    }
+    .scenario-box.good { border-color: #10b981; }
+    .scenario-box.good::before { background: #10b981; }
+    .scenario-box.bad { border-color: #f59e0b; }
+    .scenario-box.bad::before { background: #f59e0b; }
+    .scenario-box.warning { border-color: #ef4444; }
+    .scenario-box.warning::before { background: #ef4444; }
+    .scenario-math {
+      background: var(--gray-100);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin: 16px 0;
+      font-family: monospace;
+      font-size: 1rem;
+      line-height: 2;
+    }
+    .scenario-math .result {
+      font-size: 1.3rem;
+      font-weight: 800;
+    }
+    .scenario-math .result.green { color: #065f46; }
+    .scenario-math .result.orange { color: #92400e; }
+    .scenario-math .result.red { color: #dc2626; }
+
+    .checklist-card {
+      border: 2px solid var(--gray-200);
+      border-radius: 12px;
+      padding: 24px;
+      margin: 24px 0;
+      background: #fff;
+    }
+    .checklist-card h4 {
+      margin: 0 0 16px 0;
+    }
+    .checklist-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .checklist-card ul li {
+      padding: 8px 0;
+      padding-left: 28px;
+      position: relative;
+      border-bottom: 1px solid var(--gray-100);
+    }
+    .checklist-card ul li:last-child { border-bottom: none; }
+    .checklist-card ul li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 11px;
+      width: 18px;
+      height: 18px;
+      border: 2px solid var(--gray-400);
+      border-radius: 4px;
+    }
+
+    .mistake-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 24px 0;
+    }
+    .mistake-card {
+      border: 2px solid var(--gray-200);
+      border-radius: 12px;
+      padding: 24px;
+    }
+    .mistake-card.do-this { border-color: #10b981; }
+    .mistake-card.not-this { border-color: #ef4444; }
+    .mistake-card .mistake-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+    }
+    .mistake-card.do-this .mistake-label { color: #065f46; }
+    .mistake-card.not-this .mistake-label { color: #dc2626; }
+    .mistake-card p { margin: 0; font-size: 0.95rem; }
+
+    .payout-bar-visual {
+      background: var(--gray-100);
+      border-radius: 12px;
+      padding: 32px;
+      margin: 32px 0;
+      text-align: center;
+    }
+    .payout-bar-container {
+      max-width: 500px;
+      margin: 20px auto;
+    }
+    .payout-bar-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .payout-bar-row .claim-label {
+      width: 120px;
+      text-align: right;
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: var(--gray-700);
+      flex-shrink: 0;
+    }
+    .payout-bar-row .bar-track {
+      flex: 1;
+      height: 32px;
+      background: var(--gray-300);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .payout-bar-row .bar-fill {
+      height: 100%;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 10px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    .payout-bar-row .bar-fill.red { background: #ef4444; }
+    .payout-bar-row .bar-fill.orange { background: #f59e0b; }
+    .payout-bar-row .bar-fill.yellow { background: #eab308; }
+    .payout-bar-row .bar-fill.green { background: #10b981; }
+    .payout-bar-row .bar-fill.dark-green { background: #065f46; }
+
+    .tldr-box {
+      background: linear-gradient(135deg, #1a56db, #0ea5e9);
+      color: #fff;
+      border-radius: 12px;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    .tldr-box h3 { color: #fff; margin-bottom: 12px; }
+    .tldr-box p { color: rgba(255,255,255,0.9); }
+    .tldr-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .tldr-item {
+      background: rgba(255,255,255,0.15);
+      border-radius: 8px;
+      padding: 16px;
+    }
+    .tldr-item h4 { color: #fff; font-size: 0.95rem; margin-bottom: 4px; }
+    .tldr-item p { font-size: 0.9rem; margin: 0; }
+
+    @media (max-width: 640px) {
+      .vs-card-header, .vs-card-body, .tldr-grid, .mistake-grid { grid-template-columns: 1fr; }
+      .vs-card-body div:nth-child(odd) { border-right: none; }
+      .timeline { padding-left: 32px; }
+      .timeline-step::before { left: -32px; width: 28px; height: 28px; font-size: 0.8rem; }
+    }
+  </style>
 </head>
 <body>
 
@@ -20,7 +295,6 @@
           <div class="nav-dropdown">
             <a href="../knowledge-base/auto-insurance.html">Auto Insurance</a>
             <a href="../knowledge-base/home-insurance.html">Home Insurance</a>
-            <a href="../knowledge-base/health-insurance.html">Health Insurance</a>
             <a href="../knowledge-base/business-insurance.html">Business Insurance</a>
           </div>
         </div>
@@ -54,106 +328,393 @@
             <span class="tag">Home Insurance</span>
             <h1>How to File a Home Insurance Claim (Step-by-Step)</h1>
             <div class="article-meta">
-              <span>By <strong>Lisa Rodriguez</strong></span>
+              <span>By <strong>WTFLinsurance Team</strong></span>
               <span>March 15, 2026</span>
-              <span>6 min read</span>
+              <span>8 min read</span>
             </div>
           </div>
 
           <div class="article-content">
-            <p>Filing a home insurance claim can feel overwhelming, especially in the aftermath of damage or theft. But following a clear process can make the difference between a smooth payout and a frustrating denial.</p>
 
-            <h2>Step 1: Document the Damage Immediately</h2>
-            <p>Before you clean up or make any repairs, thoroughly document everything:</p>
-            <ul>
-              <li><strong>Take photos and videos</strong> from multiple angles</li>
-              <li><strong>Make a detailed list</strong> of all damaged or stolen items</li>
-              <li><strong>Save receipts</strong> for any emergency repairs or expenses</li>
-              <li><strong>Don't throw anything away</strong> until the adjuster has seen it</li>
-            </ul>
+            <p>A tree falls through your roof during a Florida thunderstorm. Water is pouring in. You've got damage, you've got stress, and you've got one very important question: <strong>now what?</strong></p>
 
-            <h2>Step 2: Prevent Further Damage</h2>
-            <p>Your policy requires you to take <strong>reasonable steps to prevent additional damage</strong>. This might include:</p>
-            <ul>
-              <li>Tarping a damaged roof</li>
-              <li>Boarding up broken windows</li>
-              <li>Turning off water to stop a leak</li>
-              <li>Moving undamaged items away from the affected area</li>
-            </ul>
-            <p>Keep all receipts for emergency repairs &mdash; your insurer will typically reimburse these costs.</p>
+            <p>The claims process can feel overwhelming when you're dealing with damage and disruption at the same time. But it doesn't have to be. The difference between a smooth $15,000 payout and a frustrating $6,000 lowball often comes down to how well you handle the first 48 hours.</p>
 
-            <h2>Step 3: Contact Your Insurance Company</h2>
-            <p>Call your insurer's claims line as soon as possible. Most companies have a <strong>24/7 claims hotline</strong>. When you call, have ready:</p>
-            <ul>
-              <li>Your policy number</li>
-              <li>Date and time of the incident</li>
-              <li>Brief description of what happened</li>
-              <li>Police report number (if applicable)</li>
-            </ul>
+            <p>Here's exactly what to do, step by step.</p>
 
             <div class="callout">
-              <div class="callout-title">&#9200; Time Matters</div>
-              <p>Most policies require you to file a claim "promptly" or within a specific timeframe (often 60 days). Filing sooner always leads to better outcomes.</p>
+              <div class="callout-title">What You'll Learn</div>
+              <p>The complete home insurance claims process from damage to payout &mdash; with real examples, common mistakes to avoid, and tips that can add thousands to your settlement.</p>
             </div>
 
-            <h2>Step 4: Meet with the Claims Adjuster</h2>
-            <p>Your insurer will send an adjuster to inspect the damage. To prepare:</p>
-            <ul>
-              <li>Be present during the inspection</li>
-              <li>Walk the adjuster through all damage</li>
-              <li>Share your photos and documentation</li>
-              <li>Provide your home inventory list</li>
-              <li>Ask questions about the process and timeline</li>
-            </ul>
+            <!-- ===== HOW DOCUMENTATION AFFECTS PAYOUT ===== -->
+            <h2>Why Documentation Is Everything</h2>
 
-            <h2>Step 5: Get Repair Estimates</h2>
-            <p>Get at least <strong>2&ndash;3 independent repair estimates</strong> from licensed contractors. Don't rely solely on the insurer's estimate, as it may be lower than the actual cost of repairs.</p>
+            <p>Before we walk through the steps, let's look at why this process matters so much. The same claim can result in dramatically different payouts depending on how well you document and present it:</p>
 
-            <h2>Step 6: Review the Settlement Offer</h2>
-            <p>After the adjuster's assessment, you'll receive a settlement offer. Review it carefully:</p>
-            <ul>
-              <li>Does it cover all documented damage?</li>
-              <li>Is it based on <strong>replacement cost</strong> or <strong>actual cash value</strong>?</li>
-              <li>Does it include temporary living expenses if you're displaced?</li>
-            </ul>
-            <p><strong>You can negotiate.</strong> If the offer seems low, provide your independent estimates and documentation to support a higher amount.</p>
-
-            <h2>Step 7: Complete Repairs and Close the Claim</h2>
-            <p>Once you agree on a settlement, you'll receive payment (minus your deductible). Complete all repairs using licensed contractors and keep records of all work done.</p>
-
-            <div class="callout">
-              <div class="callout-title">&#128203; Pro Tips</div>
-              <p>&bull; Keep a home inventory with photos and receipts <em>before</em> you need it<br>
-              &bull; Review your policy annually so you know what's covered<br>
-              &bull; Consider hiring a public adjuster for large or complex claims<br>
-              &bull; Don't accept the first offer if it doesn't feel right</p>
+            <div class="payout-bar-visual">
+              <h3 style="margin-bottom:4px;">Average Claim Payout by Documentation Quality</h3>
+              <p style="color:var(--gray-500);margin-bottom:20px;">Same type of claim, different preparation levels</p>
+              <div class="payout-bar-container">
+                <div class="payout-bar-row">
+                  <span class="claim-label">No documentation</span>
+                  <div class="bar-track">
+                    <div class="bar-fill red" style="width:30%;">$4,200</div>
+                  </div>
+                </div>
+                <div class="payout-bar-row">
+                  <span class="claim-label">Basic photos</span>
+                  <div class="bar-track">
+                    <div class="bar-fill orange" style="width:50%;">$7,500</div>
+                  </div>
+                </div>
+                <div class="payout-bar-row">
+                  <span class="claim-label">Photos + receipts</span>
+                  <div class="bar-track">
+                    <div class="bar-fill yellow" style="width:70%;">$10,800</div>
+                  </div>
+                </div>
+                <div class="payout-bar-row">
+                  <span class="claim-label">Full inventory</span>
+                  <div class="bar-track">
+                    <div class="bar-fill green" style="width:85%;">$13,200</div>
+                  </div>
+                </div>
+                <div class="payout-bar-row">
+                  <span class="claim-label">Inventory + contractor estimates</span>
+                  <div class="bar-track">
+                    <div class="bar-fill dark-green" style="width:100%;">$15,500</div>
+                  </div>
+                </div>
+              </div>
+              <p style="font-size:0.85rem;color:var(--gray-500);margin:0;">Based on a $15,000 water damage claim with $1,000 deductible</p>
             </div>
 
-            <p><strong>Related reading:</strong></p>
+            <p>That's an <strong>$11,300 difference</strong> on the same claim &mdash; just based on how well you documented and supported it. The steps below are designed to put you in that top tier.</p>
+
+            <!-- ===== THE 7 STEPS ===== -->
+            <h2>The 7-Step Claims Process</h2>
+
+            <div class="timeline">
+
+              <div class="timeline-step" data-step="1">
+                <h3>Document the Damage Immediately</h3>
+                <span class="step-timing">Within the first hour</span>
+                <p>Before you clean up or make any repairs, document everything. This is the single most important thing you can do for your claim.</p>
+                <div class="checklist-card">
+                  <h4>Documentation Checklist</h4>
+                  <ul>
+                    <li>Take photos and video from multiple angles (wide shots and close-ups)</li>
+                    <li>Photograph every damaged room, item, and surface</li>
+                    <li>Make a written list of all damaged or destroyed items</li>
+                    <li>Note the date, time, and cause of damage</li>
+                    <li>Save receipts for any emergency purchases or repairs</li>
+                    <li>Do not throw anything away until the adjuster has seen it</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="timeline-step" data-step="2">
+                <h3>Prevent Further Damage</h3>
+                <span class="step-timing">Same day</span>
+                <p>Your policy <strong>requires</strong> you to take reasonable steps to prevent additional damage. This isn't optional &mdash; failing to do this can reduce your payout. But don't make permanent repairs yet.</p>
+                <ul>
+                  <li>Tarp a damaged roof to stop water intrusion</li>
+                  <li>Board up broken windows</li>
+                  <li>Turn off water to stop an active leak</li>
+                  <li>Move undamaged items away from the affected area</li>
+                  <li>Run fans or a dehumidifier to prevent mold growth</li>
+                </ul>
+                <p><strong>Keep every receipt.</strong> Your insurer will reimburse reasonable emergency mitigation costs.</p>
+              </div>
+
+              <div class="timeline-step" data-step="3">
+                <h3>Contact Your Insurance Company</h3>
+                <span class="step-timing">Within 24&ndash;48 hours</span>
+                <p>Call your insurer's claims line as soon as the situation is stable. Most companies have a 24/7 claims hotline. When you call, have ready:</p>
+                <ul>
+                  <li>Your policy number</li>
+                  <li>Date and time of the incident</li>
+                  <li>Brief description of what happened</li>
+                  <li>Preliminary damage estimate (if you have one)</li>
+                  <li>Police or fire report number (if applicable)</li>
+                </ul>
+              </div>
+
+              <div class="timeline-step" data-step="4">
+                <h3>Meet with the Claims Adjuster</h3>
+                <span class="step-timing">3&ndash;10 days after filing</span>
+                <p>Your insurer will send an adjuster to inspect the damage. This meeting is critical &mdash; it directly determines your payout.</p>
+                <div class="mistake-grid">
+                  <div class="mistake-card do-this">
+                    <div class="mistake-label">Do this</div>
+                    <p>Be present during the inspection. Walk the adjuster through every damaged area. Share all your photos and documentation. Ask questions about what they're noting.</p>
+                  </div>
+                  <div class="mistake-card not-this">
+                    <div class="mistake-label">Not this</div>
+                    <p>Letting the adjuster walk through alone. Assuming they'll find everything. Forgetting to mention damage in closets, attics, or less visible areas.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="timeline-step" data-step="5">
+                <h3>Get Independent Repair Estimates</h3>
+                <span class="step-timing">While waiting for the adjuster's report</span>
+                <p>Get <strong>2&ndash;3 independent estimates</strong> from licensed Florida contractors. Don't rely solely on the insurer's estimate &mdash; it's often lower.</p>
+                <p>Make sure each estimate includes:</p>
+                <ul>
+                  <li>Detailed scope of work</li>
+                  <li>Materials and labor costs broken out</li>
+                  <li>Contractor's license number</li>
+                  <li>Timeline for completion</li>
+                </ul>
+              </div>
+
+              <div class="timeline-step" data-step="6">
+                <h3>Review the Settlement Offer</h3>
+                <span class="step-timing">1&ndash;3 weeks after adjuster visit</span>
+                <p>This is where many homeowners leave money on the table. The first offer is often negotiable.</p>
+              </div>
+
+              <div class="timeline-step" data-step="7">
+                <h3>Complete Repairs and Close the Claim</h3>
+                <span class="step-timing">Varies</span>
+                <p>Once you agree on a settlement, you'll receive payment minus your deductible. If you have a replacement cost policy, you may receive an initial ACV payment, then the remainder after you complete repairs and submit receipts.</p>
+              </div>
+
+            </div>
+
+            <!-- ===== NEGOTIATING YOUR SETTLEMENT ===== -->
+            <h2>The Settlement: Where the Real Money Is</h2>
+
+            <p>Step 6 deserves its own section because it's where most people either win or lose thousands of dollars. Let's look at what happens when you negotiate versus when you don't:</p>
+
+            <div class="vs-card">
+              <div class="vs-card-header">
+                <div class="bad-header">Accepted First Offer</div>
+                <div class="good-header">Negotiated with Evidence</div>
+              </div>
+              <div class="vs-card-body">
+                <div>
+                  <div class="vs-label">Insurer's initial estimate</div>
+                  <p style="margin:0;font-weight:700;">$11,200</p>
+                </div>
+                <div>
+                  <div class="vs-label">Insurer's initial estimate</div>
+                  <p style="margin:0;font-weight:700;">$11,200</p>
+                </div>
+                <div>
+                  <div class="vs-label">What the homeowner did</div>
+                  <p style="margin:0;">Accepted the offer and started repairs.</p>
+                </div>
+                <div>
+                  <div class="vs-label">What the homeowner did</div>
+                  <p style="margin:0;">Submitted 3 contractor estimates ($14,800&ndash;$16,200) and a detailed item list.</p>
+                </div>
+                <div>
+                  <div class="vs-label">Final payout (after $1K deductible)</div>
+                  <p style="margin:0;font-weight:700;font-size:1.1rem;color:#92400e;">$10,200</p>
+                </div>
+                <div>
+                  <div class="vs-label">Final payout (after $1K deductible)</div>
+                  <p style="margin:0;font-weight:700;font-size:1.1rem;color:#065f46;">$14,500</p>
+                </div>
+              </div>
+            </div>
+
+            <p style="text-align:center;font-size:1.2rem;font-weight:700;margin:32px 0;">That's <span style="color:#065f46;font-size:1.4rem;">$4,300 more</span> &mdash; just by pushing back with documentation.</p>
+
+            <p>Here's what to look for when reviewing a settlement offer:</p>
             <ul>
-              <li><a href="how-to-lower-car-insurance.html">7 Ways to Lower Your Car Insurance</a></li>
+              <li><strong>Does it cover all documented damage?</strong> Compare line by line against your photos and list.</li>
+              <li><strong>Is it based on replacement cost or ACV?</strong> If you have replacement cost coverage, make sure they're not paying you ACV. (<a href="actual-cash-value-vs-replacement-cost.html">Learn the difference here</a>.)</li>
+              <li><strong>Does it include temporary living expenses?</strong> If your home is uninhabitable, Coverage D should cover hotel, meals, and other costs.</li>
+              <li><strong>Are the labor rates realistic?</strong> Florida contractor rates have risen significantly &mdash; make sure the estimate reflects current pricing.</li>
+            </ul>
+
+            <!-- ===== REAL SCENARIO ===== -->
+            <h2>A Real Florida Claim, Start to Finish</h2>
+
+            <p>Let's walk through a complete example to show how all of this comes together.</p>
+
+            <div class="scenario-box bad" data-label="THE SITUATION">
+              <h3>Hurricane Damage &mdash; The Torres Family</h3>
+              <p>A hurricane causes roof damage and water intrusion in a 3-bedroom home in Fort Lauderdale. Multiple rooms have water damage, and personal belongings are destroyed.</p>
+              <div class="scenario-math">
+                Roof repair estimate: $8,500<br>
+                Interior water damage repair: $4,200<br>
+                Damaged personal property: $3,800<br>
+                Emergency tarping &amp; water extraction: $1,200<br>
+                Hotel stay (2 weeks): $2,100<br>
+                <hr style="border:none;border-top:2px solid var(--gray-300);margin:8px 0;">
+                <span class="result orange">Total damages: $19,800</span>
+              </div>
+            </div>
+
+            <div class="scenario-box good" data-label="THE OUTCOME">
+              <h3>What the Torres Family Did Right</h3>
+              <p>They followed every step in this guide: documented immediately, got 3 contractor estimates, and had a home inventory on file.</p>
+              <div class="scenario-math">
+                Total documented damages: $19,800<br>
+                Hurricane deductible (2%): &minus;$5,600<br>
+                <hr style="border:none;border-top:2px solid var(--gray-300);margin:8px 0;">
+                Initial insurer offer: $11,400<br>
+                After negotiation with contractor estimates: $13,800<br>
+                Emergency costs reimbursed: +$1,200<br>
+                Loss of use (hotel) reimbursed: +$2,100<br>
+                <hr style="border:none;border-top:2px solid var(--gray-300);margin:8px 0;">
+                <span class="result green">Total received: $17,100</span>
+              </div>
+              <p>Without documentation and negotiation, their initial offer would have been <strong>$11,400</strong>. By following this process, they received <strong>$5,700 more</strong>.</p>
+            </div>
+
+            <!-- ===== FLORIDA-SPECIFIC ===== -->
+            <h2>Florida-Specific Things to Know</h2>
+
+            <p>Filing a claim in Florida has some unique considerations:</p>
+
+            <div style="overflow-x:auto;margin:24px 0;">
+              <table style="width:100%;border-collapse:collapse;font-size:0.95rem;">
+                <thead>
+                  <tr style="background:var(--gray-100);">
+                    <th style="padding:12px 16px;text-align:left;border-bottom:2px solid var(--gray-300);">Factor</th>
+                    <th style="padding:12px 16px;text-align:left;border-bottom:2px solid var(--gray-300);">What You Need to Know</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td style="padding:12px 16px;border-bottom:1px solid var(--gray-100);font-weight:600;">Hurricane Deductible</td>
+                    <td style="padding:12px 16px;border-bottom:1px solid var(--gray-100);">Typically 2&ndash;5% of your dwelling coverage (not a flat dollar amount). On a $280K home, that's $5,600&ndash;$14,000.</td>
+                  </tr>
+                  <tr style="background:#fafafa;">
+                    <td style="padding:12px 16px;border-bottom:1px solid var(--gray-100);font-weight:600;">Filing Deadline</td>
+                    <td style="padding:12px 16px;border-bottom:1px solid var(--gray-100);">Florida law requires you to report property damage claims within <strong>2 years</strong> of the date of loss. Don't wait.</td>
+                  </tr>
+                  <tr>
+                    <td style="padding:12px 16px;border-bottom:1px solid var(--gray-100);font-weight:600;">Flood Damage</td>
+                    <td style="padding:12px 16px;border-bottom:1px solid var(--gray-100);">Standard homeowners insurance does <strong>not</strong> cover flooding. You need a separate flood policy (NFIP or private).</td>
+                  </tr>
+                  <tr style="background:#fafafa;">
+                    <td style="padding:12px 16px;border-bottom:1px solid var(--gray-100);font-weight:600;">Public Adjusters</td>
+                    <td style="padding:12px 16px;border-bottom:1px solid var(--gray-100);">For claims over $10,000, consider hiring a public adjuster. They typically charge 10&ndash;15% of the settlement but often recover significantly more.</td>
+                  </tr>
+                  <tr>
+                    <td style="padding:12px 16px;border-bottom:1px solid var(--gray-100);font-weight:600;">Insurer Response Time</td>
+                    <td style="padding:12px 16px;border-bottom:1px solid var(--gray-100);">Florida law requires insurers to acknowledge claims within <strong>14 days</strong> and make a coverage decision within <strong>90 days</strong>.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- ===== COMMON MISTAKES ===== -->
+            <h2>5 Mistakes That Shrink Your Payout</h2>
+
+            <div class="mistake-grid">
+              <div class="mistake-card not-this">
+                <div class="mistake-label">Mistake 1</div>
+                <p><strong>Making permanent repairs before the adjuster visits.</strong> Temporary fixes are fine and required. Permanent repairs before inspection can void parts of your claim.</p>
+              </div>
+              <div class="mistake-card not-this">
+                <div class="mistake-label">Mistake 2</div>
+                <p><strong>Throwing away damaged items.</strong> The adjuster needs to see the damage. Keep everything until they've documented it.</p>
+              </div>
+              <div class="mistake-card not-this">
+                <div class="mistake-label">Mistake 3</div>
+                <p><strong>Accepting the first offer without reviewing it.</strong> The initial offer is often 20&ndash;40% lower than what you're entitled to. Always compare against your own estimates.</p>
+              </div>
+              <div class="mistake-card not-this">
+                <div class="mistake-label">Mistake 4</div>
+                <p><strong>Not knowing your policy details.</strong> Understand your deductible type (flat vs. percentage), coverage limits, and whether you have ACV or replacement cost before you need it.</p>
+              </div>
+              <div class="mistake-card not-this">
+                <div class="mistake-label">Mistake 5</div>
+                <p><strong>Waiting too long to file.</strong> The sooner you file, the fresher the evidence. Delays make it harder to prove the cause and extent of damage.</p>
+              </div>
+              <div class="mistake-card do-this">
+                <div class="mistake-label">Instead, do this</div>
+                <p><strong>Prepare before disaster strikes.</strong> Keep a home inventory, know your policy, save your agent's number, and review your coverage annually. The best time to prepare is now.</p>
+              </div>
+            </div>
+
+            <!-- ===== THE BOTTOM LINE ===== -->
+            <div class="tldr-box">
+              <h3>The Bottom Line</h3>
+              <p>Filing a home insurance claim doesn't have to be a battle. But it does require you to be organized, proactive, and willing to advocate for yourself.</p>
+              <div class="tldr-grid">
+                <div class="tldr-item">
+                  <h4>First 24 Hours</h4>
+                  <p>Document everything, prevent further damage, and call your insurer. The first day sets the tone for the entire claim.</p>
+                </div>
+                <div class="tldr-item">
+                  <h4>Get Your Own Estimates</h4>
+                  <p>Never rely solely on the insurer's assessment. 2&ndash;3 independent contractor estimates give you negotiating power.</p>
+                </div>
+                <div class="tldr-item">
+                  <h4>Don't Accept Lowballs</h4>
+                  <p>The first offer is a starting point, not a final answer. Push back with documentation and you'll often get thousands more.</p>
+                </div>
+                <div class="tldr-item">
+                  <h4>Prepare Now</h4>
+                  <p>Keep a home inventory, know your policy, and review your coverage annually. Future you will be grateful.</p>
+                </div>
+              </div>
+            </div>
+
+            <blockquote>
+              <p>"The best claim is the one you're prepared for. A 30-minute home inventory today can mean thousands more in your pocket tomorrow." &mdash; Every public adjuster in Florida</p>
+            </blockquote>
+
+            <h2>Start with Your Home Inventory</h2>
+            <p>The single most impactful thing you can do right now is document your belongings. Download our free Home Inventory Worksheet and walk through your home room by room. If you ever need to file a claim, you'll be glad you did.</p>
+
+            <div style="text-align:center;margin:32px 0;">
+              <a href="../resources/index.html" class="btn btn-primary btn-lg">Download Home Inventory Worksheet &rarr;</a>
+            </div>
+
+            <p><strong>Related articles:</strong></p>
+            <ul>
+              <li><a href="actual-cash-value-vs-replacement-cost.html">ACV vs. Replacement Cost: The Difference That Could Cost You Thousands</a></li>
+              <li><a href="how-to-lower-car-insurance.html">7 Proven Ways to Lower Your Car Insurance Premium</a></li>
               <li><a href="../knowledge-base/home-insurance.html">Home Insurance Knowledge Base</a></li>
             </ul>
+
           </div>
         </div>
 
+        <!-- Sidebar -->
         <aside class="article-sidebar">
           <div class="sidebar-card">
-            <h4>Claim Steps</h4>
+            <h4>In This Article</h4>
             <ul>
-              <li><a href="#">1. Document Damage</a></li>
-              <li><a href="#">2. Prevent Further Damage</a></li>
-              <li><a href="#">3. Contact Insurer</a></li>
-              <li><a href="#">4. Meet Adjuster</a></li>
-              <li><a href="#">5. Get Estimates</a></li>
-              <li><a href="#">6. Review Settlement</a></li>
-              <li><a href="#">7. Complete Repairs</a></li>
+              <li><a href="#">Why Documentation Matters</a></li>
+              <li><a href="#">The 7-Step Process</a></li>
+              <li><a href="#">Negotiating Your Settlement</a></li>
+              <li><a href="#">Real Florida Claim Example</a></li>
+              <li><a href="#">Florida-Specific Info</a></li>
+              <li><a href="#">5 Mistakes to Avoid</a></li>
             </ul>
           </div>
           <div class="sidebar-card" style="background:var(--primary);color:#fff;text-align:center;">
             <h4 style="color:#fff;">Free Download</h4>
-            <p style="color:rgba(255,255,255,0.85);font-size:0.9rem;">Home Inventory Worksheet</p>
+            <p style="color:rgba(255,255,255,0.85);font-size:0.9rem;">Home Inventory Worksheet (PDF)</p>
             <a href="../resources/index.html" class="btn btn-white btn-block" style="margin-top:12px;">Download PDF</a>
+          </div>
+          <div class="sidebar-card">
+            <h4>Key Numbers</h4>
+            <p style="font-size:0.9rem;color:var(--gray-700);margin:0;">
+              <strong>FL filing deadline:</strong> 2 years<br>
+              <strong>Insurer must respond:</strong> 14 days<br>
+              <strong>Coverage decision:</strong> 90 days<br>
+              <strong>Hurricane deductible:</strong> 2&ndash;5%<br><br>
+              Good documentation can mean <strong>$5,000+</strong> more on a typical claim.
+            </p>
+          </div>
+          <div class="sidebar-card">
+            <h4>Related Reading</h4>
+            <ul>
+              <li><a href="actual-cash-value-vs-replacement-cost.html">ACV vs. Replacement Cost</a></li>
+              <li><a href="../knowledge-base/home-insurance.html">Home Insurance KB</a></li>
+            </ul>
           </div>
         </aside>
       </div>
@@ -167,7 +728,7 @@
           <div class="logo">WTFLinsurance</div>
           <p>Expert insurance advice &mdash; always free.</p>
         </div>
-        <div><h4>Insurance</h4><ul><li><a href="../knowledge-base/auto-insurance.html">Auto</a></li><li><a href="../knowledge-base/home-insurance.html">Home</a></li></ul></div>
+        <div><h4>Insurance</h4><ul><li><a href="../knowledge-base/auto-insurance.html">Auto</a></li><li><a href="../knowledge-base/home-insurance.html">Home</a></li><li><a href="../knowledge-base/business-insurance.html">Business</a></li></ul></div>
         <div><h4>Resources</h4><ul><li><a href="index.html">Articles</a></li><li><a href="../knowledge-base/index.html">Knowledge Base</a></li><li><a href="../resources/index.html">Downloads</a></li></ul></div>
         <div><h4>Company</h4><ul><li><a href="#">About</a></li><li><a href="#">Contact</a></li><li><a href="#">Privacy</a></li></ul></div>
       </div>

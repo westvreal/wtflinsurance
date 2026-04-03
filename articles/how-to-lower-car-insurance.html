@@ -4,10 +4,270 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>7 Proven Ways to Lower Your Car Insurance Premium - WTFLinsurance</title>
-  <meta name="description" content="Discover 7 proven strategies to lower your car insurance premium and save hundreds per year.">
+  <meta name="description" content="Discover 7 proven strategies to lower your car insurance premium and save hundreds per year. Visual breakdowns and real savings examples.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
+  <style>
+    /* Article-specific styles */
+    .savings-card {
+      border: 2px solid var(--gray-300);
+      border-radius: 12px;
+      overflow: hidden;
+      margin: 32px 0;
+    }
+    .savings-card-header {
+      background: var(--gray-100);
+      padding: 16px 24px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      border-bottom: 2px solid var(--gray-300);
+    }
+    .savings-card-body {
+      padding: 0;
+    }
+    .savings-row {
+      display: grid;
+      grid-template-columns: 1fr auto auto;
+      align-items: center;
+      padding: 16px 24px;
+      border-bottom: 1px solid var(--gray-100);
+      gap: 16px;
+    }
+    .savings-row:last-child { border-bottom: none; }
+    .savings-row.total {
+      background: var(--gray-100);
+      font-weight: 700;
+      border-top: 2px solid var(--gray-300);
+    }
+    .savings-strategy { font-weight: 600; }
+    .savings-range {
+      font-family: monospace;
+      font-size: 0.95rem;
+      color: var(--gray-500);
+      text-align: right;
+    }
+    .savings-bar-cell { min-width: 200px; }
+    .savings-bar-track {
+      height: 28px;
+      background: var(--gray-200);
+      border-radius: 6px;
+      overflow: hidden;
+      position: relative;
+    }
+    .savings-bar-fill {
+      height: 100%;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 10px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    .savings-bar-fill.green { background: #10b981; }
+    .savings-bar-fill.blue { background: #3b82f6; }
+    .savings-bar-fill.teal { background: #14b8a6; }
+    .savings-bar-fill.purple { background: #8b5cf6; }
+    .savings-bar-fill.orange { background: #f59e0b; }
+    .savings-bar-fill.indigo { background: #6366f1; }
+    .savings-bar-fill.emerald { background: #059669; }
+    .savings-bar-fill.total-green { background: #065f46; }
+
+    .vs-card {
+      border: 2px solid var(--gray-300);
+      border-radius: 12px;
+      overflow: hidden;
+      margin: 32px 0;
+    }
+    .vs-card-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .vs-card-header div {
+      padding: 20px 24px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+    .vs-card-header .before-header {
+      background: #fef3c7;
+      color: #92400e;
+    }
+    .vs-card-header .after-header {
+      background: #d1fae5;
+      color: #065f46;
+    }
+    .vs-card-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .vs-card-body div {
+      padding: 20px 24px;
+      border-top: 1px solid var(--gray-300);
+    }
+    .vs-card-body div:nth-child(odd) {
+      border-right: 1px solid var(--gray-300);
+    }
+    .vs-card-body .vs-label {
+      font-size: 0.85rem;
+      color: var(--gray-500);
+      margin-bottom: 4px;
+      font-weight: 600;
+    }
+
+    .scenario-box {
+      border: 2px solid var(--gray-300);
+      border-radius: 12px;
+      padding: 32px;
+      margin: 32px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .scenario-box::before {
+      content: attr(data-label);
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: var(--primary);
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 6px 16px;
+      border-radius: 0 0 0 12px;
+    }
+    .scenario-box.good { border-color: #10b981; }
+    .scenario-box.good::before { background: #10b981; }
+    .scenario-box.bad { border-color: #f59e0b; }
+    .scenario-box.bad::before { background: #f59e0b; }
+    .scenario-math {
+      background: var(--gray-100);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin: 16px 0;
+      font-family: monospace;
+      font-size: 1rem;
+      line-height: 2;
+    }
+    .scenario-math .result {
+      font-size: 1.3rem;
+      font-weight: 800;
+    }
+    .scenario-math .result.green { color: #065f46; }
+    .scenario-math .result.orange { color: #92400e; }
+
+    .tip-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 24px 0;
+    }
+    .tip-card {
+      border: 2px solid var(--gray-200);
+      border-radius: 12px;
+      padding: 24px;
+      background: #fff;
+    }
+    .tip-card h4 {
+      margin: 0 0 8px 0;
+      font-size: 1rem;
+    }
+    .tip-card p {
+      margin: 0;
+      font-size: 0.9rem;
+      color: var(--gray-600);
+    }
+    .tip-card .tip-savings {
+      display: inline-block;
+      margin-top: 10px;
+      background: #d1fae5;
+      color: #065f46;
+      font-weight: 700;
+      font-size: 0.85rem;
+      padding: 4px 12px;
+      border-radius: 20px;
+    }
+
+    .deductible-visual {
+      background: var(--gray-100);
+      border-radius: 12px;
+      padding: 32px;
+      margin: 32px 0;
+      text-align: center;
+    }
+    .deductible-bar-container {
+      max-width: 500px;
+      margin: 20px auto;
+    }
+    .deductible-bar-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .deductible-bar-row .ded-label {
+      width: 100px;
+      text-align: right;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--gray-700);
+      flex-shrink: 0;
+    }
+    .deductible-bar-row .bar-track {
+      flex: 1;
+      height: 32px;
+      background: var(--gray-300);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .deductible-bar-row .bar-fill {
+      height: 100%;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 10px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    .deductible-bar-row .bar-fill.high { background: #ef4444; }
+    .deductible-bar-row .bar-fill.mid-high { background: #f97316; }
+    .deductible-bar-row .bar-fill.mid { background: #f59e0b; }
+    .deductible-bar-row .bar-fill.low { background: #10b981; }
+    .deductible-bar-row .bar-fill.vlow { background: #059669; }
+
+    .tldr-box {
+      background: linear-gradient(135deg, #1a56db, #0ea5e9);
+      color: #fff;
+      border-radius: 12px;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    .tldr-box h3 { color: #fff; margin-bottom: 12px; }
+    .tldr-box p { color: rgba(255,255,255,0.9); }
+    .tldr-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .tldr-item {
+      background: rgba(255,255,255,0.15);
+      border-radius: 8px;
+      padding: 16px;
+    }
+    .tldr-item h4 { color: #fff; font-size: 0.95rem; margin-bottom: 4px; }
+    .tldr-item p { font-size: 0.9rem; margin: 0; }
+
+    @media (max-width: 640px) {
+      .vs-card-header, .vs-card-body, .tldr-grid, .tip-grid { grid-template-columns: 1fr; }
+      .vs-card-body div:nth-child(odd) { border-right: none; }
+      .savings-row { grid-template-columns: 1fr; gap: 8px; }
+      .savings-bar-cell { min-width: auto; }
+    }
+  </style>
 </head>
 <body>
 
@@ -21,7 +281,6 @@
           <div class="nav-dropdown">
             <a href="../knowledge-base/auto-insurance.html">Auto Insurance</a>
             <a href="../knowledge-base/home-insurance.html">Home Insurance</a>
-            <a href="../knowledge-base/health-insurance.html">Health Insurance</a>
             <a href="../knowledge-base/business-insurance.html">Business Insurance</a>
           </div>
         </div>
@@ -59,96 +318,436 @@
             <span class="tag">Auto Insurance</span>
             <h1>7 Proven Ways to Lower Your Car Insurance Premium</h1>
             <div class="article-meta">
-              <span>By <strong>Sarah Mitchell</strong></span>
+              <span>By <strong>WTFLinsurance Team</strong></span>
               <span>March 28, 2026</span>
               <span>8 min read</span>
             </div>
           </div>
 
           <div class="article-content">
-            <p>Car insurance is one of those expenses that can quietly drain your wallet if you're not paying attention. The average American spends over <strong>$1,700 per year</strong> on auto insurance, but with a few smart moves, you can cut that bill significantly.</p>
+
+            <p>The average Florida driver pays <strong>$2,560 per year</strong> for full-coverage auto insurance. That's over $200 a month &mdash; more than most people's cell phone, internet, and streaming subscriptions combined.</p>
+
+            <p>But here's the thing: most drivers are overpaying. Not because they chose bad coverage, but because they never looked at what's actually driving their premium up &mdash; or what they could do to bring it down.</p>
+
+            <p>Let's fix that.</p>
 
             <div class="callout">
-              <div class="callout-title">&#128161; Key Takeaway</div>
-              <p>Most drivers are overpaying for car insurance. By shopping around and leveraging discounts, you could save $300&ndash;$800 per year without reducing your coverage.</p>
+              <div class="callout-title">What You'll Learn</div>
+              <p>Seven specific, proven strategies that can save you <strong>$300&ndash;$800+ per year</strong> on auto insurance &mdash; without reducing your coverage. We'll show you the math on each one.</p>
             </div>
 
-            <h2>1. Shop Around and Compare Quotes</h2>
-            <p>This is the single most effective way to save money on car insurance. Rates vary dramatically between insurers &mdash; sometimes by hundreds of dollars for the exact same coverage. We recommend getting quotes from at least 3&ndash;5 different providers every year.</p>
-            <p>Don't just compare price, though. Look at:</p>
-            <ul>
-              <li>Coverage limits and deductibles</li>
-              <li>Customer satisfaction ratings</li>
-              <li>Claims handling reputation</li>
-              <li>Available discounts</li>
-            </ul>
+            <!-- ===== THE SAVINGS BREAKDOWN ===== -->
+            <h2>What Each Strategy Could Save You</h2>
 
-            <h2>2. Bundle Your Policies</h2>
-            <p>If you have home or renters insurance, bundling it with your auto policy can save you <strong>10&ndash;25%</strong> on both premiums. Most major insurers offer multi-policy discounts, and the savings can be substantial.</p>
+            <p>Before we dive in, here's a quick look at the potential savings from each approach. These are based on a typical Florida driver paying $2,560/year for full coverage:</p>
 
-            <blockquote>
-              <p>"Bundling my auto and home insurance saved me $420 per year. It took 15 minutes on the phone." &mdash; James T., WTFLinsurance reader</p>
-            </blockquote>
-
-            <h2>3. Raise Your Deductible</h2>
-            <p>Your deductible is the amount you pay out of pocket before insurance kicks in. Raising your deductible from $500 to $1,000 can reduce your premium by <strong>15&ndash;30%</strong>. Just make sure you have enough savings to cover the higher deductible if you need to file a claim.</p>
-
-            <h2>4. Ask About All Available Discounts</h2>
-            <p>Insurance companies offer dozens of discounts that they don't always advertise. Common discounts include:</p>
-            <ul>
-              <li><strong>Safe driver discount</strong> &mdash; clean driving record</li>
-              <li><strong>Good student discount</strong> &mdash; students with a B average or better</li>
-              <li><strong>Low mileage discount</strong> &mdash; driving less than 7,500 miles/year</li>
-              <li><strong>Anti-theft device discount</strong> &mdash; alarm or GPS tracker installed</li>
-              <li><strong>Paperless billing discount</strong> &mdash; opting for electronic statements</li>
-              <li><strong>Pay-in-full discount</strong> &mdash; paying your annual premium upfront</li>
-            </ul>
-
-            <h2>5. Improve Your Credit Score</h2>
-            <p>In most states, your credit score directly impacts your insurance premium. Drivers with excellent credit pay an average of <strong>40% less</strong> than those with poor credit. Focus on paying bills on time, reducing debt, and checking your credit report for errors.</p>
-
-            <h2>6. Drive Less with Usage-Based Insurance</h2>
-            <p>If you work from home or don't drive much, usage-based insurance (UBI) programs like Progressive's Snapshot or Allstate's Drivewise can save you up to <strong>30%</strong>. These programs track your driving habits and reward safe, low-mileage drivers.</p>
-
-            <!-- Example of embedded video placeholder -->
-            <div class="video-embed">
-              <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);color:#fff;text-align:center;">
-                <p style="font-size:3rem;margin:0;">&#9654;</p>
-                <p style="color:#fff;">Video: Understanding Usage-Based Insurance</p>
+            <div class="savings-card">
+              <div class="savings-card-header">Annual Savings Potential by Strategy</div>
+              <div class="savings-card-body">
+                <div class="savings-row">
+                  <span class="savings-strategy">1. Shop around &amp; compare</span>
+                  <span class="savings-range">$200&ndash;$600</span>
+                  <div class="savings-bar-cell">
+                    <div class="savings-bar-track"><div class="savings-bar-fill green" style="width:75%;">$600</div></div>
+                  </div>
+                </div>
+                <div class="savings-row">
+                  <span class="savings-strategy">2. Bundle policies</span>
+                  <span class="savings-range">$150&ndash;$400</span>
+                  <div class="savings-bar-cell">
+                    <div class="savings-bar-track"><div class="savings-bar-fill blue" style="width:50%;">$400</div></div>
+                  </div>
+                </div>
+                <div class="savings-row">
+                  <span class="savings-strategy">3. Raise deductible</span>
+                  <span class="savings-range">$150&ndash;$350</span>
+                  <div class="savings-bar-cell">
+                    <div class="savings-bar-track"><div class="savings-bar-fill teal" style="width:44%;">$350</div></div>
+                  </div>
+                </div>
+                <div class="savings-row">
+                  <span class="savings-strategy">4. Claim all discounts</span>
+                  <span class="savings-range">$100&ndash;$300</span>
+                  <div class="savings-bar-cell">
+                    <div class="savings-bar-track"><div class="savings-bar-fill purple" style="width:38%;">$300</div></div>
+                  </div>
+                </div>
+                <div class="savings-row">
+                  <span class="savings-strategy">5. Improve credit score</span>
+                  <span class="savings-range">$100&ndash;$500</span>
+                  <div class="savings-bar-cell">
+                    <div class="savings-bar-track"><div class="savings-bar-fill orange" style="width:63%;">$500</div></div>
+                  </div>
+                </div>
+                <div class="savings-row">
+                  <span class="savings-strategy">6. Usage-based insurance</span>
+                  <span class="savings-range">$100&ndash;$400</span>
+                  <div class="savings-bar-cell">
+                    <div class="savings-bar-track"><div class="savings-bar-fill indigo" style="width:50%;">$400</div></div>
+                  </div>
+                </div>
+                <div class="savings-row">
+                  <span class="savings-strategy">7. Review coverage annually</span>
+                  <span class="savings-range">$100&ndash;$300</span>
+                  <div class="savings-bar-cell">
+                    <div class="savings-bar-track"><div class="savings-bar-fill emerald" style="width:38%;">$300</div></div>
+                  </div>
+                </div>
+                <div class="savings-row total">
+                  <span class="savings-strategy">Combined Potential Savings</span>
+                  <span class="savings-range" style="color:#065f46;">$500&ndash;$1,200+</span>
+                  <div class="savings-bar-cell">
+                    <div class="savings-bar-track"><div class="savings-bar-fill total-green" style="width:100%;">$1,200+</div></div>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <h2>7. Review Your Coverage Annually</h2>
-            <p>Your insurance needs change over time. If your car is older and paid off, you might not need comprehensive and collision coverage. Dropping these coverages on an older vehicle can save you <strong>$200&ndash;$400 per year</strong>.</p>
+            <p>Now let's break each one down.</p>
 
-            <div class="callout">
-              <div class="callout-title">&#128203; Action Steps</div>
-              <p>1. Get 3&ndash;5 quotes this week<br>
-              2. Ask your current insurer about discounts you might be missing<br>
-              3. Consider raising your deductible if you have emergency savings<br>
-              4. Review your coverage annually and adjust as needed</p>
+            <!-- ===== STRATEGY 1 ===== -->
+            <h2>1. Shop Around and Compare Quotes</h2>
+
+            <p>This is the single most effective thing you can do. Insurance companies use different formulas to calculate your rate, which means the same driver can get wildly different quotes from different insurers.</p>
+
+            <p>How wildly? Let's look at a real example.</p>
+
+            <div class="vs-card">
+              <div class="vs-card-header">
+                <div class="before-header">Same Driver, Different Quotes</div>
+                <div class="after-header">Annual Premium Range</div>
+              </div>
+              <div class="vs-card-body">
+                <div>
+                  <div class="vs-label">Driver Profile</div>
+                  <p style="margin:0;">35 years old, clean record, 2021 Honda Accord, 12K miles/year, Tampa, FL</p>
+                </div>
+                <div>
+                  <div class="vs-label">Quote Range (5 insurers)</div>
+                  <p style="margin:0;font-size:1.1rem;"><span style="color:#ef4444;font-weight:700;">$2,840</span> &mdash; <span style="color:#065f46;font-weight:700;">$1,920</span></p>
+                </div>
+                <div>
+                  <div class="vs-label">In plain English</div>
+                  <p style="margin:0;">Same person. Same car. Same coverage.</p>
+                </div>
+                <div>
+                  <div class="vs-label">In plain English</div>
+                  <p style="margin:0;">A <strong>$920 difference</strong> just by asking for quotes.</p>
+                </div>
+              </div>
             </div>
 
-            <h2>The Bottom Line</h2>
-            <p>Lowering your car insurance doesn't mean cutting corners on coverage. It means being a smart consumer &mdash; shopping around, leveraging discounts, and making sure your policy fits your current needs. Start with even one of these strategies and you could see meaningful savings within your next billing cycle.</p>
+            <p>We recommend getting quotes from at least <strong>3&ndash;5 different providers</strong> every 12 months. Don't just compare price &mdash; also look at claims handling reputation, customer satisfaction, and available discounts.</p>
+
+            <!-- ===== STRATEGY 2 ===== -->
+            <h2>2. Bundle Your Policies</h2>
+
+            <p>If you have home or renters insurance, bundling it with your auto policy can save you <strong>10&ndash;25%</strong> on both premiums. Most major insurers offer multi-policy discounts.</p>
+
+            <div class="scenario-box good" data-label="REAL SAVINGS">
+              <h3>What Bundling Looks Like</h3>
+              <p>Take a Florida driver who currently pays for auto and home insurance separately:</p>
+              <div class="scenario-math">
+                Auto (separate): $2,560/year<br>
+                Home (separate): $2,100/year<br>
+                <strong>Total: $4,660/year</strong><br>
+                <hr style="border:none;border-top:2px solid var(--gray-300);margin:8px 0;">
+                Bundled auto: $2,200/year<br>
+                Bundled home: $1,800/year<br>
+                <strong>Bundled total: $4,000/year</strong><br>
+                <hr style="border:none;border-top:2px solid var(--gray-300);margin:8px 0;">
+                <span class="result green">= $660 saved per year</span>
+              </div>
+              <p>One phone call. Fifteen minutes. That's real money back in your pocket every single month.</p>
+            </div>
+
+            <!-- ===== STRATEGY 3 ===== -->
+            <h2>3. Raise Your Deductible</h2>
+
+            <p>Your deductible is what you pay out of pocket before insurance kicks in. Most people default to $500 without ever questioning it. But raising that number can meaningfully reduce your premium.</p>
+
+            <div class="deductible-visual">
+              <h3 style="margin-bottom:4px;">How Your Deductible Affects Your Premium</h3>
+              <p style="color:var(--gray-500);margin-bottom:20px;">Based on a $2,560/year full-coverage policy in Florida</p>
+              <div class="deductible-bar-container">
+                <div class="deductible-bar-row">
+                  <span class="ded-label">$250</span>
+                  <div class="bar-track">
+                    <div class="bar-fill high" style="width:100%;">$2,820/yr</div>
+                  </div>
+                </div>
+                <div class="deductible-bar-row">
+                  <span class="ded-label">$500</span>
+                  <div class="bar-track">
+                    <div class="bar-fill mid-high" style="width:90%;">$2,560/yr</div>
+                  </div>
+                </div>
+                <div class="deductible-bar-row">
+                  <span class="ded-label">$1,000</span>
+                  <div class="bar-track">
+                    <div class="bar-fill mid" style="width:76%;">$2,180/yr</div>
+                  </div>
+                </div>
+                <div class="deductible-bar-row">
+                  <span class="ded-label">$1,500</span>
+                  <div class="bar-track">
+                    <div class="bar-fill low" style="width:68%;">$1,950/yr</div>
+                  </div>
+                </div>
+                <div class="deductible-bar-row">
+                  <span class="ded-label">$2,000</span>
+                  <div class="bar-track">
+                    <div class="bar-fill vlow" style="width:62%;">$1,780/yr</div>
+                  </div>
+                </div>
+              </div>
+              <p style="font-size:0.85rem;color:var(--gray-500);margin:0;">Moving from $500 to $1,000 saves roughly $380/year</p>
+            </div>
+
+            <p>The trade-off: you'll pay more out of pocket if you file a claim. So make sure you have enough in savings to cover the higher deductible. If you rarely file claims, this is one of the easiest wins available.</p>
+
+            <!-- ===== STRATEGY 4 ===== -->
+            <h2>4. Ask About Every Available Discount</h2>
+
+            <p>Insurance companies offer dozens of discounts &mdash; and they don't always tell you about them. You have to ask.</p>
+
+            <div class="tip-grid">
+              <div class="tip-card">
+                <h4>Safe Driver</h4>
+                <p>Clean driving record with no accidents or violations for 3&ndash;5 years.</p>
+                <span class="tip-savings">Save 10&ndash;25%</span>
+              </div>
+              <div class="tip-card">
+                <h4>Good Student</h4>
+                <p>Students under 25 with a B average or higher on their transcript.</p>
+                <span class="tip-savings">Save 5&ndash;15%</span>
+              </div>
+              <div class="tip-card">
+                <h4>Low Mileage</h4>
+                <p>Driving less than 7,500 miles per year qualifies you for reduced rates.</p>
+                <span class="tip-savings">Save 5&ndash;15%</span>
+              </div>
+              <div class="tip-card">
+                <h4>Anti-Theft Device</h4>
+                <p>Alarm system, GPS tracker, or VIN etching installed in your vehicle.</p>
+                <span class="tip-savings">Save 5&ndash;10%</span>
+              </div>
+              <div class="tip-card">
+                <h4>Paperless &amp; Autopay</h4>
+                <p>Opting for electronic statements and automatic payments from your bank.</p>
+                <span class="tip-savings">Save 3&ndash;8%</span>
+              </div>
+              <div class="tip-card">
+                <h4>Pay in Full</h4>
+                <p>Paying your 6-month or annual premium upfront instead of monthly.</p>
+                <span class="tip-savings">Save 5&ndash;10%</span>
+              </div>
+            </div>
+
+            <p>Many of these stack. A safe driver who pays in full with autopay and paperless billing could be looking at <strong>20&ndash;40% off</strong> their base rate.</p>
+
+            <!-- ===== STRATEGY 5 ===== -->
+            <h2>5. Improve Your Credit Score</h2>
+
+            <p>In Florida, your credit-based insurance score directly impacts your premium. The difference between excellent and poor credit can be staggering:</p>
+
+            <div style="overflow-x:auto;margin:24px 0;">
+              <table style="width:100%;border-collapse:collapse;font-size:0.95rem;">
+                <thead>
+                  <tr style="background:var(--gray-100);">
+                    <th style="padding:12px 16px;text-align:left;border-bottom:2px solid var(--gray-300);">Credit Tier</th>
+                    <th style="padding:12px 16px;text-align:center;border-bottom:2px solid var(--gray-300);">Score Range</th>
+                    <th style="padding:12px 16px;text-align:right;border-bottom:2px solid var(--gray-300);">Avg. Annual Premium</th>
+                    <th style="padding:12px 16px;text-align:right;border-bottom:2px solid var(--gray-300);">vs. Good Credit</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td style="padding:12px 16px;border-bottom:1px solid var(--gray-100);">Excellent</td>
+                    <td style="padding:12px 16px;text-align:center;border-bottom:1px solid var(--gray-100);">800+</td>
+                    <td style="padding:12px 16px;text-align:right;border-bottom:1px solid var(--gray-100);color:#065f46;font-weight:600;">$1,920</td>
+                    <td style="padding:12px 16px;text-align:right;border-bottom:1px solid var(--gray-100);color:#065f46;">-$340</td>
+                  </tr>
+                  <tr style="background:#fafafa;">
+                    <td style="padding:12px 16px;border-bottom:1px solid var(--gray-100);">Good</td>
+                    <td style="padding:12px 16px;text-align:center;border-bottom:1px solid var(--gray-100);">670&ndash;799</td>
+                    <td style="padding:12px 16px;text-align:right;border-bottom:1px solid var(--gray-100);font-weight:600;">$2,260</td>
+                    <td style="padding:12px 16px;text-align:right;border-bottom:1px solid var(--gray-100);">Baseline</td>
+                  </tr>
+                  <tr>
+                    <td style="padding:12px 16px;border-bottom:1px solid var(--gray-100);">Fair</td>
+                    <td style="padding:12px 16px;text-align:center;border-bottom:1px solid var(--gray-100);">580&ndash;669</td>
+                    <td style="padding:12px 16px;text-align:right;border-bottom:1px solid var(--gray-100);color:#92400e;font-weight:600;">$2,840</td>
+                    <td style="padding:12px 16px;text-align:right;border-bottom:1px solid var(--gray-100);color:#92400e;">+$580</td>
+                  </tr>
+                  <tr style="background:#fafafa;">
+                    <td style="padding:12px 16px;border-bottom:1px solid var(--gray-100);">Poor</td>
+                    <td style="padding:12px 16px;text-align:center;border-bottom:1px solid var(--gray-100);">Below 580</td>
+                    <td style="padding:12px 16px;text-align:right;border-bottom:1px solid var(--gray-100);color:#ef4444;font-weight:600;">$3,580</td>
+                    <td style="padding:12px 16px;text-align:right;border-bottom:1px solid var(--gray-100);color:#ef4444;">+$1,320</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p>Moving from "fair" to "good" credit can save you <strong>$580 per year</strong>. Focus on paying bills on time, reducing credit card balances, and checking your credit report for errors. These steps help your insurance rate and your financial life overall.</p>
+
+            <!-- ===== STRATEGY 6 ===== -->
+            <h2>6. Try Usage-Based Insurance</h2>
+
+            <p>If you work from home or don't drive much, usage-based insurance (UBI) programs can save you up to <strong>30%</strong>. These programs use a device or app to track your driving habits and reward safe, low-mileage drivers.</p>
+
+            <div class="vs-card">
+              <div class="vs-card-header">
+                <div class="before-header">Traditional Policy</div>
+                <div class="after-header">Usage-Based Policy</div>
+              </div>
+              <div class="vs-card-body">
+                <div>
+                  <div class="vs-label">How it works</div>
+                  <p style="margin:0;">Flat rate based on your demographics, vehicle, and driving history.</p>
+                </div>
+                <div>
+                  <div class="vs-label">How it works</div>
+                  <p style="margin:0;">Rate adjusts based on <strong>actual driving behavior</strong> &mdash; miles driven, braking, speed.</p>
+                </div>
+                <div>
+                  <div class="vs-label">Best for</div>
+                  <p style="margin:0;">High-mileage drivers, commuters, people who prefer simplicity.</p>
+                </div>
+                <div>
+                  <div class="vs-label">Best for</div>
+                  <p style="margin:0;">Low-mileage drivers, remote workers, careful drivers who want to be rewarded.</p>
+                </div>
+                <div>
+                  <div class="vs-label">Typical cost</div>
+                  <p style="margin:0;font-weight:700;color:#92400e;">$2,560/year</p>
+                </div>
+                <div>
+                  <div class="vs-label">Typical cost</div>
+                  <p style="margin:0;font-weight:700;color:#065f46;">$1,790&ndash;$2,300/year</p>
+                </div>
+              </div>
+            </div>
+
+            <p>Major programs include Progressive's Snapshot, Allstate's Drivewise, and State Farm's Drive Safe & Save. Most offer a trial period so you can see your potential savings before committing.</p>
+
+            <!-- ===== STRATEGY 7 ===== -->
+            <h2>7. Review Your Coverage Annually</h2>
+
+            <p>Your insurance needs change over time, but most people set their policy and forget about it for years. That's how you end up paying for coverage you don't need.</p>
+
+            <div class="scenario-box bad" data-label="COMMON MISTAKE">
+              <h3>Paying for Coverage You Don't Need</h3>
+              <p>Take a 2015 Honda Civic worth $12,000. The owner is still paying for full coverage with a $500 deductible &mdash; the same policy they had when the car was new.</p>
+              <div class="scenario-math">
+                Full coverage premium: $2,560/year<br>
+                Collision + comprehensive portion: ~$900/year<br>
+                Car's current value: $12,000<br>
+                <hr style="border:none;border-top:2px solid var(--gray-300);margin:8px 0;">
+                After deductible, max collision payout: $11,500<br>
+                Annual cost of that coverage: $900<br>
+                <span class="result orange">= Paying 7.8% of the car's value every year to insure it</span>
+              </div>
+            </div>
+
+            <div class="scenario-box good" data-label="SMART MOVE">
+              <h3>Right-Sizing the Coverage</h3>
+              <p>For an older vehicle that's paid off, consider dropping collision coverage and keeping comprehensive (which covers theft, weather, and animal strikes).</p>
+              <div class="scenario-math">
+                Previous premium: $2,560/year<br>
+                Drop collision, keep comprehensive: $1,850/year<br>
+                <hr style="border:none;border-top:2px solid var(--gray-300);margin:8px 0;">
+                <span class="result green">= $710 saved per year</span>
+              </div>
+              <p>Rule of thumb: if your car is worth less than 10x your annual collision premium, it may not be worth carrying.</p>
+            </div>
+
+            <!-- ===== LET'S SEE IT ALL TOGETHER ===== -->
+            <h2>Let's See This in Action</h2>
+
+            <p>Meet <strong>Carlos</strong>. He's a 38-year-old Tampa driver paying $2,560/year. He's never shopped around, has a $500 deductible, and isn't using any discounts. Here's what happens when he applies just four of these strategies:</p>
+
+            <div class="scenario-box good" data-label="CARLOS'S SAVINGS">
+              <h3>Four Simple Changes</h3>
+              <div class="scenario-math">
+                Starting premium: $2,560/year<br><br>
+                Shopped around (switched insurer): &minus;$380<br>
+                Bundled with home insurance: &minus;$240<br>
+                Raised deductible to $1,000: &minus;$190<br>
+                Applied safe driver + paperless discounts: &minus;$150<br>
+                <hr style="border:none;border-top:2px solid var(--gray-300);margin:8px 0;">
+                <span class="result green">New premium: $1,600/year &mdash; saving $960 annually</span>
+              </div>
+              <p>That's <strong>$80/month</strong> back in Carlos's pocket. Same great coverage. He just stopped leaving money on the table.</p>
+            </div>
+
+            <!-- ===== WHAT TO DO NOW ===== -->
+            <h2>What Should You Do Right Now?</h2>
+
+            <ol>
+              <li><strong>Get 3&ndash;5 quotes this week.</strong> This takes about 30 minutes online and is the single biggest lever you have. Even if you stay with your current insurer, you'll know if you're overpaying.</li>
+              <li><strong>Call your current insurer and ask about discounts.</strong> Literally say: "What discounts am I eligible for that I'm not currently receiving?" You might be surprised.</li>
+              <li><strong>Look at your deductible.</strong> If it's $500 or less and you have emergency savings, consider raising it to $1,000.</li>
+              <li><strong>Review your coverage limits.</strong> Make sure they still match your situation &mdash; especially if your car is older or your circumstances have changed.</li>
+            </ol>
+
+            <!-- ===== THE BOTTOM LINE ===== -->
+            <div class="tldr-box">
+              <h3>The Bottom Line</h3>
+              <p>Lowering your car insurance doesn't mean cutting corners on protection. It means being intentional about where your money goes.</p>
+              <div class="tldr-grid">
+                <div class="tldr-item">
+                  <h4>Biggest Impact</h4>
+                  <p>Shopping around and comparing quotes. Do this once a year &mdash; it takes 30 minutes and can save hundreds.</p>
+                </div>
+                <div class="tldr-item">
+                  <h4>Easiest Win</h4>
+                  <p>Ask your insurer about discounts you're missing. One phone call, no changes to your coverage.</p>
+                </div>
+                <div class="tldr-item">
+                  <h4>Long-Term Play</h4>
+                  <p>Improve your credit score. It affects your premium more than most people realize.</p>
+                </div>
+                <div class="tldr-item">
+                  <h4>Annual Habit</h4>
+                  <p>Review your coverage every year. Your needs change &mdash; your policy should too.</p>
+                </div>
+              </div>
+            </div>
+
+            <blockquote>
+              <p>"The best time to shop for car insurance is before your renewal date. The second best time is right now." &mdash; Every insurance agent who's honest with you</p>
+            </blockquote>
+
+            <h2>Ready to See What You Could Save?</h2>
+            <p>Create a free WTFLinsurance account and we'll help you compare quotes from top Florida insurers, find discounts you're missing, and make sure you're getting the best rate for your coverage.</p>
+
+            <div style="text-align:center;margin:32px 0;">
+              <a href="../pages/signup.html" class="btn btn-primary btn-lg">Compare My Rates &rarr;</a>
+            </div>
 
             <p><strong>Related articles:</strong></p>
             <ul>
-              <li><a href="home-insurance-claims.html">How to File a Home Insurance Claim</a></li>
+              <li><a href="actual-cash-value-vs-replacement-cost.html">ACV vs. Replacement Cost: The Difference That Could Cost You Thousands</a></li>
+              <li><a href="home-insurance-claims.html">How to File a Home Insurance Claim (Step-by-Step)</a></li>
               <li><a href="../knowledge-base/auto-insurance.html">Auto Insurance Knowledge Base</a></li>
             </ul>
+
           </div>
         </div>
 
         <!-- Sidebar -->
         <aside class="article-sidebar">
           <div class="sidebar-card">
-            <h4>Table of Contents</h4>
+            <h4>In This Article</h4>
             <ul>
-              <li><a href="#" style="color:var(--primary);font-weight:500;">1. Shop Around</a></li>
+              <li><a href="#">Savings Breakdown</a></li>
+              <li><a href="#">1. Shop Around</a></li>
               <li><a href="#">2. Bundle Policies</a></li>
               <li><a href="#">3. Raise Deductible</a></li>
-              <li><a href="#">4. Ask for Discounts</a></li>
+              <li><a href="#">4. Claim Discounts</a></li>
               <li><a href="#">5. Improve Credit</a></li>
               <li><a href="#">6. Usage-Based Insurance</a></li>
               <li><a href="#">7. Review Coverage</a></li>
@@ -156,15 +755,22 @@
           </div>
           <div class="sidebar-card" style="background:var(--primary);color:#fff;text-align:center;">
             <h4 style="color:#fff;">Get Your Free Quote</h4>
-            <p style="color:rgba(255,255,255,0.85);font-size:0.9rem;">Compare rates from 100+ insurers in minutes.</p>
+            <p style="color:rgba(255,255,255,0.85);font-size:0.9rem;">Compare rates from top Florida insurers in minutes.</p>
             <a href="../pages/signup.html" class="btn btn-white btn-block" style="margin-top:12px;">Start Comparing</a>
           </div>
           <div class="sidebar-card">
-            <h4>Related Resources</h4>
-            <ul>
-              <li><a href="../resources/index.html">&#128196; Insurance Coverage Checklist</a></li>
-              <li><a href="../resources/index.html">&#128196; Premium Comparison Worksheet</a></li>
-            </ul>
+            <h4>Quick Numbers</h4>
+            <p style="font-size:0.9rem;color:var(--gray-700);margin:0;">
+              <strong>Avg. FL premium:</strong> $2,560/yr<br>
+              <strong>Potential savings:</strong> $500&ndash;$1,200+<br>
+              <strong>Time to compare:</strong> 30 minutes<br><br>
+              The 30 minutes you spend comparing could be the most profitable half-hour of your year.
+            </p>
+          </div>
+          <div class="sidebar-card">
+            <h4>Free Download</h4>
+            <p style="font-size:0.9rem;color:var(--gray-500);">Auto Insurance Comparison Worksheet (PDF)</p>
+            <a href="../resources/index.html" class="btn btn-outline btn-sm btn-block" style="margin-top:8px;">Download PDF</a>
           </div>
         </aside>
       </div>
@@ -177,34 +783,14 @@
       <div class="footer-grid">
         <div class="footer-about">
           <div class="logo">WTFLinsurance</div>
-          <p>Expert insurance advice, guides, and tools &mdash; always free.</p>
+          <p>Expert insurance advice &mdash; always free.</p>
         </div>
-        <div>
-          <h4>Insurance</h4>
-          <ul>
-            <li><a href="../knowledge-base/auto-insurance.html">Auto Insurance</a></li>
-            <li><a href="../knowledge-base/home-insurance.html">Home Insurance</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4>Resources</h4>
-          <ul>
-            <li><a href="index.html">Articles</a></li>
-            <li><a href="../knowledge-base/index.html">Knowledge Base</a></li>
-            <li><a href="../resources/index.html">Downloads</a></li>
-          </ul>
-        </div>
-        <div>
-          <h4>Company</h4>
-          <ul>
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Contact</a></li>
-            <li><a href="#">Privacy Policy</a></li>
-          </ul>
-        </div>
+        <div><h4>Insurance</h4><ul><li><a href="../knowledge-base/auto-insurance.html">Auto</a></li><li><a href="../knowledge-base/home-insurance.html">Home</a></li><li><a href="../knowledge-base/business-insurance.html">Business</a></li></ul></div>
+        <div><h4>Resources</h4><ul><li><a href="index.html">Articles</a></li><li><a href="../knowledge-base/index.html">Knowledge Base</a></li><li><a href="../resources/index.html">Downloads</a></li></ul></div>
+        <div><h4>Company</h4><ul><li><a href="#">About</a></li><li><a href="#">Contact</a></li><li><a href="#">Privacy</a></li></ul></div>
       </div>
       <div class="footer-bottom">
-        <span>&copy; 2026 WTFLinsurance.com. All rights reserved.</span>
+        <span>&copy; 2026 WTFLinsurance.com</span>
         <span>For educational purposes only.</span>
       </div>
     </div>
