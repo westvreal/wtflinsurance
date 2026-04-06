@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fannie Mae &amp; Freddie Mac Now Accept ACV Roof Coverage: What It Means for Florida - WTFLinsurance</title>
+  <meta name="description" content="Fannie Mae and Freddie Mac removed the requirement for full replacement cost on roofs. Here's what ACV vs RC roof coverage means for Florida homeowners, realtors, and the state's roofing fraud problem.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    /* Article-specific styles */
+    .vs-card {
+      border: 2px solid var(--gray-300);
+      border-radius: 12px;
+      overflow: hidden;
+      margin: 32px 0;
+    }
+    .vs-card-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .vs-card-header div {
+      padding: 20px 24px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+    .vs-card-header .acv-header {
+      background: #fef3c7;
+      color: #92400e;
+    }
+    .vs-card-header .rc-header {
+      background: #d1fae5;
+      color: #065f46;
+    }
+    .vs-card-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+    .vs-card-body div {
+      padding: 20px 24px;
+      border-top: 1px solid var(--gray-300);
+    }
+    .vs-card-body div:nth-child(odd) {
+      border-right: 1px solid var(--gray-300);
+    }
+    .vs-card-body .vs-label {
+      font-size: 0.85rem;
+      color: var(--gray-500);
+      margin-bottom: 4px;
+      font-weight: 600;
+    }
+
+    .depreciation-visual {
+      background: var(--gray-100);
+      border-radius: 12px;
+      padding: 32px;
+      margin: 32px 0;
+      text-align: center;
+    }
+    .depreciation-bar-container {
+      max-width: 500px;
+      margin: 20px auto;
+    }
+    .depreciation-bar-row {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    .depreciation-bar-row .year-label {
+      width: 80px;
+      text-align: right;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--gray-700);
+      flex-shrink: 0;
+    }
+    .depreciation-bar-row .bar-track {
+      flex: 1;
+      height: 32px;
+      background: var(--gray-300);
+      border-radius: 8px;
+      overflow: hidden;
+      position: relative;
+    }
+    .depreciation-bar-row .bar-fill {
+      height: 100%;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding-right: 10px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    .depreciation-bar-row .bar-fill.full { background: #10b981; }
+    .depreciation-bar-row .bar-fill.high { background: #34d399; }
+    .depreciation-bar-row .bar-fill.mid { background: #f59e0b; }
+    .depreciation-bar-row .bar-fill.low { background: #f97316; }
+    .depreciation-bar-row .bar-fill.vlow { background: #ef4444; }
+
+    .scenario-box {
+      border: 2px solid var(--gray-300);
+      border-radius: 12px;
+      padding: 32px;
+      margin: 32px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .scenario-box::before {
+      content: attr(data-label);
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: var(--primary);
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 6px 16px;
+      border-radius: 0 0 0 12px;
+    }
+    .scenario-box.good { border-color: #10b981; }
+    .scenario-box.good::before { background: #10b981; }
+    .scenario-box.bad { border-color: #f59e0b; }
+    .scenario-box.bad::before { background: #f59e0b; }
+    .scenario-math {
+      background: var(--gray-100);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin: 16px 0;
+      font-family: monospace;
+      font-size: 1rem;
+      line-height: 2;
+    }
+    .scenario-math .result {
+      font-size: 1.3rem;
+      font-weight: 800;
+    }
+    .scenario-math .result.green { color: #065f46; }
+    .scenario-math .result.orange { color: #92400e; }
+
+    .impact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+      margin: 32px 0;
+    }
+    .impact-card {
+      border: 2px solid var(--gray-200);
+      border-radius: 10px;
+      padding: 24px;
+    }
+    .impact-card h4 {
+      font-size: 1rem;
+      margin-bottom: 8px;
+    }
+    .impact-card p {
+      font-size: 0.85rem;
+      color: var(--gray-600);
+      margin: 0;
+      line-height: 1.5;
+    }
+    .impact-card .impact-icon {
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 4px;
+      margin-bottom: 12px;
+      display: inline-block;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .impact-icon.homeowner { background: #dbeafe; color: #1e40af; }
+    .impact-icon.realtor { background: #fef3c7; color: #92400e; }
+    .impact-icon.industry { background: #d1fae5; color: #065f46; }
+
+    .timeline {
+      margin: 32px 0;
+      padding: 0;
+      list-style: none;
+      position: relative;
+    }
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 16px;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: var(--gray-300);
+      border-radius: 3px;
+    }
+    .timeline-item {
+      display: flex;
+      gap: 20px;
+      padding-bottom: 24px;
+      position: relative;
+    }
+    .timeline-item:last-child { padding-bottom: 0; }
+    .timeline-dot {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+      flex-shrink: 0;
+      z-index: 1;
+    }
+    .timeline-content h4 { margin-bottom: 2px; font-size: 0.95rem; }
+    .timeline-content p { font-size: 0.85rem; color: var(--gray-600); margin: 0; line-height: 1.5; }
+
+    .tldr-box {
+      background: linear-gradient(135deg, #1a56db, #0ea5e9);
+      color: #fff;
+      border-radius: 12px;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    .tldr-box h3 { color: #fff; margin-bottom: 12px; }
+    .tldr-box p { color: rgba(255,255,255,0.9); }
+    .tldr-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .tldr-item {
+      background: rgba(255,255,255,0.15);
+      border-radius: 8px;
+      padding: 16px;
+    }
+    .tldr-item h4 { color: #fff; font-size: 0.95rem; margin-bottom: 4px; }
+    .tldr-item p { font-size: 0.9rem; margin: 0; }
+
+    .source-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--gray-100);
+      border: 1px solid var(--gray-300);
+      border-radius: 8px;
+      padding: 12px 20px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--primary);
+      text-decoration: none;
+      margin: 16px 0;
+      transition: background 0.2s;
+    }
+    .source-link:hover { background: var(--gray-200); }
+
+    @media (max-width: 640px) {
+      .vs-card-header, .vs-card-body, .tldr-grid { grid-template-columns: 1fr; }
+      .vs-card-body div:nth-child(odd) { border-right: none; }
+      .impact-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="container header-inner">
+      <a href="../index.html" class="logo">WTFLinsurance</a>
+      <nav class="nav">
+        <div class="nav-item">
+          <a href="#" class="nav-link">Insurance Types &#9662;</a>
+          <div class="nav-dropdown">
+            <a href="../knowledge-base/auto-insurance.html">Auto Insurance</a>
+            <a href="../knowledge-base/home-insurance.html">Home Insurance</a>
+            <a href="../knowledge-base/flood-insurance.html">Flood Insurance</a>
+            <a href="../knowledge-base/boat-insurance.html">Boat Insurance</a>
+            <a href="../knowledge-base/rental-property-insurance.html">Rental Property Insurance</a>
+            <a href="../knowledge-base/business-insurance.html">Business Insurance</a>
+          </div>
+        </div>
+        <a href="index.html" class="nav-link active">Articles</a>
+        <a href="../knowledge-base/index.html" class="nav-link">Knowledge Base</a>
+        <a href="../resources/index.html" class="nav-link">Resources</a>
+        <a href="../tools/index.html" class="nav-link">Tools</a>
+      </nav>
+      <div class="header-actions">
+        <a href="../pages/login.html" class="nav-link">Log In</a>
+        <a href="../pages/signup.html" class="btn btn-primary btn-sm">Get Started Free</a>
+      </div>
+      <button class="mobile-toggle" aria-label="Menu">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="breadcrumbs">
+    <div class="container">
+      <a href="../index.html">Home</a><span>/</span>
+      <a href="index.html">Articles</a><span>/</span>
+      <strong>Fannie &amp; Freddie ACV Roof Change</strong>
+    </div>
+  </div>
+
+  <article>
+    <div class="container">
+      <div class="article-layout">
+        <div>
+          <div class="article-header">
+            <span class="tag">Home Insurance</span>
+            <h1>Fannie Mae &amp; Freddie Mac Now Accept ACV Roof Coverage: What It Means for Florida</h1>
+            <div class="article-meta">
+              <span>By <strong>WTFLinsurance Team</strong></span>
+              <span>April 6, 2026</span>
+              <span>7 min read</span>
+            </div>
+          </div>
+
+          <div class="article-content">
+
+            <p>On March 18, 2026, the Federal Housing Finance Agency (FHFA) announced that <strong>Fannie Mae and Freddie Mac will no longer require full replacement cost coverage on roofs</strong> for mortgages they back. Lenders can now accept homeowners policies with <strong>Actual Cash Value (ACV)</strong> roof coverage instead.</p>
+
+            <p>For most of the country, this is a moderate policy tweak. For Florida, it's a significant shift &mdash; one that touches insurance premiums, real estate closings, and the state's long battle with roofing fraud.</p>
+
+            <a href="https://www.fhfa.gov/news/news-release/fannie-mae-and-freddie-mac-remove-certain-homeowners-insurance-requirements-that-will-reduce-costs" target="_blank" rel="noopener" class="source-link">Read the full FHFA announcement &rarr;</a>
+
+            <div class="callout">
+              <div class="callout-title">What Changed</div>
+              <p>Previously, Fannie Mae and Freddie Mac required homeowners with conforming mortgages to carry <strong>full replacement cost</strong> coverage on their roof. That requirement has been removed. Homeowners can now carry <strong>ACV coverage on the roof only</strong> &mdash; the rest of the home still requires replacement cost coverage.</p>
+            </div>
+
+            <!-- ===== ACV VS RC ON ROOFS ===== -->
+            <h2>ACV vs. Replacement Cost on a Roof: What's the Difference?</h2>
+
+            <p>These two terms determine how much an insurance company pays when a roof is damaged or destroyed. The difference is straightforward, but the dollar gap is enormous &mdash; especially on older roofs. (For a deeper dive on ACV vs. RC across your entire policy, see our <a href="actual-cash-value-vs-replacement-cost.html">full ACV vs. Replacement Cost guide</a>.)</p>
+
+            <div class="vs-card">
+              <div class="vs-card-header">
+                <div class="acv-header">Actual Cash Value (ACV) Roof</div>
+                <div class="rc-header">Replacement Cost (RC) Roof</div>
+              </div>
+              <div class="vs-card-body">
+                <div>
+                  <div class="vs-label">What it pays</div>
+                  <p style="margin:0;">The <strong>depreciated value</strong> of the roof at the time of the loss. A 15-year-old roof that costs $25,000 to replace might only pay out $8,000&ndash;$12,000.</p>
+                </div>
+                <div>
+                  <div class="vs-label">What it pays</div>
+                  <p style="margin:0;">The <strong>full cost to replace</strong> the roof with materials of like kind and quality at today's prices, regardless of the roof's age.</p>
+                </div>
+                <div>
+                  <div class="vs-label">The formula</div>
+                  <p style="margin:0;font-family:monospace;">Replacement Cost &minus; Depreciation = Payout</p>
+                </div>
+                <div>
+                  <div class="vs-label">The formula</div>
+                  <p style="margin:0;font-family:monospace;">Full Replacement Cost = Payout</p>
+                </div>
+                <div>
+                  <div class="vs-label">Premium impact</div>
+                  <p style="margin:0;">Lower premiums. The insurer's exposure on an older roof is significantly reduced.</p>
+                </div>
+                <div>
+                  <div class="vs-label">Premium impact</div>
+                  <p style="margin:0;">Higher premiums. The insurer is on the hook for a full new roof regardless of the current roof's condition.</p>
+                </div>
+                <div>
+                  <div class="vs-label">Mortgage status (before March 2026)</div>
+                  <p style="margin:0;">Not accepted by Fannie/Freddie. Lenders could reject the policy at closing, stalling or killing the deal.</p>
+                </div>
+                <div>
+                  <div class="vs-label">Mortgage status (after March 2026)</div>
+                  <p style="margin:0;">Still accepted. Nothing changed for RC coverage &mdash; it remains the more comprehensive option.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- ===== DEPRECIATION ON ROOFS ===== -->
+            <h2>How Depreciation Works on a Florida Roof</h2>
+
+            <p>Roof depreciation in Florida is aggressive. Heat, UV exposure, humidity, and hurricane-season storms wear roofs down faster than in most other states. Here's what ACV looks like on a <strong>$25,000 shingle roof</strong> over time:</p>
+
+            <div class="depreciation-visual">
+              <h3 style="margin-bottom:4px;">ACV of a $25,000 Shingle Roof Over Time</h3>
+              <p style="color:var(--gray-500);margin-bottom:20px;">How depreciation reduces your ACV payout in Florida</p>
+              <div class="depreciation-bar-container">
+                <div class="depreciation-bar-row">
+                  <span class="year-label">New</span>
+                  <div class="bar-track">
+                    <div class="bar-fill full" style="width:100%;">$25,000</div>
+                  </div>
+                </div>
+                <div class="depreciation-bar-row">
+                  <span class="year-label">5 Years</span>
+                  <div class="bar-track">
+                    <div class="bar-fill high" style="width:75%;">$18,750</div>
+                  </div>
+                </div>
+                <div class="depreciation-bar-row">
+                  <span class="year-label">10 Years</span>
+                  <div class="bar-track">
+                    <div class="bar-fill mid" style="width:50%;">$12,500</div>
+                  </div>
+                </div>
+                <div class="depreciation-bar-row">
+                  <span class="year-label">15 Years</span>
+                  <div class="bar-track">
+                    <div class="bar-fill low" style="width:30%;">$7,500</div>
+                  </div>
+                </div>
+                <div class="depreciation-bar-row">
+                  <span class="year-label">20 Years</span>
+                  <div class="bar-track">
+                    <div class="bar-fill vlow" style="width:12%;">$3,000</div>
+                  </div>
+                </div>
+              </div>
+              <p style="font-size:0.85rem;color:var(--gray-500);margin:0;">Based on typical 5% annual depreciation for asphalt shingle roofs in Florida's climate</p>
+            </div>
+
+            <p>On a 15-year-old roof, the gap between an ACV payout and a full replacement is <strong>$17,500</strong>. That's the tradeoff: lower premiums now, but substantially less coverage when a claim happens on an aging roof.</p>
+
+            <!-- ===== REAL EXAMPLE ===== -->
+            <h2>Same Hurricane, Different Payouts</h2>
+
+            <p>A hurricane damages two identical homes in Fort Lauderdale. Both have $25,000 replacement cost roofs that are 12 years old. Here's how the claims compare:</p>
+
+            <div class="scenario-box bad" data-label="ACV ROOF">
+              <h3>ACV Roof Coverage</h3>
+              <p>The insurer calculates the depreciated value of the 12-year-old roof and pays accordingly.</p>
+              <div class="scenario-math">
+                Replacement cost: $25,000<br>
+                &minus; 12 years depreciation (~60%): $15,000<br>
+                ACV of roof: $10,000<br>
+                &minus; $2,500 deductible<br>
+                <hr style="border:none;border-top:2px solid var(--gray-300);margin:8px 0;">
+                <span class="result orange">Insurance payout: $7,500</span>
+              </div>
+              <p>The homeowner receives $7,500 but still needs a $25,000 roof. The remaining <strong>$17,500</strong> comes out of pocket or requires financing.</p>
+            </div>
+
+            <div class="scenario-box good" data-label="REPLACEMENT COST ROOF">
+              <h3>Replacement Cost Roof Coverage</h3>
+              <p>The insurer pays the full cost to replace the roof, regardless of its age.</p>
+              <div class="scenario-math">
+                Replacement cost: $25,000<br>
+                &minus; $2,500 deductible<br>
+                <hr style="border:none;border-top:2px solid var(--gray-300);margin:8px 0;">
+                <span class="result green">Insurance payout: $22,500</span>
+              </div>
+              <p>The homeowner receives $22,500 &mdash; enough to cover a full roof replacement minus the deductible.</p>
+            </div>
+
+            <p style="text-align:center;font-size:1.1rem;font-weight:700;margin:32px 0;">Same storm. Same roof. Same damage.<br>Difference: <span style="color:#ef4444;font-size:1.3rem;">$15,000</span></p>
+
+            <!-- ===== WHO THIS IMPACTS ===== -->
+            <h2>Who This Impacts in Florida</h2>
+
+            <div class="impact-grid">
+              <div class="impact-card">
+                <span class="impact-icon homeowner">Homeowners</span>
+                <h4>Lower Premiums, Less Roof Coverage</h4>
+                <p>Florida homeowners with conforming mortgages can now opt for ACV roof coverage without running into issues with their lender. This typically lowers annual premiums. The tradeoff is a lower payout on roof claims &mdash; a significant consideration in a state where roof damage is the most common homeowners claim.</p>
+              </div>
+              <div class="impact-card">
+                <span class="impact-icon realtor">Realtors</span>
+                <h4>Fewer Insurance Roadblocks at Closing</h4>
+                <p>Before this change, homes with ACV roof policies could stall at closing because the lender's insurance requirements didn't match the policy. This was especially common with older homes where full RC roof coverage was expensive or difficult to obtain. Removing the requirement eliminates that friction point.</p>
+              </div>
+              <div class="impact-card">
+                <span class="impact-icon industry">Florida Market</span>
+                <h4>More Options in a Tight Market</h4>
+                <p>Florida's property insurance market has seen carriers exit or restrict coverage in recent years. Allowing ACV on roofs gives insurers more flexibility in what they offer, potentially expanding the number of carriers willing to write policies in the state.</p>
+              </div>
+            </div>
+
+            <!-- ===== ROOFING FRAUD ===== -->
+            <h2>Does This Address Florida's Roofing Fraud Problem?</h2>
+
+            <p>Florida has dealt with widespread roofing fraud for years. The typical scheme: a contractor goes door-to-door after a storm (or even before one), convinces homeowners to sign an <strong>Assignment of Benefits (AOB)</strong>, files an inflated insurance claim for a full roof replacement, and pockets the difference.</p>
+
+            <p>This fraud was fueled in part by replacement cost coverage. When an insurer is required to pay the <strong>full cost of a brand-new roof</strong> regardless of the existing roof's age or condition, the potential payout on each claim is high &mdash; and that high payout is what attracted bad actors.</p>
+
+            <p>Florida already took steps to address this:</p>
+
+            <ul class="timeline">
+              <li class="timeline-item">
+                <span class="timeline-dot">2022</span>
+                <div class="timeline-content">
+                  <h4>SB 2-A: Florida's Insurance Reform</h4>
+                  <p>Eliminated one-way attorney fees in property insurance lawsuits and restricted AOB abuse. This was the largest single reform targeting roofing fraud in the state.</p>
+                </div>
+              </li>
+              <li class="timeline-item">
+                <span class="timeline-dot">2023</span>
+                <div class="timeline-content">
+                  <h4>Florida Carriers Introduce ACV Roof Endorsements</h4>
+                  <p>Many Florida insurers began offering ACV roof endorsements at lower premiums, particularly for roofs over 10 years old. However, homeowners with Fannie/Freddie-backed mortgages often couldn't use them because of the lender requirement.</p>
+                </div>
+              </li>
+              <li class="timeline-item">
+                <span class="timeline-dot">2026</span>
+                <div class="timeline-content">
+                  <h4>FHFA Removes Lender Requirement</h4>
+                  <p>Fannie Mae and Freddie Mac drop the replacement cost roof requirement. Homeowners with conforming mortgages can now carry ACV roof coverage without lender conflicts.</p>
+                </div>
+              </li>
+            </ul>
+
+            <p>ACV roof coverage reduces the financial incentive behind roofing fraud. When a 15-year-old roof only pays out $7,500 instead of $25,000, the scheme becomes far less profitable for fraudulent contractors. Combined with Florida's 2022 AOB reforms, this shift removes another piece of the financial structure that made roofing fraud so lucrative in the state.</p>
+
+            <p>That said, ACV coverage doesn't eliminate fraud &mdash; it reduces the payout that makes fraud attractive. Inflated damage estimates, staged losses, and contractor kickbacks can still occur regardless of the settlement method.</p>
+
+            <!-- ===== WHAT DIDN'T CHANGE ===== -->
+            <h2>What Didn't Change</h2>
+
+            <p>This FHFA announcement is specifically about <strong>roof coverage only</strong>. Several things remain the same:</p>
+
+            <ul>
+              <li><strong>The rest of your home still requires replacement cost.</strong> Fannie and Freddie only removed the roof-specific requirement. Coverage A (Dwelling) and Coverage C (Personal Property) replacement cost requirements remain.</li>
+              <li><strong>Your lender still requires homeowners insurance.</strong> The requirement for insurance itself hasn't changed &mdash; just the required settlement type on the roof.</li>
+              <li><strong>Flood insurance requirements are unaffected.</strong> If your home is in a FEMA flood zone with a federally-backed mortgage, you still need flood insurance.</li>
+              <li><strong>Private mortgage holders set their own rules.</strong> This change applies to Fannie Mae and Freddie Mac conforming loans. Lenders outside the GSE system may still require full RC on roofs.</li>
+            </ul>
+
+            <!-- ===== TLDR ===== -->
+            <div class="tldr-box">
+              <h3>The Bottom Line</h3>
+              <p>Fannie Mae and Freddie Mac no longer require replacement cost coverage on roofs. Here's the core tradeoff:</p>
+              <div class="tldr-grid">
+                <div class="tldr-item">
+                  <h4>ACV Roof Coverage</h4>
+                  <p>Lower premiums. Payout is based on the roof's depreciated value &mdash; the older the roof, the less the payout. On a 15-year-old roof, that gap can be $15,000+.</p>
+                </div>
+                <div class="tldr-item">
+                  <h4>Replacement Cost Roof Coverage</h4>
+                  <p>Higher premiums. Payout covers the full cost of a new roof regardless of age. More coverage, but more expensive &mdash; and the coverage that fueled Florida's roofing fraud problem.</p>
+                </div>
+              </div>
+            </div>
+
+            <p>For a broader look at how ACV and replacement cost apply across your entire policy &mdash; not just the roof &mdash; see our <a href="actual-cash-value-vs-replacement-cost.html">full ACV vs. Replacement Cost breakdown</a>.</p>
+
+            <a href="https://www.fhfa.gov/news/news-release/fannie-mae-and-freddie-mac-remove-certain-homeowners-insurance-requirements-that-will-reduce-costs" target="_blank" rel="noopener" class="source-link">Read the full FHFA press release &rarr;</a>
+
+            <p><strong>Related articles:</strong></p>
+            <ul>
+              <li><a href="actual-cash-value-vs-replacement-cost.html">ACV vs. Replacement Cost: The Difference That Could Cost You Thousands</a></li>
+              <li><a href="full-water-vs-limited-water-coverage.html">Full Water Coverage vs. Limited Water: What Your Policy Actually Covers</a></li>
+              <li><a href="../knowledge-base/home-insurance.html">Home Insurance Knowledge Base</a></li>
+            </ul>
+
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="article-sidebar">
+          <div class="sidebar-card">
+            <h4>In This Article</h4>
+            <ul>
+              <li><a href="#">ACV vs. RC on Roofs</a></li>
+              <li><a href="#">Roof Depreciation in Florida</a></li>
+              <li><a href="#">Same Storm, Different Payouts</a></li>
+              <li><a href="#">Who This Impacts</a></li>
+              <li><a href="#">Roofing Fraud in Florida</a></li>
+              <li><a href="#">What Didn't Change</a></li>
+            </ul>
+          </div>
+          <div class="sidebar-card">
+            <h4>Key Numbers</h4>
+            <p style="font-size:0.9rem;color:var(--gray-700);margin:0;">
+              <strong>Effective:</strong> March 18, 2026<br>
+              <strong>Applies to:</strong> Fannie/Freddie conforming loans<br>
+              <strong>What changed:</strong> Roof RC requirement removed<br>
+              <strong>What didn't:</strong> Rest of home still requires RC<br><br>
+              <strong>Example gap on 15-yr roof:</strong><br>
+              RC payout: $22,500<br>
+              ACV payout: $7,500<br>
+              Difference: <strong style="color:#ef4444;">$15,000</strong>
+            </p>
+          </div>
+          <div class="sidebar-card">
+            <h4>Source</h4>
+            <p style="font-size:0.85rem;color:var(--gray-600);margin:0 0 8px;">Federal Housing Finance Agency, March 18, 2026</p>
+            <a href="https://www.fhfa.gov/news/news-release/fannie-mae-and-freddie-mac-remove-certain-homeowners-insurance-requirements-that-will-reduce-costs" target="_blank" rel="noopener" class="btn btn-outline btn-sm btn-block">FHFA Press Release</a>
+          </div>
+          <div class="sidebar-card">
+            <h4>Related Guide</h4>
+            <p style="font-size:0.9rem;color:var(--gray-500);">ACV vs. Replacement Cost on your full policy</p>
+            <a href="actual-cash-value-vs-replacement-cost.html" class="btn btn-outline btn-sm btn-block" style="margin-top:8px;">Read the Guide</a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </article>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-about">
+          <div class="logo">WTFLinsurance</div>
+          <p>Expert insurance advice &mdash; always free.</p>
+        </div>
+        <div><h4>Insurance</h4><ul><li><a href="../knowledge-base/auto-insurance.html">Auto</a></li><li><a href="../knowledge-base/home-insurance.html">Home</a></li><li><a href="../knowledge-base/flood-insurance.html">Flood</a></li><li><a href="../knowledge-base/boat-insurance.html">Boat</a></li><li><a href="../knowledge-base/rental-property-insurance.html">Rental Property</a></li><li><a href="../knowledge-base/business-insurance.html">Business</a></li></ul></div>
+        <div><h4>Resources</h4><ul><li><a href="index.html">Articles</a></li><li><a href="../knowledge-base/index.html">Knowledge Base</a></li><li><a href="../resources/index.html">Downloads</a></li><li><a href="../tools/index.html">Tools</a></li></ul></div>
+        <div><h4>Company</h4><ul><li><a href="#">About</a></li><li><a href="#">Contact</a></li><li><a href="#">Privacy</a></li></ul></div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 WTFLinsurance.com</span>
+        <span>For educational purposes only.</span>
+      </div>
+    </div>
+  </footer>
+  <script src="../js/main.js"></script>
+</body>
+</html>
