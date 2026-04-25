@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>When Your Lender Changes on a Florida Insurance Policy: What to Update and Who to Call - WTFLinsurance</title>
+  <meta name="description" content="What happens when the mortgagee on a Florida home, flood, or wind policy changes — loan sold, refinance, or payoff. What needs to be updated, what goes wrong if it isn't, and the phone numbers to call when an escrowed premium doesn't get paid.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    /* Article-specific styles */
+    .policy-clause {
+      background: #1e293b;
+      color: #e2e8f0;
+      font-family: 'Courier New', monospace;
+      border-radius: 12px;
+      padding: 28px 28px 24px;
+      margin: 24px 0;
+      font-size: 0.95rem;
+      line-height: 1.7;
+      position: relative;
+      overflow: hidden;
+    }
+    .policy-clause::before {
+      content: 'MORTGAGEE CLAUSE';
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: #0ea5e9;
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 5px 14px;
+      border-radius: 0 0 0 10px;
+      letter-spacing: 0.06em;
+    }
+    .policy-clause .field-label {
+      color: #64748b;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      display: block;
+      margin-top: 14px;
+      font-weight: 700;
+    }
+    .policy-clause .field-label:first-child { margin-top: 0; }
+    .policy-clause .field-value { color: #f1f5f9; font-weight: 600; }
+    .policy-clause .field-highlight {
+      background: #facc15;
+      color: #1e293b;
+      padding: 1px 6px;
+      border-radius: 4px;
+      font-weight: 700;
+    }
+
+    .scenarios-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin: 32px 0;
+    }
+    .scenario-card {
+      border: 2px solid var(--gray-300);
+      border-radius: 12px;
+      padding: 24px;
+      background: #fff;
+    }
+    .scenario-card .scenario-icon { font-size: 2rem; margin-bottom: 10px; }
+    .scenario-card h3 { font-size: 1.05rem; margin: 0 0 8px; }
+    .scenario-card p { font-size: 0.92rem; color: var(--gray-700); margin: 0 0 12px; }
+    .scenario-card .scenario-tag {
+      display: inline-block;
+      background: var(--gray-100);
+      color: var(--gray-700);
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 6px;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .vs-card {
+      border: 2px solid var(--gray-300);
+      border-radius: 12px;
+      overflow: hidden;
+      margin: 32px 0;
+    }
+    .vs-card-header { display: grid; grid-template-columns: 1fr 1fr; }
+    .vs-card-header div {
+      padding: 20px 24px;
+      text-align: center;
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+    .vs-card-header .own-header { background: #d1fae5; color: #065f46; }
+    .vs-card-header .forced-header { background: #fee2e2; color: #991b1b; }
+    .vs-card-body { display: grid; grid-template-columns: 1fr 1fr; }
+    .vs-card-body div {
+      padding: 20px 24px;
+      border-top: 1px solid var(--gray-300);
+    }
+    .vs-card-body div:nth-child(odd) { border-right: 1px solid var(--gray-300); }
+    .vs-card-body .vs-label {
+      font-size: 0.85rem;
+      color: var(--gray-500);
+      margin-bottom: 4px;
+      font-weight: 600;
+    }
+
+    .scenario-box {
+      border: 2px solid var(--gray-300);
+      border-radius: 12px;
+      padding: 32px;
+      margin: 32px 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .scenario-box::before {
+      content: attr(data-label);
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: var(--primary);
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 6px 16px;
+      border-radius: 0 0 0 12px;
+    }
+    .scenario-box.bad { border-color: #ef4444; }
+    .scenario-box.bad::before { background: #ef4444; }
+    .scenario-emoji { font-size: 3rem; margin-bottom: 12px; }
+
+    .checklist {
+      background: var(--gray-100);
+      border-radius: 12px;
+      padding: 24px 28px;
+      margin: 24px 0;
+      list-style: none;
+    }
+    .checklist li {
+      padding: 10px 0 10px 32px;
+      position: relative;
+      border-bottom: 1px solid var(--gray-300);
+    }
+    .checklist li:last-child { border-bottom: none; }
+    .checklist li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 14px;
+      width: 18px;
+      height: 18px;
+      border: 2px solid #10b981;
+      border-radius: 4px;
+      background: #10b981;
+    }
+    .checklist li::after {
+      content: '';
+      position: absolute;
+      left: 5px;
+      top: 17px;
+      width: 8px;
+      height: 4px;
+      border-left: 2px solid #fff;
+      border-bottom: 2px solid #fff;
+      transform: rotate(-45deg);
+    }
+
+    .phone-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 20px 22px;
+      border: 1px solid var(--gray-300);
+      border-radius: 12px;
+      margin-bottom: 12px;
+      background: #fff;
+    }
+    .phone-card .phone-icon {
+      flex-shrink: 0;
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: var(--gray-100);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+    }
+    .phone-card .phone-content { flex: 1; }
+    .phone-card .phone-content h4 { margin: 0 0 4px; font-size: 1rem; }
+    .phone-card .phone-content .phone-number {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--primary);
+      font-family: 'Courier New', monospace;
+    }
+    .phone-card .phone-content p {
+      margin: 6px 0 0;
+      color: var(--gray-700);
+      font-size: 0.9rem;
+    }
+
+    .timeline-box {
+      background: var(--gray-100);
+      border-radius: 12px;
+      padding: 8px 24px;
+      margin: 24px 0;
+    }
+    .timeline-row {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--gray-300);
+    }
+    .timeline-row:last-child { border-bottom: none; }
+    .timeline-row .timeline-day {
+      flex-shrink: 0;
+      width: 110px;
+      font-weight: 700;
+      color: var(--primary);
+      font-family: 'Courier New', monospace;
+      font-size: 0.95rem;
+    }
+    .timeline-row .timeline-event {
+      font-size: 0.95rem;
+      color: var(--gray-800);
+    }
+
+    .tldr-box {
+      background: linear-gradient(135deg, #1a56db, #0ea5e9);
+      color: #fff;
+      border-radius: 12px;
+      padding: 32px;
+      margin: 32px 0;
+    }
+    .tldr-box h3 { color: #fff; margin-bottom: 12px; }
+    .tldr-box p { color: rgba(255,255,255,0.9); }
+    .tldr-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-top: 20px;
+    }
+    .tldr-item {
+      background: rgba(255,255,255,0.15);
+      border-radius: 8px;
+      padding: 16px;
+    }
+    .tldr-item h4 { color: #fff; font-size: 0.95rem; margin-bottom: 4px; }
+    .tldr-item p { font-size: 0.9rem; margin: 0; }
+
+    .source-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--gray-100);
+      border: 1px solid var(--gray-300);
+      border-radius: 8px;
+      padding: 10px 18px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: var(--primary);
+      text-decoration: none;
+      margin: 12px 0;
+      transition: background 0.2s;
+    }
+    .source-link:hover { background: var(--gray-200); }
+
+    @media (max-width: 768px) {
+      .scenarios-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .vs-card-header, .vs-card-body, .tldr-grid { grid-template-columns: 1fr; }
+      .vs-card-body div:nth-child(odd) { border-right: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="header">
+    <div class="container header-inner">
+      <a href="../index.html" class="logo">WTFLinsurance</a>
+      <nav class="nav">
+        <div class="nav-item">
+          <a href="#" class="nav-link">Insurance Types &#9662;</a>
+          <div class="nav-dropdown">
+            <a href="../knowledge-base/auto-insurance.html">Auto Insurance</a>
+            <a href="../knowledge-base/home-insurance.html">Home Insurance</a>
+            <a href="../knowledge-base/flood-insurance.html">Flood Insurance</a>
+            <a href="../knowledge-base/boat-insurance.html">Boat Insurance</a>
+            <a href="../knowledge-base/rental-property-insurance.html">Rental Property Insurance</a>
+            <a href="../knowledge-base/business-insurance.html">Business Insurance</a>
+          </div>
+        </div>
+        <a href="index.html" class="nav-link active">Articles</a>
+        <a href="../knowledge-base/index.html" class="nav-link">Knowledge Base</a>
+        <a href="../resources/index.html" class="nav-link">Resources</a>
+        <a href="../tools/index.html" class="nav-link">Tools</a>
+      </nav>
+      <div class="header-actions">
+        <a href="../pages/login.html" class="nav-link">Log In</a>
+        <a href="../pages/signup.html" class="btn btn-primary btn-sm">Get Started Free</a>
+      </div>
+      <button class="mobile-toggle" aria-label="Menu">
+        <svg fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="breadcrumbs">
+    <div class="container">
+      <a href="../index.html">Home</a><span>/</span>
+      <a href="index.html">Articles</a><span>/</span>
+      <strong>Lender Changes on Your Policy</strong>
+    </div>
+  </div>
+
+  <article>
+    <div class="container">
+      <div class="article-layout">
+        <div>
+          <div class="article-header">
+            <span class="tag">Home Insurance</span>
+            <h1>When Your Lender Changes on a Florida Insurance Policy: What Updates and Who to Call</h1>
+            <div class="article-meta">
+              <span>By <strong>WTFLinsurance Team</strong></span>
+              <span>April 24, 2026</span>
+              <span>9 min read</span>
+            </div>
+          </div>
+
+          <div class="article-content">
+
+            <p>A homeowner gets a "goodbye" letter from their old mortgage servicer and a "hello" letter from a new one. The mortgage payment redirects automatically. So far, so easy.</p>
+
+            <p>Six weeks later, a notice arrives from the new servicer: they have no proof of homeowners insurance, and they're placing a force-placed policy on the loan. Annual cost: about <strong>three times</strong> the existing premium, added to the monthly payment.</p>
+
+            <p>The homeowners policy never lapsed. The carrier still has the property covered. The mortgagee on the policy just never got updated to point at the new servicer.</p>
+
+            <p>Lender changes are routine &mdash; loans get sold, refinanced, and paid off all the time &mdash; but the insurance side of that transition has a way of breaking quietly. This article walks through what changes on the policy, what goes wrong when it doesn't, and the Florida-specific phone numbers worth keeping handy.</p>
+
+            <div class="callout">
+              <div class="callout-title">What's Covered Here</div>
+              <p>The mortgagee clause and what's listed on it, the three ways a lender change happens (loan sold, refinance, payoff), what needs to be updated on home/flood/wind policies, what goes wrong when the update doesn't happen (including force-placed insurance), how to verify the change went through, and which Florida numbers to call when an escrowed premium isn't getting paid.</p>
+            </div>
+
+            <!-- ===== MORTGAGEE CLAUSE ===== -->
+            <h2>The Mortgagee Clause: What's Actually on the Policy</h2>
+
+            <p>Every mortgaged property insurance policy has a <strong>mortgagee clause</strong> &mdash; a small block of text on the declarations page that names the lender as a loss payee on the dwelling structure. It's the line that tells the insurance company who else has a financial stake in the property and who needs to be on any claim check involving the building.</p>
+
+            <p>On a typical Florida homeowners policy, the mortgagee clause looks something like this:</p>
+
+            <div class="policy-clause">
+              <span class="field-label">Mortgagee</span>
+              <span class="field-value">Sample Mortgage Servicing, LLC <span class="field-highlight">ISAOA/ATIMA</span></span>
+              <span class="field-label">Mailing Address</span>
+              <span class="field-value">P.O. Box 9999<br>Springfield, IL 62705-9999</span>
+              <span class="field-label">Loan Number</span>
+              <span class="field-value">0001234567</span>
+            </div>
+
+            <p>Each line matters:</p>
+
+            <ul>
+              <li><strong>Mortgagee name.</strong> The current loan <em>servicer</em>, not necessarily the original lender. Fannie Mae's Selling Guide (B7-3-08) requires the servicer to be named as the mortgagee, with Fannie Mae itself listed only when its interest would otherwise be impaired.</li>
+              <li><strong>ISAOA / ATIMA.</strong> "Its Successors And/Or Assigns" and "As Their Interests May Appear." Together, they extend the mortgagee clause to whoever holds the loan if it's sold or assigned. They're the reason a loan can be sold without the policy being instantly out of date for the new holder &mdash; though carrier records still need to be updated to route paperwork correctly.</li>
+              <li><strong>Mailing address.</strong> Almost always a centralized insurance lockbox or processing center, not a branch. This is where premium notices, refund checks, and claim correspondence get sent.</li>
+              <li><strong>Loan number.</strong> The servicer uses this to match incoming insurance documents to the correct loan in their system.</li>
+            </ul>
+
+            <p>Two notes that come up often: <strong>MERS cannot be named as the mortgagee</strong> on the property insurance policy, even when the mortgage is registered through MERS (Fannie Mae B7-3-08). And a "loss payable clause" is not an acceptable substitute for a standard/union mortgagee clause on a federally-backed loan.</p>
+
+            <a href="https://selling-guide.fanniemae.com/sel/b7-3-08/mortgagee-clause-named-insured-and-notice-cancellation-requirements" target="_blank" rel="noopener" class="source-link">Fannie Mae Selling Guide B7-3-08 &rarr;</a>
+
+            <!-- ===== THREE SCENARIOS ===== -->
+            <h2>Three Ways the Mortgagee Can Change</h2>
+
+            <p>"The lender changed" can mean three different things. The mechanics of each are different, and so is who's typically responsible for updating the policy.</p>
+
+            <div class="scenarios-grid">
+              <div class="scenario-card">
+                <div class="scenario-icon">&#128241;</div>
+                <span class="scenario-tag">Most common</span>
+                <h3>Loan sold or servicing transferred</h3>
+                <p>The original lender sells the loan, or transfers servicing to another company. The borrower didn't choose this &mdash; it just happens. The new servicer is generally responsible for notifying the carrier, but gaps are common.</p>
+              </div>
+              <div class="scenario-card">
+                <div class="scenario-icon">&#128179;</div>
+                <span class="scenario-tag">Borrower-initiated</span>
+                <h3>Refinance with a new lender</h3>
+                <p>The old loan is paid off and a new loan is funded with a different lender. The new lender requires a binder showing them as mortgagee before closing. The agent or title company handles the swap.</p>
+              </div>
+              <div class="scenario-card">
+                <div class="scenario-icon">&#127881;</div>
+                <span class="scenario-tag">Loan ends</span>
+                <h3>Loan paid off</h3>
+                <p>No more lender. The mortgagee gets removed from the policy, escrow closes, and any unused balance is refunded. Premium billing comes directly to the homeowner going forward.</p>
+              </div>
+            </div>
+
+            <h3>Loan sold or servicing transferred</h3>
+
+            <p>This is the one that surprises borrowers most often, because nobody asked for it. Federal RESPA rules (Regulation X &sect;1024.33) require:</p>
+
+            <ul>
+              <li>The transferor (old) servicer to send written notice <strong>at least 15 days before</strong> the transfer date.</li>
+              <li>The transferee (new) servicer to send written notice <strong>no more than 15 days after</strong> the transfer date.</li>
+              <li>A 60-day grace period during which payments sent to the old servicer can't be treated as late.</li>
+            </ul>
+
+            <p>RESPA covers the borrower-facing side. It does <em>not</em> directly govern how the new servicer talks to the insurance carrier. In practice, the new servicer's insurance-tracking vendor sends the carrier a request to update the mortgagee &mdash; but that update can be slow, incomplete, or get lost between systems. The ISAOA/ATIMA language on the original mortgagee clause keeps the new holder covered legally, but premium notices, refunds, and claim checks still go to whichever name and address the carrier has on file.</p>
+
+            <a href="https://www.consumerfinance.gov/rules-policy/regulations/1024/33/" target="_blank" rel="noopener" class="source-link">CFPB Regulation X &sect;1024.33 (transfer rules) &rarr;</a>
+
+            <h3>Refinance with a new lender</h3>
+
+            <p>Refinancing is more controlled because the new lender won't fund without proof of insurance naming them as mortgagee. The typical flow:</p>
+
+            <ol>
+              <li>The new lender requests an <strong>insurance binder</strong> or <strong>Evidence of Insurance (ACORD 27)</strong> from the homeowner's agent, listing the new lender as mortgagee with the correct address and new loan number.</li>
+              <li>The agent issues the binder. Binders typically expire after 30 days, so timing around the closing date matters.</li>
+              <li>At closing, the old loan is paid off; the new loan funds; the policy is endorsed to swap the mortgagee.</li>
+              <li>The carrier issues a fresh declarations page reflecting the new mortgagee.</li>
+            </ol>
+
+            <p>The handoff is usually clean because every party has a financial reason to make it work. The most common breakage is the <strong>old escrow account</strong>: the previous servicer's escrow may have already paid the annual premium, and unwinding the unused portion is its own process (covered below under payoff).</p>
+
+            <h3>Loan paid off</h3>
+
+            <p>After payoff, the mortgagee is removed from the policy entirely. Florida homeowners then own the policy outright &mdash; future premium notices come straight to the property owner, and claim checks list only the named insured.</p>
+
+            <p>RESPA &sect;1024.34(b) requires the servicer to return any remaining escrow balance <strong>within 20 days</strong> (excluding weekends and federal holidays) of payoff, or apply it to the payoff amount. If the servicer already disbursed the year's insurance premium before payoff, the carrier holds that prepaid coverage &mdash; the homeowner now has paid-up coverage through the policy term, and the servicer's escrow refund covers whatever was left in the account.</p>
+
+            <a href="https://www.consumerfinance.gov/rules-policy/regulations/1024/34/" target="_blank" rel="noopener" class="source-link">CFPB Regulation X &sect;1024.34 (escrow refund timing) &rarr;</a>
+
+            <!-- ===== WHAT GETS UPDATED ===== -->
+            <h2>What Needs to Be Updated (on Every Escrowed Policy)</h2>
+
+            <p>The mortgagee clause lives on each individual property insurance policy &mdash; it isn't shared across policies. That means a lender change has to be applied separately to every escrowed line of coverage on the property:</p>
+
+            <ul class="checklist">
+              <li><strong>Homeowners (HO-3, HO-5, or DP-3 for landlords).</strong> The primary property policy. Endorsement is handled by the carrier through the agent or directly with the policyholder.</li>
+              <li><strong>Flood insurance (NFIP or private flood).</strong> Separate policy, separate mortgagee endorsement. NFIP changes use FEMA Form FF-206 (Flood Insurance General Change Endorsement).</li>
+              <li><strong>Wind/hurricane-only policies.</strong> When wind is carved out into a separate policy &mdash; common with Citizens wind-only coverage or surplus-lines wind in coastal Florida &mdash; that policy carries its own mortgagee clause and needs its own update.</li>
+              <li><strong>Excess flood, sinkhole, or DP-1/DP-3 endorsements.</strong> Any standalone policy with the property as collateral lists the mortgagee separately.</li>
+            </ul>
+
+            <p>Each policy lists the mortgagee on its own declarations page. A homeowner with a flood policy and a wind-only policy in addition to the main HO policy has <strong>three</strong> mortgagee clauses to keep aligned, and each carrier processes the change independently.</p>
+
+            <a href="https://www.fema.gov/sites/default/files/documents/fema_form-086-0-3t-insurance-general-change_2021.pdf" target="_blank" rel="noopener" class="source-link">FEMA Form FF-206 (NFIP General Change Endorsement) &rarr;</a>
+
+            <!-- ===== WHAT GOES WRONG ===== -->
+            <h2>What Goes Wrong When the Update Doesn't Happen</h2>
+
+            <p>The legal protection of the ISAOA/ATIMA language keeps coverage continuous even if records are stale &mdash; but the operational mess can still cost real money. The most common failure modes:</p>
+
+            <ul>
+              <li><strong>Force-placed insurance.</strong> The new lender's insurance tracker can't find a current policy listing them as mortgagee, so they put their own (much more expensive) policy on the loan. More on this below.</li>
+              <li><strong>Premium notices going to the wrong address.</strong> The carrier mails the renewal premium request to the old servicer's lockbox. The old servicer's escrow account (if still active) may pay it; if not, the bill sits unpaid until someone notices.</li>
+              <li><strong>Old escrow paying premiums it shouldn't.</strong> After a refinance or payoff, the old servicer's escrow account sometimes continues paying because the carrier still has them on file. The money eventually gets refunded, but reconciling it takes time and phone calls.</li>
+              <li><strong>Claim checks issued to the wrong mortgagee.</strong> When a property loss occurs and the dec page still lists the old lender, the carrier issues a two-party check naming the old mortgagee. Citizens Property Insurance specifically instructs policyholders to write VOID across an incorrectly-issued check and return it with documentation rather than try to deposit or endorse it.</li>
+              <li><strong>Coverage cancellation for nonpayment.</strong> If neither escrow account pays the premium during the gap, Florida insurers can cancel the policy with as little as <strong>10 days' written notice</strong> for nonpayment under Fla. Stat. &sect;627.4133(2)(b). A reinstatement is possible but not automatic.</li>
+            </ul>
+
+            <a href="https://www.flsenate.gov/Laws/Statutes/2024/627.4133" target="_blank" rel="noopener" class="source-link">Florida Statute &sect;627.4133 (cancellation notice) &rarr;</a>
+
+            <div class="scenario-box bad" data-label="WHAT THIS LOOKS LIKE">
+              <div class="scenario-emoji">&#9888;&#65039;</div>
+              <h3>The "loan sold, escrow lapsed" scenario</h3>
+              <p>A Florida homeowners policy renews on June 1 with an annual premium of $4,800. On April 15, the loan is sold. The new servicer's hello letter arrives April 30. The carrier mails the renewal notice to the old servicer's lockbox on May 1. The old servicer's escrow account, now closed, returns the bill marked "no longer servicing."</p>
+              <p>Nobody pays. On May 22, the carrier sends a 10-day cancellation notice for nonpayment. The cancellation effective date is June 2. The homeowner finds out when the new servicer's force-placed policy notice arrives in mid-June &mdash; long after the original policy already lapsed.</p>
+              <p>Reinstating the original policy may be possible, but the carrier isn't required to accept it. If a hurricane crossed the area during the gap, that's a coverage hole no force-placed policy will retroactively fill.</p>
+            </div>
+
+            <!-- ===== FORCE-PLACED INSURANCE ===== -->
+            <h2>Force-Placed Insurance: How It Works and What It Doesn't Cover</h2>
+
+            <p>When a servicer can't confirm coverage, federal rules let them buy a policy on the borrower's behalf and add the cost to the monthly payment. CFPB Regulation X &sect;1024.37 sets the procedural guardrails:</p>
+
+            <ul>
+              <li><strong>First notice</strong> to the borrower at least <strong>45 days</strong> before charging for the coverage.</li>
+              <li><strong>Reminder notice</strong> at least <strong>15 days</strong> before assessing the charge, and no earlier than 30 days after the first notice.</li>
+              <li>Required disclosures stating that force-placed coverage <em>may cost significantly more</em> and <em>may not provide as much coverage</em> as the borrower's own policy.</li>
+            </ul>
+
+            <p>The two policies are not equivalent products:</p>
+
+            <div class="vs-card">
+              <div class="vs-card-header">
+                <div class="own-header">Borrower's Own Policy</div>
+                <div class="forced-header">Force-Placed Policy</div>
+              </div>
+              <div class="vs-card-body">
+                <div>
+                  <div class="vs-label">What it covers</div>
+                  <p style="margin:0;">Dwelling, other structures, personal property, loss of use, personal liability, medical payments to others.</p>
+                </div>
+                <div>
+                  <div class="vs-label">What it covers</div>
+                  <p style="margin:0;">Generally only the lender's interest in the dwelling structure. <strong>Personal property and personal liability are typically excluded.</strong></p>
+                </div>
+                <div>
+                  <div class="vs-label">Cost</div>
+                  <p style="margin:0;">Market-rate premium reflecting the actual property and chosen coverage.</p>
+                </div>
+                <div>
+                  <div class="vs-label">Cost</div>
+                  <p style="margin:0;">Industry reporting commonly puts force-placed premiums at <strong>2&ndash;3x</strong> a borrower's own policy, sometimes higher.</p>
+                </div>
+                <div>
+                  <div class="vs-label">Who picks it</div>
+                  <p style="margin:0;">The homeowner, working with an agent. Carrier and coverage limits are negotiable.</p>
+                </div>
+                <div>
+                  <div class="vs-label">Who picks it</div>
+                  <p style="margin:0;">The lender. The borrower has no input on carrier or coverage choice.</p>
+                </div>
+                <div>
+                  <div class="vs-label">Who's protected</div>
+                  <p style="margin:0;">The homeowner's home, belongings, and liability exposure.</p>
+                </div>
+                <div>
+                  <div class="vs-label">Who's protected</div>
+                  <p style="margin:0;">The lender's collateral. The borrower pays for it but receives narrower protection.</p>
+                </div>
+              </div>
+            </div>
+
+            <p>Force-placed coverage gets removed once the borrower provides proof of an active policy with the lender properly named. Premiums charged for periods of overlapping coverage are refundable.</p>
+
+            <a href="https://www.consumerfinance.gov/rules-policy/regulations/1024/37/" target="_blank" rel="noopener" class="source-link">CFPB Regulation X &sect;1024.37 (force-placed insurance) &rarr;</a>
+
+            <!-- ===== FLORIDA-SPECIFIC ===== -->
+            <h2>Florida-Specific Notes</h2>
+
+            <p>A few Florida details that affect how mortgagee changes play out:</p>
+
+            <ul>
+              <li><strong>Citizens Property Insurance</strong> handles mortgagee adds, changes, and removals through Customer Care or through the policyholder's Citizens-appointed agent. The change request goes through Citizens' PolicyCenter and a confirmation dec page is issued once processed.</li>
+              <li><strong>NFIP flood policies</strong> require the FEMA FF-206 endorsement specifically. Mortgagee changes on flood are non-premium endorsements with no waiting period &mdash; processing time is largely a function of the Write-Your-Own carrier handling the policy.</li>
+              <li><strong>Wind-only policies</strong> in coastal Florida are common (Citizens wind-only or various surplus-lines wind carriers). These are independent contracts under Florida Statutes Chapter 627 Part X and need their own mortgagee endorsement.</li>
+              <li><strong>10-day cancellation for nonpayment</strong> (Fla. Stat. &sect;627.4133) makes the gap between a stale escrow and an updated mortgagee unusually short in Florida. Other notice windows under the same statute &mdash; 120 days for nonrenewal, 45 days for a renewal premium notice &mdash; are longer.</li>
+              <li><strong>Hurricane-related claim restrictions.</strong> Florida limits cancellation and nonrenewal in the 90 days following hurricane-related repairs. That doesn't affect mortgagee updates directly but does interact with carrier responsiveness during active storm seasons.</li>
+            </ul>
+
+            <!-- ===== HOW TO VERIFY ===== -->
+            <h2>How to Verify the Update Went Through</h2>
+
+            <p>The simplest way to confirm the mortgagee clause is current is to look at a recent declarations page directly from the carrier. After any lender change, a few steps homeowners commonly take:</p>
+
+            <ol>
+              <li><strong>Request a current dec page</strong> from the agent or directly from the carrier. The mortgagee clause appears near the top, alongside named insured and policy period.</li>
+              <li><strong>Confirm all three fields:</strong> servicer name (with ISAOA/ATIMA), mailing address, and loan number. A wrong loan number is the most common cause of misrouted paperwork.</li>
+              <li><strong>Repeat for every escrowed policy.</strong> Home, flood, and wind-only policies each need to be checked separately.</li>
+              <li><strong>Check the next monthly mortgage statement.</strong> Force-placed insurance shows up as a separate line item or as part of the escrow disbursement detail.</li>
+              <li><strong>Allow at least one full billing cycle</strong> after a servicing transfer before treating silence as confirmation. Carrier records, escrow analysis, and tax-and-insurance disbursement schedules all run on monthly cycles.</li>
+            </ol>
+
+            <p>A mid-cycle check is reasonable practice: 30&ndash;60 days after a closing or transfer, request a fresh dec page and compare it to the closing documents.</p>
+
+            <!-- ===== TIMING ===== -->
+            <h2>Timing: The Notice Windows That Matter</h2>
+
+            <p>Several different countdowns run during a lender change. The ones that affect insurance most directly:</p>
+
+            <div class="timeline-box">
+              <div class="timeline-row">
+                <span class="timeline-day">&minus;15 days</span>
+                <span class="timeline-event">Old servicer must notify borrower of upcoming transfer (RESPA &sect;1024.33).</span>
+              </div>
+              <div class="timeline-row">
+                <span class="timeline-day">Day 0</span>
+                <span class="timeline-event">Servicing transfer effective date.</span>
+              </div>
+              <div class="timeline-row">
+                <span class="timeline-day">+15 days</span>
+                <span class="timeline-event">New servicer must have notified borrower (RESPA &sect;1024.33).</span>
+              </div>
+              <div class="timeline-row">
+                <span class="timeline-day">+60 days</span>
+                <span class="timeline-event">End of the RESPA grace period for payments sent to the old servicer.</span>
+              </div>
+              <div class="timeline-row">
+                <span class="timeline-day">+45 days</span>
+                <span class="timeline-event">Earliest date a new lender can charge for force-placed insurance, after first written notice (CFPB &sect;1024.37).</span>
+              </div>
+              <div class="timeline-row">
+                <span class="timeline-day">10 days</span>
+                <span class="timeline-event">Florida insurer notice window before cancellation for nonpayment (Fla. Stat. &sect;627.4133).</span>
+              </div>
+              <div class="timeline-row">
+                <span class="timeline-day">20 business days</span>
+                <span class="timeline-event">Servicer's escrow refund window after loan payoff (RESPA &sect;1024.34).</span>
+              </div>
+            </div>
+
+            <!-- ===== WHO TO CALL ===== -->
+            <h2>Who to Call When an Escrowed Premium Isn't Getting Paid</h2>
+
+            <p>When the carrier says a premium hasn't been received and the policy is escrowed, the issue lives between the servicer's escrow department and the carrier. The following contacts handle different parts of the resolution:</p>
+
+            <div class="phone-card">
+              <div class="phone-icon">&#127968;</div>
+              <div class="phone-content">
+                <h4>Mortgage servicer's escrow department</h4>
+                <span class="phone-number">Number on the monthly mortgage statement</span>
+                <p>First call. Confirms whether the premium was disbursed, where it was sent, and whether the carrier on file matches the policy. If a payment was sent to a wrong or stale address, the servicer can usually trace and reissue.</p>
+              </div>
+            </div>
+
+            <div class="phone-card">
+              <div class="phone-icon">&#128226;</div>
+              <div class="phone-content">
+                <h4>Insurance carrier or agent</h4>
+                <span class="phone-number">Number on the declarations page</span>
+                <p>Confirms what the carrier shows for mortgagee, billing address, and last payment received. If a cancellation notice has already gone out, the carrier defines the reinstatement window.</p>
+              </div>
+            </div>
+
+            <div class="phone-card">
+              <div class="phone-icon">&#127796;</div>
+              <div class="phone-content">
+                <h4>Florida CFO Insurance Consumer Helpline</h4>
+                <span class="phone-number">1-877-693-5236</span>
+                <p>(1-877-MY-FL-CFO) Florida Department of Financial Services, Division of Consumer Services. Handles complaints and disputes against insurance carriers, including premium-handling issues. Open 8:00 AM&ndash;5:00 PM ET, weekdays. Email: Consumer.Services@myfloridacfo.com.</p>
+              </div>
+            </div>
+
+            <div class="phone-card">
+              <div class="phone-icon">&#127970;</div>
+              <div class="phone-content">
+                <h4>CFPB (mortgage servicing complaints)</h4>
+                <span class="phone-number">1-855-411-2372</span>
+                <p>Consumer Financial Protection Bureau. Handles complaints about mortgage servicers, including escrow handling and force-placed insurance. Online complaint portal at consumerfinance.gov/complaint forwards complaints to the servicer with a 15-day initial response deadline.</p>
+              </div>
+            </div>
+
+            <div class="phone-card">
+              <div class="phone-icon">&#127960;&#65039;</div>
+              <div class="phone-content">
+                <h4>Citizens Property Insurance (Florida)</h4>
+                <span class="phone-number">866-411-2742</span>
+                <p>Citizens Customer Care. Handles mortgagee adds, changes, and removals, plus billing questions. Weekdays 8:00 AM&ndash;5:30 PM ET. Mortgagee changes can also be requested through a Citizens-appointed agent.</p>
+              </div>
+            </div>
+
+            <p>The Florida CFO helpline and the CFPB complaint portal are both free and don't require an attorney. Documentation that's typically helpful when calling: the most recent dec page, the goodbye/hello letters from the servicing transfer (if applicable), the most recent mortgage statement showing escrow disbursements, and any cancellation or force-placed insurance notice.</p>
+
+            <a href="https://www.myfloridacfo.com/division/consumers/contactus" target="_blank" rel="noopener" class="source-link">FL CFO Consumer Services contact page &rarr;</a>
+            <a href="https://www.consumerfinance.gov/complaint/" target="_blank" rel="noopener" class="source-link">CFPB complaint portal &rarr;</a>
+
+            <!-- ===== TLDR ===== -->
+            <div class="tldr-box">
+              <h3>The Bottom Line</h3>
+              <p>The mortgagee clause is a small block of text with outsized consequences. Three things hold the system together:</p>
+              <div class="tldr-grid">
+                <div class="tldr-item">
+                  <h4>Update every escrowed policy</h4>
+                  <p>Home, flood, wind/hurricane &mdash; each policy carries its own mortgagee clause and each needs its own update after a loan sale, refinance, or payoff.</p>
+                </div>
+                <div class="tldr-item">
+                  <h4>Verify with the dec page</h4>
+                  <p>A current declarations page from the carrier is the only authoritative confirmation. Servicer name, address, and loan number all need to match.</p>
+                </div>
+                <div class="tldr-item">
+                  <h4>Watch the 45-day clock</h4>
+                  <p>Force-placed insurance can't be charged until 45 days after the first written notice from the servicer (CFPB &sect;1024.37). That window is the time to fix mismatched records.</p>
+                </div>
+                <div class="tldr-item">
+                  <h4>Florida CFO at 1-877-693-5236</h4>
+                  <p>The state insurance consumer helpline handles disputes between policyholders and carriers, including premium-handling issues during a lender transition.</p>
+                </div>
+              </div>
+            </div>
+
+            <blockquote>
+              <p>"The mortgagee clause keeps coverage continuous in legal terms even when records lag. The financial inconvenience &mdash; force-placed policies, returned premium checks, escrow analyses that don't balance &mdash; is what makes the update worth verifying anyway."</p>
+            </blockquote>
+
+            <p><strong>Related articles:</strong></p>
+            <ul>
+              <li><a href="actual-cash-value-vs-replacement-cost.html">Actual Cash Value vs. Replacement Cost: The Difference That Could Cost You Thousands</a></li>
+              <li><a href="florida-flood-insurance-guide.html">Florida Flood Insurance: A Complete Guide</a></li>
+              <li><a href="home-insurance-claims.html">How to File a Home Insurance Claim (Step-by-Step)</a></li>
+              <li><a href="../knowledge-base/home-insurance.html">Home Insurance Knowledge Base</a></li>
+            </ul>
+
+          </div>
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="article-sidebar">
+          <div class="sidebar-card">
+            <h4>In This Article</h4>
+            <ul>
+              <li><a href="#">The Mortgagee Clause</a></li>
+              <li><a href="#">Three Ways the Lender Can Change</a></li>
+              <li><a href="#">What Needs to Be Updated</a></li>
+              <li><a href="#">What Goes Wrong</a></li>
+              <li><a href="#">Force-Placed Insurance</a></li>
+              <li><a href="#">Florida-Specific Notes</a></li>
+              <li><a href="#">How to Verify</a></li>
+              <li><a href="#">Timing</a></li>
+              <li><a href="#">Who to Call</a></li>
+            </ul>
+          </div>
+          <div class="sidebar-card" style="background:var(--primary);color:#fff;text-align:center;">
+            <h4 style="color:#fff;">Need a Coverage Check?</h4>
+            <p style="color:rgba(255,255,255,0.85);font-size:0.9rem;">Free policy review through WTFLinsurance.</p>
+            <a href="../pages/signup.html" class="btn btn-white btn-block" style="margin-top:12px;">Check My Coverage</a>
+          </div>
+          <div class="sidebar-card">
+            <h4>Quick Reference</h4>
+            <p style="font-size:0.9rem;color:var(--gray-700);margin:0;">
+              <strong>FL CFO Helpline:</strong><br>
+              <span style="font-family:monospace;color:var(--primary);font-weight:700;">1-877-693-5236</span><br><br>
+              <strong>CFPB Complaints:</strong><br>
+              <span style="font-family:monospace;color:var(--primary);font-weight:700;">1-855-411-2372</span><br><br>
+              <strong>Citizens (FL):</strong><br>
+              <span style="font-family:monospace;color:var(--primary);font-weight:700;">866-411-2742</span>
+            </p>
+          </div>
+          <div class="sidebar-card">
+            <h4>Key Term</h4>
+            <p style="font-size:0.9rem;color:var(--gray-700);margin:0;">
+              <strong>ISAOA/ATIMA</strong><br>
+              "Its Successors And/Or Assigns / As Their Interests May Appear" &mdash; the language that keeps a mortgagee clause valid for whoever holds the loan after a sale or assignment.
+            </p>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </article>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-about">
+          <div class="logo">WTFLinsurance</div>
+          <p>Expert insurance advice &mdash; always free.</p>
+        </div>
+        <div><h4>Insurance</h4><ul><li><a href="../knowledge-base/auto-insurance.html">Auto</a></li><li><a href="../knowledge-base/home-insurance.html">Home</a></li><li><a href="../knowledge-base/flood-insurance.html">Flood</a></li><li><a href="../knowledge-base/boat-insurance.html">Boat</a></li><li><a href="../knowledge-base/rental-property-insurance.html">Rental Property</a></li><li><a href="../knowledge-base/business-insurance.html">Business</a></li></ul></div>
+        <div><h4>Resources</h4><ul><li><a href="index.html">Articles</a></li><li><a href="../knowledge-base/index.html">Knowledge Base</a></li><li><a href="../resources/index.html">Downloads</a></li><li><a href="../tools/index.html">Tools</a></li></ul></div>
+        <div><h4>Company</h4><ul><li><a href="#">About</a></li><li><a href="#">Contact</a></li><li><a href="#">Privacy</a></li></ul></div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 WTFLinsurance.com</span>
+        <span>For educational purposes only.</span>
+      </div>
+    </div>
+  </footer>
+  <script src="../js/main.js"></script>
+</body>
+</html>
